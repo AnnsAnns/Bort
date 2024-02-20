@@ -6,6 +6,7 @@ import Sidebar from "../components/Sidebar.astro"
 import BaseHead from "../components/BaseHead.astro"
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
 import "../styles/global.css"
+import RightColumn from "../components/RightColumn.astro"
 
 ---
 <script>
@@ -42,13 +43,8 @@ import "../styles/global.css"
         </div>
 
         {/** Right Sidebar-ish */}
-        <div class="w-full md:w-fit flex flex-col h-full md:h-screen sm:justify-items-end 4k:justify-center sm:justify-start gap-y-4">
-            <div class='w-auto '>
-            text
-            </div>
-            <div class='max-sm:hidden'>
-            bottom
-            </div>
+        <div class="w-full md:w-fit flex flex-col-reverse max-sm:hidden h-full md:h-screen 4k:justify-center sm:justify-start gap-y-4">
+            <RightColumn />
         </div>
         </div>
     </div>

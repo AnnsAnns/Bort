@@ -1,0 +1,33 @@
+---
+
+import Image from 'astro/components/Image.astro'
+
+import Box from '../components/Box.astro'
+
+import flag from './resources/flag.svg'
+import bob from './resources/blinkies/bob.gif'
+import jerma from './resources/blinkies/jerma.gif'
+import fftake from './resources/blinkies/fftake.gif'
+import dablinkie from './resources/blinkies/da blinkie.gif'
+
+---
+
+<div class="w-full h-ful">
+    <div class="max-w-64 grid grid-flow-row auto-rows-max gap-4 justify-between items-center h-full md:m-8">
+    <Box title="">
+        <div class="content-center h-full pt-4">
+            <Image src={flag} class="" alt="LGBTQIA+ Flag"/>
+        </div>
+    </Box>
+    <Box title="">
+        <div class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1">
+            <div class="w-full columns-2">
+            <Image src={bob} alt="Bob from Animal Crossing spinning"/>
+            <Image src={fftake} alt=""/>
+            </div>
+            <Image src={jerma} alt="Jerma Blinky"/>
+            <Image src={dablinkie} alt="Da Blinki?!?"/>
+        </div>
+    </Box>
+    </div>  
+</div>

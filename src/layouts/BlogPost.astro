@@ -1,22 +1,21 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import BaseLayout from './BaseLayout.astro';
 import Box from '../components/Box.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, isLegacy } = Astro.props;
 ---
 
 <BaseLayout>
+	<div class="h-full w-full">
 	<Box title={title}>
 		<article>
 			<div class="hero-image">
-				{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
+				{heroImage && <img class="max-h-96 w-auto text-center" src={heroImage} alt="" />}
 			</div>
 			<div class="prose">
 				<div class="title">
@@ -30,11 +29,40 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 							)
 						}
 					</div>
-					<h1>{title}</h1>
 					<hr />
 				</div>
-				<slot />
+				{
+					isLegacy && (
+						<div class="legacy-warning">
+							<h1 class='text-slate-500 font-semibold whitespace-pre-wrap'>
+								This is a legacy blog post from a long time ago.<br />
+								It might contain outdated or incorrect information.
+							</h1>
+						</div>
+					)
+				}
+				<div class="
+				prose-zinc
+                prose-lg
+                prose-a:text-base-text-color
+                prose-headings:text-base-text-color
+                prose-headings:font-headerf
+                font-medium
+                text-base-text-color
+                font-bodyf
+                leading-snug
+                prose-img:max-h-96
+                prose-img:w-auto
+                prose-img:text-center
+                prose-code:bg-box-color-standard/50
+                prose-blockquote:bg-base-text-color/10
+                prose-a:text-base-text-color/90
+                prose-a:underline
+				">
+					<slot />
+				</div>
 			</div>
 		</article>
 	</Box>
+</div>
 </BaseLayout>
