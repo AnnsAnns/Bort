@@ -1,0 +1,55 @@
+---
+import Box from './Box.astro'
+import Filler from './Filler.astro'
+---
+
+<div class='font-headerf w-full md:w-44 lg:w-60'>
+    <Box title="">
+        <div class='flex flex-col min-h-fit min-w-[120px]'>
+            <a href="/">
+                <div
+                class='flex flex-col trans justify-center self-center text-center font-semibold items-center'
+              >
+                  <img class="
+                    justify-self-center
+                    bg-base-text-color/25
+                    p-2
+                    py-1
+                    w-28
+                    shadow-xl
+                    rounded-3xl
+                    bg-cover
+                    "
+                    src="../resources/CharacterTransparent.png"
+                    height={72}
+                    width={72}
+                    alt="logo" />
+                  <div class=''>
+                  AnnsAnn
+                  </div>
+                  {/**
+                   <div className='text-xs font-s text-base-text-color/50'>
+                    blog@annsann.eu
+                   </div>
+                  */}
+              </div>
+            </a>
+            <Filler />
+            <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/">
+                Home
+            </a>
+            <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/blog">
+                Blog
+            </a>
+            <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/about">
+                About
+            </a>
+            <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/friends">
+                Friends
+            </a>
+            <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="https://github.com/AnnsAnns">
+                Github
+            </a>
+        </div>
+    </Box>
+</div>

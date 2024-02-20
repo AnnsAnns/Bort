@@ -1,0 +1,51 @@
+ /* Init Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    @apply bg-base-bd-background-color;
+}
+
+@layer base {
+	:root {
+	  background-size: auto;
+	}
+  }
+  
+:root {
+--body-font: "National Park", "Helvetica";
+--header-font: "Reglisse Fill", "Arial Black";
+}
+
+@font-face {
+font-family: "Reglisse Fill";
+src: url(https://dl.dropbox.com/s/f68hv0blfpqmvye/Reglisse_Fill%281%29.otf);
+}
+
+@font-face {
+font-family: "National Park";
+src: url(https://dl.dropbox.com/s/jox00bymodcheoy/NationalPark-Regular.otf);
+}
+
+@layer base {
+html {
+	font-family: var(--body-font);
+}
+}
+
+* {
+box-sizing: border-box;
+}
+a {
+text-decoration: none;
+}
+
+.navitem {
+padding: 3px 10px;
+}
+
+.navitem.is-active {
+@apply bg-base-text-color/50;
+}

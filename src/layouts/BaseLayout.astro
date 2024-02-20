@@ -1,0 +1,56 @@
+---
+
+import Box from "../components/Box.astro"
+import { Themes, ThemeSwitcher } from "../utils/Themes.tsx"
+import Sidebar from "../components/Sidebar.astro"
+import BaseHead from "../components/BaseHead.astro"
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
+import "../styles/global.css"
+
+---
+<script>
+    import { loadSetTheme } from "../utils/Themes.tsx"
+
+    loadSetTheme()
+</script>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <div class={`h-full sm:h-screen w-full bg-base-bd-background-color sm:overflow-clip`}>
+        <div class='md:grid md:grid-cols-4 lg:grid-cols-4 md:gap-8 p-4 justify-center h-full w-full sm:h-screen'>
+        {/** Sidebar */}
+        <div class='flex justify-self-end gap-y-6 lg:gap-y-16 lg:py-20 py-4 flex-col w-full md:w-min h-full md:h-screen sm:justify-evenly lg:justify-start'>
+            <Sidebar />
+            <div class=''>
+                <ThemeSwitcher client:only="react" />
+            </div>
+            <div class='max-4k:hidden w-full flex sm:flex-row md:flex-col gap-4 justify-evenly items-center text-center font-headerf text-lg text-red-600'>
+                <Box title="">
+                <img src={""} class='block m-auto p-1'/>
+                UNDER CONSTRUCTION
+                </Box>
+            </div>
+        </div>
+        
+        {/** Middle / Content */}
+        <div class='md:col-span-3 justify-center lg:col-span-2 h-full sm:h-screen w-full sm:max-h-screen sm:max-w-full'>
+            <slot />
+        </div>
+
+        {/** Right Sidebar-ish */}
+        <div class="w-full md:w-fit flex flex-col h-full md:h-screen sm:justify-items-end 4k:justify-center sm:justify-start gap-y-4">
+            <div class='w-auto '>
+            text
+            </div>
+            <div class='max-sm:hidden'>
+            bottom
+            </div>
+        </div>
+        </div>
+    </div>
+    </body>
+</html>
