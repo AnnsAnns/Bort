@@ -6,47 +6,42 @@ import Box from '../components/Box.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage, isLegacy } = Astro.props;
+const { title, description, pubDate, sideVideo, updatedDate, heroImage, isLegacy } = Astro.props;
 ---
 
-<BaseLayout>
-	<div class="h-full w-full">
-	<Box title={title}>
+<BaseLayout videoURL={sideVideo}>
+	<div class="h-full w-full flex flex-col items-center">
+	<Box title={title} className='w-fit'>
 		<article>
-			<div class="hero-image">
-				{heroImage && <img class="max-h-96 w-auto text-center" src={heroImage} alt="" />}
-			</div>
-			<div class="prose">
-				<div class="title">
-					<div class="date">
-						<FormattedDate date={pubDate} />
-						{
-							updatedDate && (
-								<div class="last-updated-on">
-									Last updated on <FormattedDate date={updatedDate} />
-								</div>
-							)
-						}
-					</div>
-					<hr />
-				</div>
-				{
-					isLegacy && (
-						<div class="legacy-warning">
-							<h1 class='text-slate-500 font-semibold whitespace-pre-wrap'>
-								This is a legacy blog post from a long time ago.<br />
-								It might contain outdated or incorrect information.
-							</h1>
-						</div>
-					)
-				}
+			<div class="flex flex-row justify-between">
 				{
 					description && (
-						<div class="description">
+						<div class="description text-base-text-color/80 font-medium text-lg">
 							<p>{description}</p>
 						</div>
 					)
 				}
+				<div class="date text-base-text-color/60">
+					<FormattedDate date={pubDate} />
+					{
+						updatedDate && (
+							<div class="last-updated-on">
+								Last updated on <FormattedDate date={updatedDate} />
+							</div>
+						)
+					}
+				</div>
+			</div>
+
+			<div class="hero-image">
+				{heroImage && <img class="max-h-[350px] w-auto text-center" src={heroImage} alt="" />}
+			</div>
+
+			<br />
+			<hr />
+			<br />
+
+			<div class="prose">
 				<div class="
 				prose-zinc
                 prose-lg
@@ -60,11 +55,21 @@ const { title, description, pubDate, updatedDate, heroImage, isLegacy } = Astro.
                 prose-img:max-h-96
                 prose-img:w-auto
                 prose-img:text-center
-                prose-code:bg-box-color-standard/50
                 prose-blockquote:bg-base-text-color/10
                 prose-a:text-base-text-color/90
+				prose-strong:text-base-text-color
                 prose-a:underline
 				">
+					{
+						isLegacy && (
+							<div class="legacy-warning">
+								<h1 class='text-slate-500 font-semibold whitespace-pre-wrap'>
+									This is a legacy blog post from a long time ago.<br />
+									It might contain outdated or incorrect information.
+								</h1>
+							</div>
+						)
+					}
 					<slot />
 				</div>
 			</div>

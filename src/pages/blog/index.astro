@@ -3,13 +3,14 @@ import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import Box from "../../components/Box.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
 ---
 
-<BaseLayout>
+<BaseLayout videoURL="https://www.youtube.com/watch?v=_SxDCtMpZm0">
   <section>
     <div class="max-h-full flex justify-center">
       <div
@@ -28,20 +29,19 @@ const posts = (await getCollection("blog")).sort(
       >
           {
             posts.map((post) => (
-			<div class="py-3 px-2 max-w-full min-w-[80%]">
-              <Box title="">
-                <a href={`/blog/${post.slug}/`}>
-                  <img
-                    width={720}
-                    height={360}
-                    src={post.data.heroImage}
-                    alt=""
-                  />
-                  <h4 class="title">{post.data.title}</h4>
-                  <p class="text-base-text-color/50">[Click to see more ...]</p>
-                  <p class="date">
-                    <FormattedDate date={post.data.pubDate} />
-                  </p>
+			<div class="py-3 px-2 max-w-full min-w-[80%] flex flex-col items-center">
+              <Box title="" className="w-fit">
+                <a href={`/blog/${post.slug}/`} class="flex flex-col w-full gap-x-2 mt-2 items-center h-full w-full content-center justify-around">
+                  <div class="flex flex-col items-center">
+                    <h4 class="title font-headerf text-2xl md:text-3xl lg:text-4xl">{post.data.title}</h4>
+                    <p class="text-base-text-color">{post.data.description}</p>
+                    <div class="text-base-text-color/60 flex flex-row justify-between w-full">
+                      <p class="">[Click to see more ...]</p>
+                      <p class="date">
+                        <FormattedDate date={post.data.pubDate} />
+                      </p>
+                    </div>
+                  </div>
                 </a>
               </Box>
 			</div>

@@ -10,21 +10,32 @@ export enum Themes {
 }
 
 export function ThemeSwitcher() {
-  loadTheme();
+  let theme = loadTheme();
+
+  loadSetTheme();
 
   return (
     <div>
       <a href="#" onClick={
         (e) => {
           e.preventDefault();
-          let theme = loadTheme();
+          theme = loadTheme();
           const newTheme = theme < lastTheme ? theme+1 : 0;
           localStorage.setItem("theme", newTheme.toString())
           console.log(`Theme: ${Themes[newTheme]}`);
 
           // Reload the page to apply the new theme
           // This way we can have a static site with dynamic themes
-          location.reload();
+          //location.reload();
+
+          loadSetTheme();
+
+          // Change text within "theme-name" div
+          const themeName = document.querySelector('.theme-name');
+
+          if (themeName) {
+            themeName.textContent = Themes[newTheme];
+          }
         }
       } >
         <Box title="">
@@ -40,8 +51,8 @@ export function ThemeSwitcher() {
                 ">
                   Change Theme
                 </div>
-                <div className='font-light text-base-text-color/40 mb-[-12px]'>
-                  {`${Themes[loadTheme()]}`}
+                <div className='theme-name font-light text-base-text-color/40 mb-[-12px]'>
+                  {`${Themes[theme]}`}
                 </div>
             </div>
         </Box>
@@ -56,12 +67,18 @@ export function ThemeSwitcher() {
 export const lastTheme = Themes.werwolvdark;
 
 export function loadSetTheme() {
+  console.log("Loading theme");
+  const theme = loadTheme();
+
+  document.documentElement.classList.add(Themes[theme]);
+
   // Go through each theme and remove the class if it exists
   for (let i = 0; i <= lastTheme; i++) {
+    if (Themes[i] === Themes[theme]) {continue;}
+
+    console.log(`Removing ${Themes[i]}`);
     document.documentElement.classList.remove(Themes[i]);
   }
-
-  document.documentElement.classList.add(Themes[loadTheme()]);
 }
 
 export function loadTheme(): number {
