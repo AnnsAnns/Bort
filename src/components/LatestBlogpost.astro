@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+
+import Box from '../components/Box.astro';
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const newestPost = posts[0];
+
+---
+
+<a class="">
+    <Box title="📰 Latest Blog Post">
+        <div class='font-headerf text-lg'>
+          {newestPost.data.title}
+        </div>
+        <div class='text-base-text-color/60 text-sm'>
+          {newestPost.data.description}
+        </div>
+      </Box>
+</a>

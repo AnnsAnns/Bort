@@ -1,0 +1,124 @@
+---
+import Box from '../components/Box.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface iFRIENDS_LIST {
+    name: string;
+    url: string;
+    special_emoji?: string;
+    desc?: string;
+    img: string;
+    bg_color?: string;
+    special_url?: string;
+}
+
+export const FRIENDS_LIST: iFRIENDS_LIST[] = [
+    {
+        name: "Mary",
+        url: "https://mary.zone",
+        img: "https://avatars.githubusercontent.com/u/1760003",
+        desc: "A tinkerer and emulation developer that enjoys her tea",
+        special_emoji: "🍵",
+    },
+    {
+        name: "WerWolv",
+        url: "https://werwolv.net",
+        img: "https://avatars.githubusercontent.com/u/10835354",
+        desc: "A Professor Layton Fan that is able to make Hex Editors interesting",
+        special_emoji: "🕵️",
+    },
+    {
+        name: "Nichole Mattera",
+        url: "https://nicholemattera.gay",
+        img: "https://avatars.githubusercontent.com/u/697668",
+        desc: "You throw something in front of her and they will find a solution! ",
+        special_url: ".gay",
+        special_emoji: "🏳️‍🌈",
+    },
+    {
+        name: "Ducko",
+        url: "https://goose.icu",
+        img: "https://avatars.githubusercontent.com/u/19228318",
+        desc: "Understands Electron better than Electron understands itself!",
+        special_emoji: "🦆",
+    },
+    {
+        name: "Ave",
+        url: "https://ave.zone",
+        img: "https://avatars.githubusercontent.com/u/6755762",
+        desc: "Owns the legal rights to the letter A (Not Legal Advice)",
+        special_emoji: "🅰️"
+    },
+    {
+        name: "TGR",
+        url: "https://tgrcode.com",
+        img: "https://avatars.githubusercontent.com/u/31906920",
+        desc: "Knows way too much about Mario Maker",
+        special_emoji: "🍄"
+    },
+    {
+        name: "Friedkeenan",
+        url: "https://github.com/friedkeenan",
+        img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEUAAAD///+l2Z/dAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg==",
+        desc: "Is getting mice out of packets with some magic",
+        special_url: "Github",
+        special_emoji: "⬛"
+    },
+];
+
+---
+
+<BaseLayout>
+<div class='
+        grid
+        xl:grid-cols-3
+        md:grid-cols-2
+        4k:grid-cols-4
+        grid-cols-1
+        grid-flow-row-dense
+        gap-4
+        lg:py-8
+        content-start
+        justify-between
+        sm:overflow-y-scroll
+        h-full
+        items-center
+        pr-4
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+      '>    
+{
+    FRIENDS_LIST.map(friend => {
+        return (
+            <a 
+                id={friend.url}
+                href={friend.url}
+                class='max-w-full grow'>
+                <Box
+                    title={`${friend.special_emoji !== undefined ? friend.special_emoji : ""}${friend.name}`}
+                    className={`text-center h-full`}
+                >
+                    <div class='p-1 gap-2 flex justify-center flex-col items-center'>
+                        <div class='pt-2 text-center text-ellipsis'>
+                            {friend.desc}
+                        </div>
+                        <div class="text-sm text-base-text-color/60">
+                            [Click to visit {friend.url.replace("https://", "")}]    
+                        </div>
+                    </div>
+                </Box>
+            </a>
+        )
+    })
+}
+
+<div class='h-full w-full'>
+    <Box title='Not Mentioned?' className='h-full w-full'>
+        If you are reading this and are asking yourself why you were not mentioned even though you should have been or want to be mentioned, sorry about that.
+        Please send me a message and I might fix it 👍
+    </Box>
+    </div>
+
+</div>
+</BaseLayout>

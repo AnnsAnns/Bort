@@ -43,7 +43,7 @@ const { audioSource } = Astro.props;
         </div>
 
         {/** Right Sidebar-ish */}
-        <div class="w-full md:w-fit flex flex-col-reverse h-full md:h-screen 4k:justify-center sm:justify-start gap-y-4">
+        <div class="w-full max-sm:mt-4 md:w-fit flex flex-col-reverse h-full md:h-screen 4k:justify-center sm:justify-start gap-y-4">
             <RightColumn audioSource={audioSource} transition:persist />
         </div>
         </div>
