@@ -1,0 +1,34 @@
+---
+import Box from "./Box.astro";
+
+let { videoURL } = Astro.props;
+
+if (videoURL !== undefined) {
+  // Remove youtube.com or youtu.be from the URL
+  if (videoURL.includes("youtube.com")) {
+    videoURL = videoURL.replace("https://www.youtube.com/watch?v=", "");
+    } else if (videoURL.includes("youtu.be")) {
+    videoURL = videoURL.replace("https://youtu.be/", "");
+    }
+
+    videoURL = "https://www.youtube-nocookie.com/embed/" + videoURL;
+}
+---
+
+{
+  videoURL && (
+    <div class="max-w-min">
+      <Box title="">
+        <div class="flex justify-center items-center pt-3">
+          <iframe
+            src={videoURL}
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          />
+        </div>
+      </Box>
+    </div>
+  )
+}

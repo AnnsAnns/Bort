@@ -8,6 +8,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
 import "../styles/global.css"
 import RightColumn from "../components/RightColumn.astro"
 
+const { videoURL } = Astro.props;
+
 ---
 <script>
     import { loadSetTheme } from "../utils/Themes.tsx"
@@ -44,7 +46,7 @@ import RightColumn from "../components/RightColumn.astro"
 
         {/** Right Sidebar-ish */}
         <div class="w-full md:w-fit flex flex-col-reverse max-sm:hidden h-full md:h-screen 4k:justify-center sm:justify-start gap-y-4">
-            <RightColumn />
+            <RightColumn videoURL={videoURL} />
         </div>
         </div>
     </div>
