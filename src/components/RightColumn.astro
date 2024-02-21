@@ -10,7 +10,8 @@ import jerma from './resources/blinkies/jerma.gif'
 import fftake from './resources/blinkies/fftake.gif'
 import dablinkie from './resources/blinkies/da blinkie.gif'
 import trans from './resources/blinkies/trans.gif'
-import godot from './resources/blinkies/godot.png'
+import jermamiku from './resources/blinkies/jermamiku.gif'
+import mikujerma from './resources/blinkies/mikujerma.gif'
 
 interface Props {
     audioSource?: string;
@@ -25,14 +26,29 @@ const { audioSource } = Astro.props;
     <Audio transition:persist="media-player" audioSource={audioSource} /> 
     <Box title="">
         <div class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1">
+            <a href="https://www.youtube.com/watch?v=1U9ls3vAt5I">
+                <Image src={jerma} alt="Jerma Blinky"/>
+            </a>
+            <a href="https://www.youtube.com/watch?v=PLaanhBuiVU">
+                <Image src={dablinkie} alt="Da Blinki?!?"/>
+            </a>
+            <a href="https://archlinux.org/">
+                <Image src={trans} alt="Trans Rights" />
+            </a>
+            <a href="https://www.youtube.com/watch?v=iBF_mDFgtH4">
+                <Image src={mikujerma} alt="Miku Jerma"/>
+            </a>
+            <a href="https://www.youtube.com/watch?v=0Qs_jRerdSg">
+                <Image src={jermamiku} alt="Jerma Miku"/>
+            </a>
             <div class="w-full columns-2">
-            <Image src={bob} alt="Bob from Animal Crossing spinning"/>
-            <Image src={fftake} alt=""/>
+                <a href="https://www.youtube.com/watch?v=yD2FSwTy2lw"> 
+                    <Image src={bob} alt="Bob from Animal Crossing spinning"/>
+                </a>
+                <a href="https://www.mozilla.org/en-US/firefox/windows/" >
+                    <Image src={fftake} alt="Download Firefox"/>
+                </a>
             </div>
-            <Image src={jerma} alt="Jerma Blinky"/>
-            <Image src={dablinkie} alt="Da Blinki?!?"/>
-            <Image src={trans} alt="Trans Rights" />
-            <Image src={godot} alt="Godot Game Engine"/>
         </div>
     </Box>
     </div>  
