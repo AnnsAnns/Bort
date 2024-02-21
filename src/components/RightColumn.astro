@@ -2,7 +2,7 @@
 
 import Image from 'astro/components/Image.astro'
 
-import Video from '../components/Video.astro'
+import Audio from './AudioPlayer.astro'
 import Box from '../components/Box.astro'
 
 import bob from './resources/blinkies/bob.gif'
@@ -12,14 +12,17 @@ import dablinkie from './resources/blinkies/da blinkie.gif'
 import trans from './resources/blinkies/trans.gif'
 import godot from './resources/blinkies/godot.png'
 
+interface Props {
+    audioSource?: string;
+}
 
-const { videoURL } = Astro.props;
+const { audioSource } = Astro.props;
 
 ---
 
 <div class="w-full h-ful">
     <div class="max-w-64 grid grid-flow-row auto-rows-max gap-4 justify-between items-center h-full md:m-8">
-    <Video videoURL={videoURL} /> 
+    <Audio transition:persist="media-player" audioSource={audioSource} /> 
     <Box title="">
         <div class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1">
             <div class="w-full columns-2">

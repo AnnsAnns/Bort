@@ -6,10 +6,11 @@ import Box from '../components/Box.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, sideVideo, updatedDate, heroImage, legacy } = Astro.props;
+const { title, description, pubDate, sideVideo, updatedDate, heroImage, legacy, audioSource } = Astro.props;
+
 ---
 
-<BaseLayout videoURL={sideVideo}>
+<BaseLayout audioSource={audioSource}>
 	<div class="h-full w-full flex flex-col items-center">
 	<Box title={title} className='w-fit'>
 		<article>

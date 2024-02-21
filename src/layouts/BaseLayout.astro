@@ -7,7 +7,11 @@ import "../styles/global.css"
 import RightColumn from "../components/RightColumn.astro"
 import { ViewTransitions } from "astro:transitions"
 
-const { videoURL } = Astro.props;
+interface Props {
+    audioSource?: string
+}
+
+const { audioSource } = Astro.props;
 ---
 
 <script>
@@ -40,7 +44,7 @@ const { videoURL } = Astro.props;
 
         {/** Right Sidebar-ish */}
         <div class="w-full md:w-fit flex flex-col-reverse h-full md:h-screen 4k:justify-center sm:justify-start gap-y-4">
-            <RightColumn videoURL={videoURL} transition:persist />
+            <RightColumn audioSource={audioSource} transition:persist />
         </div>
         </div>
     </div>

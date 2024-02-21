@@ -1,0 +1,22 @@
+---
+import Box from "./Box.astro";
+
+interface Props {
+  audioSource?: string;
+}
+
+const { audioSource } = Astro.props;
+
+let audio = audioSource || "/CheckMiiOut.mp3";
+
+---
+
+<div class="w-full">
+  <Box title="">
+    <div class="flex flex-col justify-center items-center pt-6">
+      <audio controls autoplay loop>
+        <source src={audio} type="audio/mpeg" />
+      </audio>
+    </div>
+  </Box>
+</div>

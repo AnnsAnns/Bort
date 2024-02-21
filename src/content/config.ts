@@ -13,6 +13,7 @@ const blog = defineCollection({
 		tags: z.array(z.string()).optional(),
 		legacy: z.boolean().optional(),
 		sideVideo: z.string().optional(),
+		audioSource: z.string().optional(),
 	}),
 });
 
