@@ -6,7 +6,7 @@ import Box from '../components/Box.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, sideVideo, updatedDate, heroImage, isLegacy } = Astro.props;
+const { title, description, pubDate, sideVideo, updatedDate, heroImage, legacy } = Astro.props;
 ---
 
 <BaseLayout videoURL={sideVideo}>
@@ -41,6 +41,18 @@ const { title, description, pubDate, sideVideo, updatedDate, heroImage, isLegacy
 			<hr />
 			<br />
 
+			{
+				legacy && (
+					<div class="legacy-warning">
+						<h1 class='text-slate-500 text-xl font-bold'>
+							This is a legacy blog post from a long time ago.<br/>
+							It might contain outdated or incorrect information.
+						</h1>
+						<br/>
+					</div>
+				)
+			}
+
 			<div class="prose">
 				<div class="
 				prose-zinc
@@ -59,17 +71,9 @@ const { title, description, pubDate, sideVideo, updatedDate, heroImage, isLegacy
                 prose-a:text-base-text-color/90
 				prose-strong:text-base-text-color
                 prose-a:underline
+				prose-code:bg-base-text-color/10
+				prose-code:text-base-text-color
 				">
-					{
-						isLegacy && (
-							<div class="legacy-warning">
-								<h1 class='text-slate-500 font-semibold whitespace-pre-wrap'>
-									This is a legacy blog post from a long time ago.<br />
-									It might contain outdated or incorrect information.
-								</h1>
-							</div>
-						)
-					}
 					<slot />
 				</div>
 			</div>

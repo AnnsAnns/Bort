@@ -1,0 +1,195 @@
+---
+title: 'Useful Github CI Snippets'
+description: 'Things I tend to reuse in nearly all my projects'
+pubDate: "2023-06-28"
+sideVideo: "https://www.youtube.com/watch?v=mEZ7o7UQY94"
+tags: [
+  "meta",
+  "github",
+  "ci",
+  ]
+hidden: false
+---
+
+I use these in nearly all my projects, so I thought it might make sense to share them so I can just link to this page instead of copy-pasting them all the time. 
+Please note that these are not meant to be used as-is, but rather as a starting point for your own CI workflows.
+
+I guarantee that they work for me, but I can't guarantee that they will work for you, so please use them at your own risk.
+
+Without further ado, here are the snippets:
+## Test Rust with Clippy
+Runs `cargo clippy` on push to `main` or on pull request to `main`.
+```yaml
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: dtolnay/rust-toolchain@stable
+      with:
+          components: clippy
+    - run: cargo clippy --all-targets --all-features -- -D warnings
+```
+
+## Compile LaTeX to PDF
+Compiles a LaTeX document to PDF and uploads it as an artifact.
+```yaml
+name: NAME Compile Action
+
+# Only on push to dev with changes to the following files
+on:
+  push:
+    branches:
+      - dev
+    paths:
+      - 'docs/NAME/**'
+      - '.github/workflows/NAME.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: docs/NAME/
+          root_file: NAME.tex
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v3
+        with:
+          name: PDF
+          path: ./docs/NAME/NAME.pdf
+```
+
+## Build PNPM Project and Upload to Github Pages
+
+Uploads your website to Github Pages.
+```yaml
+name: Docs
+on:
+  push:
+    # We only run this GitHub action upon new commits to `main`
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.5.1
+
+      - name: Install
+        run: pnpm install
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: dist
+          # Remove previous build files
+          clean: true
+          # Do not remove the `.nojekyll` file: we have manually added an empty `.nojekyll` file
+          # at the root of the `gh-pages` branch and
+          # we don't want having to re-create it after each build.
+          clean-exclude: |
+            .nojekyll
+            CNAME
+```
+
+
+## On Release: Build Rust and upload to Github Releases
+Builds a Rust project and uploads the binary to Github Releases.
+```yaml
+name: "Release"
+on: [release]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: dtolnay/rust-toolchain@stable
+      with:
+          components: clippy
+    - run: cargo clippy --all-targets --all-features -- -D warnings
+    - run: cargo build --verbose --release
+    - uses: Shopify/upload-to-release@master
+      with:
+        name: NAME.exe
+        path: target/release/NAME.exe
+        content-type: text/plain
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+## Doxygen to Github Pages
+Compiles a Doxygen project and uploads it to Github Pages.
+```yaml
+name: Doxygen GitHub Pages Deploy Action
+
+on:
+  push:
+    paths:
+      - 'Doxyfile'
+      - 'src/**'
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: DenverCoder1/doxygen-github-pages-action@v1.3.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+## Test Rust project on push
+Runs `cargo test` on push to `main` or on pull request to `main`.
+```yaml
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: dtolnay/rust-toolchain@stable
+    - run: cargo test --all-targets --all-features
+```

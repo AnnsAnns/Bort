@@ -1,0 +1,41 @@
+---
+title: 'Rust as a Scripting Language'
+description: 'How to solve stupid problems with stupid solutions'
+pubDate: "2023-11-05"
+sideVideo: "https://youtu.be/E8BJadt0iXc"
+tags: [
+  "rust",
+  "tooling"
+  ]
+hidden: false
+---
+
+![GuyExplaining](https://media.tenor.com/6RvyvMjx3XMAAAAd/he-is-speaking-guy-explaining-with-a-whiteboard.gif "Guy Explaining Meme")
+
+Recently I had to solve a probably very niche problem. A team, of somewhat new developers and I had to develop a project for a very specific target processor using a very specific development tooling which naturally causes the tooling itself to be quite inflexible as the code basically goes into a small black box. This caused us many headaches when we wanted to include a definition-based flag together with symlink hotswaps of specific files. The tool we use does support makefiles, it however doesn’t appear to properly support target based options (At least we weren’t able to find any support for that).
+So, because I decided to not reinvent the wheel the only easy and fast way to solve this appeared to be a small little script that solves this issue manually by moving some files around and modifying the makefile.
+## Requirements
+There are a few important factors that needed to be accounted for. 
+1.	It needs to be as easy to use as possible
+2.	It needs to function on both windows and linux but only on windows do requirements 4 and 1 matter the most.
+3.	I can’t expect people to download specific runtimes/software to use it
+4.	It needs to work out of the box. There are many different systems this will be used on and any kind of “setup” would cause problems
+5.	It doesn’t need to be good, it needs to work, and preferably asap. You could probably solve this through complicated cmake files and “reverse engineering” some parts of the toolchain but I could also just write my own compiler for the target architecture if you give me 5 years, doesn’t mean it makes the most sense for my use-case.
+## What language should I use?
+Naturally my first thought was Python, then, because I wanted to be fancy my second thought was a shell script till, I realized that I suck at that and, this would either require specialized software or two versions in order to support both windows and linux, thus I had to rule out a shell script.
+Python used to always be my go-to language, esp. when it comes to scripting and even if my usage of Python has dramatically reduced over time, I’d still always choose it if I need something done quick and dirty. But then I realized something I tend to forget; Python doesn’t work out of the box which would conflict with requirements 3 and 4.
+Which brings me to Rust, Rust is a compiled language, which would mean that I could, given that the tool would only ever be run on x86 processors, simply provide a windows binary with the project. Both because Rust is starting to be the only language I pick when I’m not obligated to use another language and because I wanted to try using Rust for tooling/scripting I decided to go with it.
+## The initial plan
+1.	Backup the makefile
+2.	Switch it out with the required makefile
+3.	Add required defines depending on the target
+4.	The code imports different things based on those defines
+5.	Add a few libraries that hook over some parts of the code through dark macro magic
+## Windows Symlinks
+The initial and cleanest solution to hot swapping was using symlinks but as always windows threw a wrench into that whole process. Windows “symlinks” a notorious for sucking and even with recent developments in the space such as Microsoft implementing new “Dev Tools” settings to allow people to create symlinks without admin permission they still often don’t behave the way I’d expect coming from Linux with their own weirdness, which I probably why to this day nobody dares to touch them.
+Thus, even though the code worked on Linux, I had to sacrifice the “neatness” of the code and simply copy and paste code.
+## The Results
+Talking about the code itself would probably not make that much sense, it’s a simple case of parsing the arguments and then copying a few files. The code itself isn’t even the important part, heck, this blog post took longer to write than the code itself.
+The important part is that it just works, nobody complained, nobody had issues because their computer didn’t have certain libraries, or they used msys, or they didn’t. It just works™️ and that is all that is important. 
+![AsLongAsItWorks](./resources/heyaslong.png "Hey as long as it works, Fist of the North Star")
+Yeah okay, that’s it, that’s the blog post. See you next time when I write a tutorial on how to make Kimchi or something and make it all philosophical about the way we write code. Goodbye 👍
