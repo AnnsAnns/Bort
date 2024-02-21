@@ -9,9 +9,14 @@ import { ViewTransitions } from "astro:transitions"
 
 interface Props {
     audioSource?: string
+    title?: string
+    desc?: string
 }
 
-const { audioSource } = Astro.props;
+const { audioSource, title, desc } = Astro.props;
+
+const meta_title = `${SITE_TITLE}  ${title ? ` - ${title}` : ""}`;
+const meta_desc = desc || SITE_DESCRIPTION;
 ---
 
 <script>
@@ -23,7 +28,7 @@ const { audioSource } = Astro.props;
 <!doctype html>
 <html lang="en" transition:persist class="standard">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title={meta_title} description={meta_desc} />
     <ViewTransitions />
   </head>
   <body>
