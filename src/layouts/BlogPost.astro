@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import BaseLayout from './BaseLayout.astro';
 import Box from '../components/Box.astro';
@@ -38,6 +37,13 @@ const { title, description, pubDate, updatedDate, heroImage, isLegacy } = Astro.
 								This is a legacy blog post from a long time ago.<br />
 								It might contain outdated or incorrect information.
 							</h1>
+						</div>
+					)
+				}
+				{
+					description && (
+						<div class="description">
+							<p>{description}</p>
 						</div>
 					)
 				}
