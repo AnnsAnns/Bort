@@ -65,29 +65,17 @@ export default {
 			"base-background-color": "#FFFCF9",
 			"base-bd-background-color": "#FF6978",
 		  },
-		  trans: {
-			"base-text-color": "#55CDFC",
-			"box-color-standard": "#B1EDE8",
-			"base-background-color": "#FFFCF9",
-			"base-bd-background-color": "#F7A8B8",
-		  },
-		  ace: {
-			"base-text-color": "#FFFCF9",
-			"box-color-standard": "#A4A4A4",
-			"base-background-color": "#810081",
-			"base-bd-background-color": "#000000",
-		  },
-		  bi: {
-			"base-text-color": "#0032A0",
-			"box-color-standard": "#8C4799",
-			"base-background-color": "#FFFCF9",
-			"base-bd-background-color": "#D00070",
-		  },
 		  werwolvdark: {
 			"base-text-color": "#f3f4f4",
 			"box-color-standard": "#686299",
 			"base-background-color": "#1e2127",
 			"base-bd-background-color": "#242424",
+		  },
+		  trans: {
+			"base-text-color": "#55CDFC",
+			"box-color-standard": "#B1EDE8",
+			"base-background-color": "#FFFCF9",
+			"base-bd-background-color": "#F7A8B8",
 		  },
 		  nostalgia: {
 			"base-text-color": "#b8b5b9",

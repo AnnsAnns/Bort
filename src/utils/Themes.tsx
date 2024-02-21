@@ -2,11 +2,9 @@ import Box from "./Box";
 
 export enum Themes {
     standard,
+    werwolvdark,
     trans,
     nostalgia,
-    ace,
-    bi,
-    werwolvdark
 }
 
 export function ThemeSwitcher() {
@@ -21,8 +19,7 @@ export function ThemeSwitcher() {
           e.preventDefault();
           theme = loadTheme();
           const newTheme = theme < lastTheme ? theme+1 : 0;
-          localStorage.setItem("theme", newTheme.toString())
-          console.log(`Theme: ${Themes[newTheme]}`);
+          localStorage.setItem("theme_v2", newTheme.toString())
 
           // Reload the page to apply the new theme
           // This way we can have a static site with dynamic themes
@@ -64,10 +61,9 @@ export function ThemeSwitcher() {
 
 // TS Enums have no (good) way of finding the last element to prevent rollovers
 // So it's either this or a cursed function
-export const lastTheme = Themes.werwolvdark;
+export const lastTheme = Themes.nostalgia;
 
 export function loadSetTheme() {
-  console.log("Loading theme");
   const theme = loadTheme();
 
   document.documentElement.classList.add(Themes[theme]);
@@ -75,8 +71,6 @@ export function loadSetTheme() {
   // Go through each theme and remove the class if it exists
   for (let i = 0; i <= lastTheme; i++) {
     if (Themes[i] === Themes[theme]) {continue;}
-
-    console.log(`Removing ${Themes[i]}`);
     document.documentElement.classList.remove(Themes[i]);
   }
 }
@@ -86,7 +80,7 @@ export function loadTheme(): number {
     let retTheme = Themes.standard;
   
     if (typeof window !== "undefined") {
-      storedTheme = localStorage.getItem("theme");
+      storedTheme = localStorage.getItem("theme_v2");
     }
   
     if (typeof storedTheme === 'number') {
@@ -96,8 +90,6 @@ export function loadTheme(): number {
     } else {
       retTheme = Themes.standard;
     }
-
-    console.log(`Theme: ${Themes[retTheme]}`);
 
     return retTheme;
 }
