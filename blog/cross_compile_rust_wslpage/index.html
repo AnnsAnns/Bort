@@ -1,4 +1,4 @@
-<!DOCTYPE html> <html lang="en" class="standard" data-astro-transition-persist="astro-djjcnqsn-1"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.4.0"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/bluesky/"><!-- Primary Meta Tags --><title>Astro Blog</title><meta name="title" content="Astro Blog"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/bluesky/"><meta property="og:title" content="Astro Blog"><meta property="og:description" content="Welcome to my website!"><meta property="og:image" content="https://example.com/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/bluesky/"><meta property="twitter:title" content="Astro Blog"><meta property="twitter:description" content="Welcome to my website!"><meta property="twitter:image" content="https://example.com/blog-placeholder-1.jpg"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.xYYQwT5y.css" /><script type="module" src="/_astro/hoisted.SHPKvED7.js"></script><style>[data-astro-transition-scope="astro-yol56flc-2"] { view-transition-name: astro-yol56flc-2; }@layer astro { ::view-transition-old(astro-yol56flc-2) { 
+<!DOCTYPE html> <html lang="en" class="standard" data-astro-transition-persist="astro-djjcnqsn-1"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.4.0"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/cross_compile_rust_wslpage/"><!-- Primary Meta Tags --><title>Astro Blog</title><meta name="title" content="Astro Blog"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/cross_compile_rust_wslpage/"><meta property="og:title" content="Astro Blog"><meta property="og:description" content="Welcome to my website!"><meta property="og:image" content="https://example.com/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/cross_compile_rust_wslpage/"><meta property="twitter:title" content="Astro Blog"><meta property="twitter:description" content="Welcome to my website!"><meta property="twitter:image" content="https://example.com/blog-placeholder-1.jpg"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.xYYQwT5y.css" /><script type="module" src="/_astro/hoisted.SHPKvED7.js"></script><style>[data-astro-transition-scope="astro-yol56flc-2"] { view-transition-name: astro-yol56flc-2; }@layer astro { ::view-transition-old(astro-yol56flc-2) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
@@ -158,7 +158,10 @@ Github
             text-2xl
             md:text-3xl
             lg:text-4xl
-        "> Bluesky will be Mastodon </div> <div>  <article> <div class="flex flex-row justify-between"> <div class="description text-base-text-color/80 font-medium text-lg"> <p>Bluesky and Mastodon are not as different as people expect</p> </div> <div class="date text-base-text-color/60"> <time datetime="2023-06-04T00:00:00.000Z"> Jun 4, 2023 </time>  </div> </div> <div class="hero-image"> <img class="max-h-[350px] w-auto text-center" src="/blog-placeholder-5.jpg" alt=""> </div> <br> <hr> <br>  <div class="prose"> <div class="
+        "> How to cross-compile Rust from WSL Linux to Windows </div> <div>  <article> <div class="flex flex-row justify-between"> <div class="description text-base-text-color/80 font-medium text-lg"> <p>First Steps: The Sipeed Longan Nano Risc-V microcontroller and Rust</p> </div> <div class="date text-base-text-color/60"> <time datetime="2021-02-25T00:00:00.000Z"> Feb 25, 2021 </time>  </div> </div> <div class="hero-image">  </div> <br> <hr> <br> <div class="legacy-warning"> <h1 class="text-slate-500 text-xl font-bold">
+This is a legacy blog post from a long time ago.<br>
+It might contain outdated or incorrect information.
+</h1> <br> </div> <div class="prose"> <div class="
 				prose-zinc
                 prose-lg
                 prose-a:text-base-text-color
@@ -177,27 +180,80 @@ Github
                 prose-a:underline
 				prose-code:bg-base-text-color/10
 				prose-code:text-base-text-color
-				">  <p>Note, compared to other pieces this one is more of a rant instead. While I try to stay objective in my facts there is a strong subjective flavour to this text. I also forgot to actually publish this text for a few months, oops.</p>
-<p><strong>Twitter is dead, all hail Twitter.</strong></p>
-<p>Over the last years I’ve used several alternatives to Twitter. I initially started with Mastodon a few years ago but over time I realised that my bubble simply didn’t enjoy it that much which made it quite unattractive, I also personally feel like algorithms by itself aren’t a bad thing, I enjoy the curated experience to some degree as long as it is optional, which stands in stark contrast with the philosophy of both Mastodon and it’s users.</p>
-<p>A recent and big plus of the federated Fediverse network based on ActivityPub was misskey which hosted many artists that would have never touched Mastodon, however, their rules and enforcement in terms of things I’d personally perceive as common sense is lacking to say the least which instantly ruled it out for me.</p>
-<p>With each wave of Twitter drama thanks to Musk’s absolutely astonishing business sense there was a quick moment where the possibility of wider Mastodon adoption seemed plausible but interest by those that joined quickly flattened out afterwards. In the end the connotations that Mastodon brings with it seem to confuse the common user, or at least those that I follow.</p>
-<p><em>Note that I will be using Bluesky and ActivityPub interchangeably in some instances in this text</em></p>
-<p>That being said, there has been a shadowy figure rising from the literal ashes of Twitter. Bluesky which was once funded by Twitter, with goals to even make Twitter a Bluesky client, created their own protocol called AtProto instead of adopting ActivityPub used by Mastodon, Threads and soon even Tumblr.</p>
-<p>So far Bluesky is invite-only and the features it has are, uh, lacking to say least as it doesn’t even have support for videos, gifs, dms or even private profiles (I’ll probably rant about this and their trickery too) <em>however</em> Bluesky has been <strong>the</strong> platform that everyone in my bubble seems to enjoy.</p>
-<p>Everyone from artists to shitposters have been moving to it, which does surprise me to some degree considering the invite-only nature of it.</p>
-<p>Bluesky biggest difference compared to Mastodon so far is their support for algorithms in a way that should be the industry standard with a complete market of different algorithms to choose from. They also seem to just sell themselves better in a way in which the common non-techy user doesn’t feel overwhelmed.</p>
-<p>A lot of people also note that the vibe and community feels far superior to Mastodons’.</p>
-<p>However, something that I feel like is ignored by most users, maybe because they don’t properly realise or understand it, is that Bluesky will change greatly in a few months thanks to the main and real goal of creating their own protocol, Federation.</p>
-<p>A lot of the hatred for Mastodon comes from systemic and unfixable problems rooted in federation, which are instance blocking and crazy instance owner that block instances in cases where those instances federate with other blocked instances.</p>
-<p>The problem is, these things will certainly also happen on Bluesky, instance blocking doesn’t come from the fact that Mastodon has some weird problem, when everyone can create instances some instances will be run by right wing idiots, trolls and more. It is an unavoidable fact that bad actors will flourish in environments that aren’t controlled by a single company and certainly more in environments that aren’t invite-only. This isn’t to say that single company sites that control everything are a good thing, considering the upsides of federation and whatever is happening at Twitter/X HQ there is no reason to prove this, however this does showcase something that most Bluesky users aren’t prepared for yet.</p>
-<p>The first months of federation will definitely be full of bumps and drama but Mastodon also survived it, even when it’s userbase is far more techy. There is also an argument to be made that Bluesky growing as a single platform without federation for such a long time, even going over the one million user mark recently, could possibly cause AtProto to not be such a polyopoly but more-so a single enormous instance controlled by the AtProto makers (Bluesky) and many smaller instances.</p>
-<p>Another thing that I personally feel like is greatly misunderstood by most users is how alpha AtProto still is and how amazing Bluesky is at hiding it’s extreme weaknesses. Notable examples would be blocks and likes being completely public and DMs and private profiles being <em>extremely</em> hard to implement into the current protocol. This has to do with the fact that AtProto is built in a way that makes every user action publicly verifiable in order to support federation. To cut around some of the pitfalls of ActivityPub they used this approach with the goal of getting it working first and then thinking about how to actually accomplish the exact reasons most of ActivityPub’s pitfalls actually exist in the first place.</p>
-<p>There are some approaches to this they are already considering with some of them being extremely cutting edge and super impressive if possible but for now anything private is still light-years away from being real.</p>
-<p>To wrap it up, I think ActivityPub itself is a great attempt and we shouldn’t forget how absolutely astonishing the developers are for getting this running on such a small timeframe considering that Twitter is shooting itself in the foot through Musk’s masterful gambits every single day. I also think the changes they did compared to ActivityPub, esp. the whole instance migration and domain user name system is absolutely brilliant.</p>
-<p>The market for Twitter alternatives is as active as never before and as Twitter might possibly shoot themselves in the head soon instead thanks to Musk’s genius “every user should pay us money to use the app” idea I hope that Bluesky will be able to lift the invite-only system soon thanks to federation but just remember,</p>
-<p><strong>Bluesky will be Mastodon</strong> or it won’t, we don’t know yet, just remember the pitfalls ;)</p>
-<p>PS: This was written on a phone in a train, shoutouts to Obsidian and Github Actions for making it so easy.</p>  </div> </div> </article>  </div> </div> </div> </div>  </div>  <div class="w-full md:w-fit flex flex-col-reverse h-full md:h-screen 4k:justify-center sm:justify-start gap-y-4"> <div class="w-full h-ful"> <div class="max-w-64 grid grid-flow-row auto-rows-max gap-4 justify-between items-center h-full md:m-8"> <div class="max-w-min"><div class="
+				">  <img src="/_astro/rustlogo.DhCAFpWh_2avp3w.webp" alt="🦀🦀🦀 Rust logo" width="1200" height="800" loading="lazy" decoding="async">
+<p>Okay, look, I have fallen down the rabbit hole when it comes to Rust. At first I didn’t expect to use the language to a great extend but the more I use it, the more I like it. Besides the great compiler and all the other benefits Rust comes with, the tooling is also amazing. There are so many useful community and first-party tools for many boilerplate problems that keep you from working efficiently, from easy wasm support to embedded software.</p>
+<p>In this (hopefully) short blogpost in the “Heck, I wish I knew this earlier” series, I want to showcase some really easy ways to cross-compile Rust projects to different architectures.</p>
+<h3 id="wsl">WSL</h3>
+<p>WSL is extremely useful and Microsoft is doing one great job when it comes to their <a href="https://en.wikipedia.org/wiki/Embrace,_extend,_and_extinguish">“Embrace, extend, and extinguish”</a> tactic. I love the fact that I can do all my work on the far greater platform for developers (Linux) while still running the buggy mess that is Windows 10 for all the software that doesn’t really work well on Linux.</p>
+<img src="/_astro/neofetch.C6tPbzT-_Z1PMibh.webp" alt="Neofetch showing that I run Arch" width="745" height="428" loading="lazy" decoding="async">
+<p>And as some readers might already know, “btw I use Arch”. Which means that even my WSL distribution is Arch, thanks to <a href="https://github.com/yuk7/ArchWSL">the awesome community of Arch</a>.</p>
+<p>While WSL 1 was quite mediocre, WSL 2 offers the full Linux experience, allowing me to do everything from desktop environments through server hosting. Sadly, WSL2 still only support software rendering, which is a major bottleneck for all applications that do more than a simple GUI, and even then, some GUIs don’t even support software rendering.</p>
+<p>Microsoft is even working on a solution to this, but it honestly looks quite questionable and is still not live so we couldn’t even use it if we wanted to. There is a solution to this however, just cross-compile whatever you need to Windows and run it on Windows and there is a myriad of ways to do that. In this blog post I’ll just quickly talk about 3 solutions that I went through with the most important one being <a href="https://github.com/rust-embedded/cross">“Cross”</a> for rust.</p>
+<h3 id="lvl-5-crook-just-compile-on-windows">Lvl. 5, Crook: Just compile <em>on Windows</em></h3>
+<p>I also like to call this the <em>“You want to suffer”</em> method. Even though this method has the most documentation, it kinda defeats the point. Why would you need a WSL instance when using the inferior Windows toolchain.</p>
+<p>Anyways, the setup is basically just three <em>“simple”</em> steps.</p>
+<ol>
+<li>Install half a terrabyte of Microsoft toolchains + Microsoft Visual Studio from here: <a href="https://visualstudio.microsoft.com/visual-cpp-build-tools/">https://visualstudio.microsoft.com/visual-cpp-build-tools/</a>
+<ul>
+<li>To be more exact, you only need the “Visual Studio C++ Build tools” but naturally, you can’t simply type “pacman -S” like on Arch.</li>
+</ul>
+</li>
+<li>Install <a href="https://www.rust-lang.org/tools/install">Rustup</a>
+<ul>
+<li>As to be expected, Rust makes everything really really easy for you :)</li>
+</ul>
+</li>
+<li>Regret your life choices because you decided to use Windows as your programming environment</li>
+</ol>
+<h3 id="lvl-50-boss-use-mingw64-to-compile-from-linux-to-windows">Lvl. 50, Boss: Use Mingw64 to compile from Linux to Windows</h3>
+<p>Honestly, people have made way better tutorials for Mingw64 Linux and I don’t feel like investing the time into explaining something I don’t even recommend.</p>
+<p>If you actually want to use Mingw64 instead of using Cross, follow the Arch Wiki: <a href="https://wiki.archlinux.org/index.php/Rust#Windows">https://wiki.archlinux.org/index.php/Rust#Windows</a></p>
+<h3 id="lvl-100-hackerman-use-cross">Lvl. 100, Hackerman: Use <a href="https://github.com/rust-embedded/cross">Cross</a></h3>
+<p>My god, I wish I knew this existed earlier. <a href="https://github.com/rust-embedded/cross">Cross</a> is a project by the <a href="https://github.com/rust-embedded/wg#the-tools-team">Rust Embedded Tooling Team</a> which makes cross-compiling of Rust absolutely painless. I have never had an easier time cross-compiling anything, it’s literally a single line of work and absolutely astonishing work by the Rust Embedded Tooling Team.</p>
+<h5 id="setup-on-linux">Setup on Linux:</h5>
+<ol>
+<li>Have a working version of Rustup
+<ul>
+<li><code>pacman -S rustup</code></li>
+</ul>
+</li>
+<li>Install either Docker or Podman
+<ul>
+<li><code>pacman -S podman</code></li>
+</ul>
+</li>
+<li>Lastly, install cross
+<ul>
+<li><code>cargo install cross</code></li>
+</ul>
+</li>
+</ol>
+<h5 id="setup-on-wsl">Setup on WSL:</h5>
+<ol>
+<li>Have a working version of Rustup
+<ul>
+<li><code>pacman -S rustup</code></li>
+</ul>
+</li>
+<li>Ensure that you installed <a href="https://www.docker.com/get-started">Docker <strong>on Windows</strong></a>
+<ul>
+<li>Docker on Windows utilizes WSL2 and hijacks all docker calls, so you can’t simple install Docker from within Arch afaik</li>
+</ul>
+</li>
+<li>Ensure that Docker for Windows lists your WSL2 instance in Settings&gt;Resources&gt;WSL Integration</li>
+<li>Lastly, install cross
+<ul>
+<li><code>cargo install cross</code></li>
+</ul>
+</li>
+</ol>
+<p>After this, you can simple use Cross to compile to your specified target. In our case we want to compile to x86_64 Windows, which means simple typing <code>cross build --target x86_64-pc-windows-gnu</code>. After that, you should have <code>&lt;project_name&gt;.exe</code> in <code>target\x86_64-pc-windows-gnu\debug</code>.</p>
+<p>WSL even allows you to simple call the exe from your Subsystem’s shell, in which case it will execute it natively from Windows. Success, you just cross-compiled to Windows from a Linux WSL instance in a single command.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Rust is awesome, praise Rust.</p>
+<p>In all seriousness though, such excellent tooling is beyond expectable for a language that is still so young and new. I hope I managed to keep this blog post relatively short and thank you for taking the time out of your day just to read it.</p>
+<p>If you have any questions (or want to follow me on social media), feel free to visit my <a href="DEADLINK">Twitter</a>.</p>
+<p>I also made some major changes to my blog, majorly increasing speed, SEO, accessibility and more. If you noticed anything breaking, I’d be happy to fix it.</p>  </div> </div> </article>  </div> </div> </div> </div>  </div>  <div class="w-full md:w-fit flex flex-col-reverse h-full md:h-screen 4k:justify-center sm:justify-start gap-y-4"> <div class="w-full h-ful"> <div class="max-w-64 grid grid-flow-row auto-rows-max gap-4 justify-between items-center h-full md:m-8"> <div class="max-w-min"><div class="
     bg-base-background-color
     ring-box-color-standard
     ring-4
@@ -240,7 +296,7 @@ Github
             text-2xl
             md:text-3xl
             lg:text-4xl
-        ">  </div> <div> <div class="flex justify-center items-center pt-3"><iframe src="https://www.youtube-nocookie.com/embed/dv13gl0a-FA" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div> </div> </div> </div></div> <div class="
+        ">  </div> <div> <div class="flex justify-center items-center pt-3"><iframe src="https://www.youtube-nocookie.com/embed/yoC9P8Bsa_k" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div> </div> </div> </div></div> <div class="
     bg-base-background-color
     ring-box-color-standard
     ring-4

@@ -1,0 +1,426 @@
+<!DOCTYPE html> <html lang="en" class="standard" data-astro-transition-persist="astro-djjcnqsn-1"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.4.0"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/useful_ci_snippetspage/"><!-- Primary Meta Tags --><title>Astro Blog</title><meta name="title" content="Astro Blog"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/useful_ci_snippetspage/"><meta property="og:title" content="Astro Blog"><meta property="og:description" content="Welcome to my website!"><meta property="og:image" content="https://example.com/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/useful_ci_snippetspage/"><meta property="twitter:title" content="Astro Blog"><meta property="twitter:description" content="Welcome to my website!"><meta property="twitter:image" content="https://example.com/blog-placeholder-1.jpg"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.xYYQwT5y.css" /><script type="module" src="/_astro/hoisted.SHPKvED7.js"></script><style>[data-astro-transition-scope="astro-yol56flc-2"] { view-transition-name: astro-yol56flc-2; }@layer astro { ::view-transition-old(astro-yol56flc-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(astro-yol56flc-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(astro-yol56flc-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(astro-yol56flc-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-yol56flc-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-yol56flc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-yol56flc-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-yol56flc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-yol56flc-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-yol56flc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-yol56flc-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-yol56flc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-fvq7hoki-3"] { view-transition-name: astro-fvq7hoki-3; }@layer astro { ::view-transition-old(astro-fvq7hoki-3) { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }::view-transition-new(astro-fvq7hoki-3) { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back]::view-transition-old(astro-fvq7hoki-3) { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back]::view-transition-new(astro-fvq7hoki-3) { 
+	animation-name: astroFadeIn, astroSlideFromLeft; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-fvq7hoki-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-fvq7hoki-3"] { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-fvq7hoki-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-fvq7hoki-3"] { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-fvq7hoki-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-fvq7hoki-3"] { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-fvq7hoki-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-fvq7hoki-3"] { 
+	animation-name: astroFadeIn, astroSlideFromLeft; }</style></head> <body> <div class="h-full sm:h-screen w-full bg-base-bd-background-color md:overflow-clip"> <div class="md:grid md:grid-cols-4 lg:grid-cols-4 md:gap-8 p-4 justify-center h-full w-full sm:h-screen">  <div class="flex justify-self-end gap-y-6 lg:gap-y-16 lg:py-20 py-4 flex-col w-full md:w-min h-full md:h-screen sm:justify-evenly lg:justify-start"> <div class="font-headerf w-full md:w-44 lg:w-60"> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+ "> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+    ">
+➖⏹️❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="flex flex-col min-h-fit min-w-[120px] pt-3"> <a href="/"> <div class="flex flex-col trans justify-center self-center text-center font-semibold items-center"> <img src="/_astro/CharacterTransparent.DHggqFHF_lbjzk.webp" alt="logo" class="justify-self-center bg-base-text-color/25 p-2 py-1 w-28 shadow-xl rounded-3xl bg-cover" width="792" height="853" loading="lazy" decoding="async"> <div class="text-xl font-bodyf font-bold">
+AnnsAnn
+</div> </div> </a> <hr class="h-[2px] my-2 bg-gray-200 border-0 "> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/">
+Home
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/blog">
+Blog
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/about">
+About
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/friends">
+Friends
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="https://github.com/AnnsAnns">
+Github
+</a> </div>  </div> </div> </div> </div> <div class=""> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).only=e;window.dispatchEvent(new Event("astro:only"));})();;(()=>{var v=Object.defineProperty;var A=(c,s,a)=>s in c?v(c,s,{enumerable:!0,configurable:!0,writable:!0,value:a}):c[s]=a;var d=(c,s,a)=>(A(c,typeof s!="symbol"?s+"":s,a),a);var u;{let c={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},s=t=>{let[e,n]=t;return e in c?c[e](n):void 0},a=t=>t.map(s),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,n])=>[e,s(n)]));customElements.get("astro-island")||customElements.define("astro-island",(u=class extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var f;if(!this.hydrator||!this.isConnected)return;let e=(f=this.parentElement)==null?void 0:f.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let n=this.querySelectorAll("astro-slot"),r={},l=this.querySelectorAll("template[data-astro-template]");for(let o of l){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(r[o.getAttribute("data-astro-template")||"default"]=o.innerHTML,o.remove())}for(let o of n){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(r[o.getAttribute("name")||"default"]=o.innerHTML)}let h;try{h=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(o){let i=this.getAttribute("component-url")||"<unknown>",b=this.getAttribute("component-export");throw b&&(i+=` (export ${b})`),console.error(`[hydrate] Error parsing props for component ${i}`,this.getAttribute("props"),o),o}let p;await this.hydrator(this)(this.Component,h,r,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),n.disconnect(),this.childrenConnectedCallback()},n=new MutationObserver(()=>{var r;((r=this.lastChild)==null?void 0:r.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});n.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),n=this.getAttribute("client");if(Astro[n]===void 0){window.addEventListener(`astro:${n}`,()=>this.start(),{once:!0});return}try{await Astro[n](async()=>{let r=this.getAttribute("renderer-url"),[l,{default:h}]=await Promise.all([import(this.getAttribute("component-url")),r?import(r):()=>()=>{}]),p=this.getAttribute("component-export")||"default";if(!p.includes("."))this.Component=l[p];else{this.Component=l;for(let y of p.split("."))this.Component=this.Component[y]}return this.hydrator=h,this.hydrate},e,this)}catch(r){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,r)}}attributeChangedCallback(){this.hydrate()}},d(u,"observedAttributes",["props"]),u))}})();</script><astro-island uid="MgGB0" component-url="/_astro/Themes.CXuUeuB1.js" component-export="ThemeSwitcher" renderer-url="/_astro/client.D9Vng9vH.js" props="{&quot;data-astro-transition-scope&quot;:[0,&quot;astro-yol56flc-2&quot;]}" ssr="" client="only" opts="{&quot;name&quot;:&quot;ThemeSwitcher&quot;,&quot;value&quot;:&quot;react&quot;}" data-astro-transition-scope="astro-yol56flc-2"></astro-island> </div> </div>  <div class="md:col-span-3 justify-center lg:col-span-2 h-full sm:h-screen w-full sm:max-h-screen sm:max-w-full" data-astro-transition-scope="astro-fvq7hoki-3">  <div class="h-full w-full flex flex-col items-center"> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+ w-fit"> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+    ">
+➖⏹️❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        "> Useful Github CI Snippets </div> <div>  <article> <div class="flex flex-row justify-between"> <div class="description text-base-text-color/80 font-medium text-lg"> <p>Things I tend to reuse in nearly all my projects</p> </div> <div class="date text-base-text-color/60"> <time datetime="2023-06-28T00:00:00.000Z"> Jun 28, 2023 </time>  </div> </div> <div class="hero-image">  </div> <br> <hr> <br>  <div class="prose"> <div class="
+				prose-zinc
+                prose-lg
+                prose-a:text-base-text-color
+                prose-headings:text-base-text-color
+                prose-headings:font-headerf
+                font-medium
+                text-base-text-color
+                font-bodyf
+                leading-snug
+                prose-img:max-h-96
+                prose-img:w-auto
+                prose-img:text-center
+                prose-blockquote:bg-base-text-color/10
+                prose-a:text-base-text-color/90
+				prose-strong:text-base-text-color
+                prose-a:underline
+				prose-code:bg-base-text-color/10
+				prose-code:text-base-text-color
+				">  <p>I use these in nearly all my projects, so I thought it might make sense to share them so I can just link to this page instead of copy-pasting them all the time.
+Please note that these are not meant to be used as-is, but rather as a starting point for your own CI workflows.</p>
+<p>I guarantee that they work for me, but I can’t guarantee that they will work for you, so please use them at your own risk.</p>
+<p>Without further ado, here are the snippets:</p>
+<h2 id="test-rust-with-clippy">Test Rust with Clippy</h2>
+<p>Runs <code>cargo clippy</code> on push to <code>main</code> or on pull request to <code>main</code>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Rust</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">on</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  push</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    branches</span><span style="color:#E1E4E8">: [ </span><span style="color:#9ECBFF">&quot;main&quot;</span><span style="color:#E1E4E8"> ]</span></span>
+<span class="line"><span style="color:#85E89D">  pull_request</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    branches</span><span style="color:#E1E4E8">: [ </span><span style="color:#9ECBFF">&quot;main&quot;</span><span style="color:#E1E4E8"> ]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">env</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  CARGO_TERM_COLOR</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">always</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">jobs</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  build</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">    runs-on</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ubuntu-latest</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">    steps</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">actions/checkout@v3</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">dtolnay/rust-toolchain@stable</span></span>
+<span class="line"><span style="color:#85E89D">      with</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">          components</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">clippy</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">cargo clippy --all-targets --all-features -- -D warnings</span></span></code></pre>
+<h2 id="compile-latex-to-pdf">Compile LaTeX to PDF</h2>
+<p>Compiles a LaTeX document to PDF and uploads it as an artifact.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">NAME Compile Action</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Only on push to dev with changes to the following files</span></span>
+<span class="line"><span style="color:#79B8FF">on</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  push</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    branches</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">dev</span></span>
+<span class="line"><span style="color:#85E89D">    paths</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">&#39;docs/NAME/**&#39;</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">&#39;.github/workflows/NAME.yml&#39;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">jobs</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  deploy</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    runs-on</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ubuntu-latest</span></span>
+<span class="line"><span style="color:#85E89D">    steps</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Set up Git repository</span></span>
+<span class="line"><span style="color:#85E89D">        uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">actions/checkout@v3</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Compile LaTeX document</span></span>
+<span class="line"><span style="color:#85E89D">        uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">xu-cheng/latex-action@v3</span></span>
+<span class="line"><span style="color:#85E89D">        with</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">          working_directory</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">docs/NAME/</span></span>
+<span class="line"><span style="color:#85E89D">          root_file</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">NAME.tex</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Upload PDF file</span></span>
+<span class="line"><span style="color:#85E89D">        uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">actions/upload-artifact@v3</span></span>
+<span class="line"><span style="color:#85E89D">        with</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">          name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">PDF</span></span>
+<span class="line"><span style="color:#85E89D">          path</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">./docs/NAME/NAME.pdf</span></span></code></pre>
+<h2 id="build-pnpm-project-and-upload-to-github-pages">Build PNPM Project and Upload to Github Pages</h2>
+<p>Uploads your website to Github Pages.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Docs</span></span>
+<span class="line"><span style="color:#79B8FF">on</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  push</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#6A737D">    # We only run this GitHub action upon new commits to `main`</span></span>
+<span class="line"><span style="color:#85E89D">    branches</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">main</span></span>
+<span class="line"><span style="color:#85E89D">jobs</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  build-and-deploy</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    runs-on</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ubuntu-latest</span></span>
+<span class="line"><span style="color:#85E89D">    steps</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Checkout</span></span>
+<span class="line"><span style="color:#85E89D">        uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">actions/checkout@v2</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Install pnpm</span></span>
+<span class="line"><span style="color:#85E89D">        uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">pnpm/action-setup@v2</span></span>
+<span class="line"><span style="color:#85E89D">        with</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">          version</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">8.5.1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Install</span></span>
+<span class="line"><span style="color:#85E89D">        run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">pnpm install</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Build</span></span>
+<span class="line"><span style="color:#85E89D">        run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">pnpm run build</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Deploy</span></span>
+<span class="line"><span style="color:#85E89D">        uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">JamesIves/github-pages-deploy-action@4.1.4</span></span>
+<span class="line"><span style="color:#85E89D">        with</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">          branch</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gh-pages</span></span>
+<span class="line"><span style="color:#85E89D">          folder</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">dist</span></span>
+<span class="line"><span style="color:#6A737D">          # Remove previous build files</span></span>
+<span class="line"><span style="color:#85E89D">          clean</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#6A737D">          # Do not remove the `.nojekyll` file: we have manually added an empty `.nojekyll` file</span></span>
+<span class="line"><span style="color:#6A737D">          # at the root of the `gh-pages` branch and</span></span>
+<span class="line"><span style="color:#6A737D">          # we don&#39;t want having to re-create it after each build.</span></span>
+<span class="line"><span style="color:#85E89D">          clean-exclude</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">|</span></span>
+<span class="line"><span style="color:#9ECBFF">            .nojekyll</span></span>
+<span class="line"><span style="color:#9ECBFF">            CNAME</span></span></code></pre>
+<h2 id="on-release-build-rust-and-upload-to-github-releases">On Release: Build Rust and upload to Github Releases</h2>
+<p>Builds a Rust project and uploads the binary to Github Releases.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;Release&quot;</span></span>
+<span class="line"><span style="color:#79B8FF">on</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">release</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">env</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  CARGO_TERM_COLOR</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">always</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">jobs</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  build</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    runs-on</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">windows-latest</span></span>
+<span class="line"><span style="color:#85E89D">    steps</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">actions/checkout@v3</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">dtolnay/rust-toolchain@stable</span></span>
+<span class="line"><span style="color:#85E89D">      with</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">          components</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">clippy</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">cargo clippy --all-targets --all-features -- -D warnings</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">cargo build --verbose --release</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Shopify/upload-to-release@master</span></span>
+<span class="line"><span style="color:#85E89D">      with</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">        name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">NAME.exe</span></span>
+<span class="line"><span style="color:#85E89D">        path</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">target/release/NAME.exe</span></span>
+<span class="line"><span style="color:#85E89D">        content-type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">text/plain</span></span>
+<span class="line"><span style="color:#85E89D">        repo-token</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">${{ secrets.GITHUB_TOKEN }}</span></span></code></pre>
+<h2 id="doxygen-to-github-pages">Doxygen to Github Pages</h2>
+<p>Compiles a Doxygen project and uploads it to Github Pages.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Doxygen GitHub Pages Deploy Action</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">on</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  push</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    paths</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">&#39;Doxyfile&#39;</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">&#39;src/**&#39;</span></span>
+<span class="line"><span style="color:#85E89D">    branches</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">dev</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">jobs</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  deploy</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    runs-on</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ubuntu-latest</span></span>
+<span class="line"><span style="color:#85E89D">    steps</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">DenverCoder1/doxygen-github-pages-action@v1.3.0</span></span>
+<span class="line"><span style="color:#85E89D">        with</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">          github_token</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">${{ secrets.GITHUB_TOKEN }}</span></span></code></pre>
+<h2 id="test-rust-project-on-push">Test Rust project on push</h2>
+<p>Runs <code>cargo test</code> on push to <code>main</code> or on pull request to <code>main</code>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0"><code><span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Rust</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">on</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  push</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    branches</span><span style="color:#E1E4E8">: [ </span><span style="color:#9ECBFF">&quot;main&quot;</span><span style="color:#E1E4E8"> ]</span></span>
+<span class="line"><span style="color:#85E89D">  pull_request</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    branches</span><span style="color:#E1E4E8">: [ </span><span style="color:#9ECBFF">&quot;main&quot;</span><span style="color:#E1E4E8"> ]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">env</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  CARGO_TERM_COLOR</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">always</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">jobs</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  build</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">    runs-on</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ubuntu-latest</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">    steps</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">actions/checkout@v3</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">uses</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">dtolnay/rust-toolchain@stable</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">run</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">cargo test --all-targets --all-features</span></span></code></pre>  </div> </div> </article>  </div> </div> </div> </div>  </div>  <div class="w-full md:w-fit flex flex-col-reverse h-full md:h-screen 4k:justify-center sm:justify-start gap-y-4"> <div class="w-full h-ful"> <div class="max-w-64 grid grid-flow-row auto-rows-max gap-4 justify-between items-center h-full md:m-8"> <div class="max-w-min"><div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+ "> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+    ">
+➖⏹️❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div> <div class="flex justify-center items-center pt-3"><iframe src="https://www.youtube-nocookie.com/embed/mEZ7o7UQY94" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div> </div> </div> </div></div> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+ "> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+    ">
+➖⏹️❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1"> <div class="w-full columns-2"> <img src="/_astro/bob.DeuMGCJO_Zkjcg8.webp" alt="Bob from Animal Crossing spinning" width="88" height="31" loading="lazy" decoding="async"> <img src="/_astro/fftake.juBJ8bzE_eLaK.webp" alt="" width="88" height="31" loading="lazy" decoding="async"> </div> <img src="/_astro/jerma.Dvz9-M6x_5BL3K.webp" alt="Jerma Blinky" width="150" height="20" loading="lazy" decoding="async"> <img src="/_astro/da%20blinkie.D8zGGJVl_2ltmlK.webp" alt="Da Blinki?!?" width="150" height="20" loading="lazy" decoding="async"> <img src="/_astro/trans.Z-HUyix4_1dU0U4.webp" alt="Trans Rights" width="150" height="20" loading="lazy" decoding="async"> <img src="/_astro/godot.jgNXEdPX_17OcMn.webp" alt="Godot Game Engine" width="88" height="31" loading="lazy" decoding="async"> </div>  </div> </div> </div> </div> </div> </div> </div> </div> </body></html>
