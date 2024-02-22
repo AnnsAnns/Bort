@@ -8,6 +8,5 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://annsann.eu',
-  prefetch: true,
   integrations: [mdx(), sitemap(), tailwind(), react()]
 });
