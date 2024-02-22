@@ -21,12 +21,12 @@ body {
 
 @font-face {
 font-family: "Reglisse Fill";
-src: url(https://dl.dropbox.com/s/f68hv0blfpqmvye/Reglisse_Fill%281%29.otf);
+src: url('/fonts/Reglisse_Fill.otf') format('opentype');
 }
 
 @font-face {
 font-family: "National Park";
-src: url(https://dl.dropbox.com/s/jox00bymodcheoy/NationalPark-Regular.otf);
+src: url('/fonts/NationalPark-Regular.otf') format('opentype');
 }
 
 @layer base {
