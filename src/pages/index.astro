@@ -2,6 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Box from '../components/Box.astro';
 import LatestBlogpost from '../components/LatestBlogpost.astro';
+import { Image } from 'astro:assets';
+
+import lighthouse from "./resources/lighthouse.png";
 ---
 
 <BaseLayout>
@@ -17,14 +20,45 @@ import LatestBlogpost from '../components/LatestBlogpost.astro';
 	items-center
 	w-full"
 	>
+	<div class="w-full xl:w-[60%]">
+		<LatestBlogpost />
+	</div>
 	<div class="w-full xl:w-1/3">
-		<Box title="Da Vinki?">
-			Pog
+		<a data-astro-prefetch href="/friends">
+			<Box title="😎 Friends">
+				Links to some cool people
+			</Box>
+		</a>
+	</div>
+	<div class="w-full xl:w-1/3">
+		<a data-astro-prefetch href="/blog/the_internet_does_forget/">
+			<Box title="⭐ Cool Post">
+				<div class='font-headerf text-lg'>
+					The Internet Does Forget
+				  </div>
+				  <div class='text-base-text-color/60 text-sm'>
+					The only post with a reference section
+				  </div>
+			</Box>
+		</a>
+	</div>
+	<div class="w-full xl:w-1/3">
+		<Box title="🐸 About Me">
+			I'm AnnsAnn, a software engineer for technical systems. <br/>
+			For some unknown reason, I also enjoy dabbling in web development.
 		</Box>
 	</div>
-	
+	<div class="w-full xl:w-1/4">
+		<Box title="✉️ Contact">
+			You can contact me via <a class="font-bold underline" href="mailto:blog@annsann.eu">email</a>
+		</Box>
+	</div>
 	<div class="w-full xl:w-1/2">
-		<LatestBlogpost />
+		<Box title="🚀 Made with Astro">
+			This site might look like a Single Page Application, but it's not.<br/>
+			It's a static multi-page site with some prefetch and view transition magic, which means it's really fast.<br/>
+			(99/100 on Lighthouse!)
+		</Box>
 	</div>
 </div>
 </BaseLayout>

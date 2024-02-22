@@ -11,7 +11,7 @@ const newestPost = posts[0];
 
 ---
 
-<a class="" href={`/blog/${newestPost.slug}`}>
+<a data-astro-prefetch class="" href={`/blog/${newestPost.slug}`}>
     <Box title="📰 Latest Blog Post">
         <div class='font-headerf text-lg'>
           {newestPost.data.title}
