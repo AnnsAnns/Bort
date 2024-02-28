@@ -7,19 +7,12 @@ interface iFRIENDS_LIST {
     url: string;
     special_emoji?: string;
     desc?: string;
-    img: string;
+    img?: string;
     bg_color?: string;
     special_url?: string;
 }
 
 export const FRIENDS_LIST: iFRIENDS_LIST[] = [
-    {
-        name: "Mary",
-        url: "https://mary.zone",
-        img: "https://avatars.githubusercontent.com/u/1760003",
-        desc: "A tinkerer and emulation developer that enjoys her tea",
-        special_emoji: "🍵",
-    },
     {
         name: "WerWolv",
         url: "https://werwolv.net",
@@ -28,12 +21,25 @@ export const FRIENDS_LIST: iFRIENDS_LIST[] = [
         special_emoji: "🕵️",
     },
     {
-        name: "Nichole Mattera",
-        url: "https://nicholemattera.gay",
-        img: "https://avatars.githubusercontent.com/u/697668",
-        desc: "You throw something in front of her and they will find a solution! ",
-        special_url: ".gay",
-        special_emoji: "🏳️‍🌈",
+        name: "Friedkeenan",
+        url: "https://github.com/friedkeenan",
+        img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEUAAAD///+l2Z/dAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg==",
+        desc: "Is getting mice out of packets with some magic",
+        special_url: "Github",
+        special_emoji: "⬛"
+    },
+    {
+        name: "Emily",
+        url: "https://github.com/jakibaki",
+        desc: "Creates the most useful and influential tools imaginable and calls them alright",
+        special_emoji: "🐈"
+    },
+    {
+        name: "Mary",
+        url: "https://mary.zone",
+        img: "https://avatars.githubusercontent.com/u/1760003",
+        desc: "A tinkerer and emulation developer that enjoys her tea",
+        special_emoji: "🍵",
     },
     {
         name: "Ducko",
@@ -50,19 +56,61 @@ export const FRIENDS_LIST: iFRIENDS_LIST[] = [
         special_emoji: "🅰️"
     },
     {
+        name: "Shak",
+        url: "https://github.com/shakkar23",
+        desc: "Creates SkyNet but just for Tetris",
+        special_emoji: "🥔"
+    },
+    {
+        name: "Shadow",
+        url: "https://github.com/shadowninja108",
+        desc: "Needs to reverse engineer grass /s",
+        special_emoji: "🌃"
+    },
+    {
+        name: "Shchmue",
+        url: "https://github.com/shchmue",
+        desc: "\"This tool is quite simple\" - Actually, it's not",
+        special_emoji: "🍬"
+    },
+    {
+        name: "Noah",
+        url: "https://github.com/noahc3",
+        desc: "Would host a million dollar VPS just to reduce ZIP compression speeds by 0.3s",
+        special_emoji: "🇨🇦"
+    },
+    {
+        name: "Hax",
+        url: "https://github.com/hax4dazy",
+        desc: "Manages to stay sane while closing the same issue ticket for the 500th time",
+        special_emoji: "🚀"
+    },
+    {
+        name: "Nichole Mattera",
+        url: "https://nicholemattera.gay",
+        img: "https://avatars.githubusercontent.com/u/697668",
+        desc: "You throw something in front of her and they will find a solution! ",
+        special_url: ".gay",
+        special_emoji: "🏳️‍🌈",
+    },
+    {
+        name: "Ana",
+        url: "https://analog-hors.github.io/site/home/",
+        desc: "This chess engine written in 3 lines of code solves world hunger",
+        special_emoji: "🐴"
+    },
+    {
+        name: "Cathery",
+        url: "https://github.com/cathery",
+        desc: "Writes a minor PR, your code now actually works",
+        special_emoji: "🐇"
+    },
+    {
         name: "TGR",
         url: "https://tgrcode.com",
         img: "https://avatars.githubusercontent.com/u/31906920",
         desc: "Knows way too much about Mario Maker",
         special_emoji: "🍄"
-    },
-    {
-        name: "Friedkeenan",
-        url: "https://github.com/friedkeenan",
-        img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEUAAAD///+l2Z/dAAAACklEQVQI12NgAAAAAgAB4iG8MwAAAABJRU5ErkJggg==",
-        desc: "Is getting mice out of packets with some magic",
-        special_url: "Github",
-        special_emoji: "⬛"
     },
 ];
 
@@ -96,7 +144,7 @@ export const FRIENDS_LIST: iFRIENDS_LIST[] = [
                 href={friend.url}
                 class='max-w-full grow'>
                 <Box
-                    title={`${friend.special_emoji !== undefined ? friend.special_emoji : ""}${friend.name}`}
+                    title={`${friend.special_emoji !== undefined ? friend.special_emoji : ""} ${friend.name}`}
                     className={`text-center h-full`}
                 >
                     <div class='p-1 gap-2 flex justify-center flex-col items-center'>
