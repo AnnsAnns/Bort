@@ -15,10 +15,11 @@ import lighthouse from "./resources/lighthouse.png";
 	flex-col
 	flex-wrap
 	h-full
-	gap-4
+	gap-5
 	justify-start
 	content-start
 	items-center
+	overflow-y-auto
 	w-full"
 	>
 	<div class="w-full xl:w-[60%]">
@@ -54,23 +55,50 @@ import lighthouse from "./resources/lighthouse.png";
 	</div>
 	<div class="w-full xl:w-1/4">
 		<Box title="✉️ Contact">
-			You can contact me via <a class="font-bold underline" href="mailto:blog@annsann.eu">email</a>
-		</Box>
-	</div>
-	<div class="w-full xl:w-1/2">
-		<Box title="🚀 Made with Astro">
-			This site might look like a Single Page Application, but it's not.<br/>
-			It's a static multi-page site with some prefetch and view transition magic, which means it's really fast.<br/>
-			(99/100 on Lighthouse!)
+			You can contact me via <a class="font-bold underline" href="mailto:blog@annsann.eu">email</a>. <br/> I don't care about your crypto startup though.
 		</Box>
 	</div>
 	<div class="w-full xl:w-[45%]">
-		<a href="@TODO">
+		<a href="https://modrinth.com/mod/flower-power">
 			<Box title="⛏️ Minecraft Mods">
 				I made a few Minecraft mods, that you can download on Modrinth
 				<ClickToSeeMore/>
 			</Box>
 		</a>
+	</div>
+	<div class="w-full xl:w-1/2">
+		<Box title="🚀 Made with Astro">
+			This site might look like a Single Page Application, but it's not.<br/>
+			It's a static multi-page site with some magic
+			(99/100 on Lighthouse!)
+		</Box>
+	</div>
+	<div class="w-full xl:w-1/2">
+		<a href="https://kosmonaut.annsann.eu/">
+			<Box title="🛰️ Kosmonaut">
+				I made a cool fully automated CFW bundler that works purely through Github CI magic.<br/>
+				Not the most useful thing, but it's cool 😄
+				<ClickToSeeMore/>
+			</Box>
+		</a>
+	</div>
+	<div class="w-full xl:w-[45%]">
+		<a href="https://github.com/AnnsAnns">
+			<Box title="🤝 Github">
+				Nearly all my projects are Open Source and on Github.<br/>
+				Including the source code for this site.
+				<ClickToSeeMore/>
+			</Box>
+		</a>
+	</div>
+	<div class="w-full xl:w-[45%]">
+		<Box title="🏅 Language Tierlist">
+			S: Rust, TypeScript<br/>
+			A: Python, GDScript<br/>
+			B: C++, C, Golang, Kotlin<br/>
+			C: JavaScript<br/>
+			D: Java
+		</Box>
 	</div>
 	<div class="w-full xl:w-1/2">
 		<Box title="👮 Important">
