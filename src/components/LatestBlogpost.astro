@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import ClickToSeeMore from '../components/ClickToSeeMore.astro';
 
 import Box from '../components/Box.astro';
 
@@ -19,5 +20,6 @@ const newestPost = posts[0];
         <div class='text-base-text-color/60 text-sm'>
           {newestPost.data.description}
         </div>
+        <ClickToSeeMore/>
       </Box>
 </a>
