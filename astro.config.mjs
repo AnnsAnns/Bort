@@ -8,5 +8,8 @@ import serviceWorker from "astrojs-service-worker";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://annsann.eu',
-  integrations: [mdx(), sitemap(), tailwind(), react(), serviceWorker()]
+  experimental: {
+    directRenderScript: true,
+  },
+  integrations: [mdx(), sitemap(), tailwind(), react(), serviceWorker()],
 });
