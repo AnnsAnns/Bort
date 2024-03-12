@@ -1,5 +1,5 @@
 ---
-import { ThemeSwitcher } from "../utils/Themes.tsx"
+import Themes from "../components/Themes.astro"
 import Sidebar from "../components/Sidebar.astro"
 import BaseHead from "../components/BaseHead.astro"
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
@@ -20,9 +20,11 @@ const meta_desc = desc || SITE_DESCRIPTION;
 ---
 
 <script>
-    import { loadSetTheme } from "../utils/Themes.tsx"
+    import { loadSetTheme } from "../utils/themes";
 
-    loadSetTheme()
+    loadSetTheme();
+
+    document.addEventListener("astro:after-swap", loadSetTheme);
 </script>
 
 <!doctype html>
@@ -38,7 +40,7 @@ const meta_desc = desc || SITE_DESCRIPTION;
         <div class='flex justify-self-end gap-y-6 lg:gap-y-16 lg:py-20 py-4 flex-col w-full md:w-min h-full md:h-screen sm:justify-evenly lg:justify-start'>
             <Sidebar />
             <div class=''>
-                <ThemeSwitcher client:only="react" transition:animate="fade"/>
+                <Themes transition:persist />
             </div>
         </div>
         
@@ -54,4 +56,4 @@ const meta_desc = desc || SITE_DESCRIPTION;
         </div>
     </div>
     </body>
-</html>
+</html>../utils/themes.ts

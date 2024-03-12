@@ -1,0 +1,48 @@
+---
+import Box from './Box.astro';
+---
+
+<script>
+    import { loadSetTheme, loadTheme, clickLoadTheme, Themes} from '../utils/themes.js';
+    
+    function themeSwitcher() {
+        let theme = loadTheme();
+  
+        loadSetTheme();
+
+        // Change text within "theme-name" div
+        const themeName = document.querySelector('.theme-name');
+
+        if (themeName) {
+            themeName.textContent = Themes[theme];
+        }
+
+        document.getElementById("themeSwitcherClick")?.addEventListener("click", clickLoadTheme);
+    }
+
+    document.addEventListener("astro:after-swap", themeSwitcher);
+
+    themeSwitcher();
+</script>
+
+
+<Box title="">
+    <div class="content-center p-3 text-center">
+        <button
+        id="themeSwitcherClick"
+        class="
+            font-headerf
+            text-lg
+            md:text-xl
+            lg:text-2xl
+            bg-base-text-color/25
+            rounded-lg
+            p-3
+        ">
+        Change Theme
+        </button>
+        <div class='theme-name font-light text-base-text-color/40 mb-[-12px]'>
+        LOADING ...
+        </div>
+    </div>
+</Box>
