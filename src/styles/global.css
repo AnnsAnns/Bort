@@ -22,11 +22,17 @@ body {
 @font-face {
 font-family: "Reglisse Fill";
 src: url('/fonts/Reglisse_Fill.otf') format('opentype');
+font-weight: normal;
+font-style: normal;
+font-display: swap;
 }
 
 @font-face {
 font-family: "National Park";
 src: url('/fonts/NationalPark-Regular.otf') format('opentype');
+font-weight: normal;
+font-style: normal;
+font-display: swap;
 }
 
 @layer base {
