@@ -210,21 +210,21 @@ So why are we still using IPv4? The answer is simple: It’s hard to change.</p>
 In that scenario, the ISP provides you with an IPv6 address and a shared public IPv4 address with other customers.</p>
 <p>And then there are countries such as the US or Netherlands that are still using IPv4 as their primary protocol and have barely begun to use IPv6.</p>
 <p>As a small funny sidenote about the Google Stats that nearly caused me to spread misinformation, China has a 5% IPv6 usage rate according to it, until you remember that Google is blocked in China and that traffic is most likely from VPNs which rarely ever use IPv6.
-According to a presentation by China Telecom, they have a 44% wired IPv6 adoption and a 80% mobile user adoption and is aiming for 100% by 2030.</p>
-<p>There also lunatics that would rather change the IPv4 protocol to allow for more addresses than to switch to IPv6, but that whole thing is so absurd and bonkers that I won’t even go into it.<sup><a href="#user-content-fn-5" id="user-content-fnref-5" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup></p>
+According to a presentation by China Telecom, they have a 44% wired IPv6 adoption and a 80% mobile user adoption and are aiming for 100% by 2030.</p>
+<p>There are also lunatics that would rather change the IPv4 protocol to allow for more addresses than to switch to IPv6, but that whole thing is so absurd and bonkers that I won’t even go into it.<sup><a href="#user-content-fn-5" id="user-content-fnref-5" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup></p>
 <h2 id="germany">Germany</h2>
 <p><img src="/_astro/dslite.C_rZyE5T_zs0kC.webp" alt="DS Lite" title="DS Lite (Get it, it's a DS Lite)" width="500" height="381" loading="lazy" decoding="async"></p>
 <p>Get it, it’s a DS Lite. Pinnacle of comedy right here.</p>
 <p>Since I’m from Germany, I can tell you a bit about the situation here. My ISP has been using DS-Lite for a few years now,
-at first it was quite easy to get a public IPv4 address but throughout the years it has become harder and harder to get one.
-Initially you could simply call them and ask for a public IPv4 address.
-Later you could make up a fake story about your company VPN not working, being as tech-illiterate as possible, and they would give you a public IPv4 address or buy an additional IPv4 package.
-However, now they simply tell you that you can either buy a business line or (sometimes? Couldn’t confirm this) get a public IPv4 address for a monthly fee, depending on whoever is on the phone.</p>
+at first it was quite easy to get a public IPv4 address but throughout the years it has become harder and harder to get one.</p>
+<p>Initially you could simply call them and ask for a public IPv4 address.
+Later you could make up a fake story about your company VPN not working, being as tech-illiterate as possible, and they would give you a public IPv4 address or buy an additional IPv4 package.</p>
+<p>However, now they simply tell you that you can either buy a business line or (sometimes? Couldn’t confirm this) get a public IPv4 address for a monthly fee, depending on whoever is on the phone.</p>
 <p>At first this seems fine, esp. with the shared IPv4 address <em>most</em> things work. But sometimes you run into really frustrating issues,
 for example, FoundryVTT doesn’t seem to work well with DS-Lite, and you can’t port forward to your local machine which means you either buy <em>way</em> too expensive FoundryVTT servers or host it on a VPS, which is also quite a lot of setup, esp. for people who are not tech-savvy.</p>
 <p>Ironically enough, all these issues a bit of a deja-vu for me. “Back in the days” every single person I knew had Hamachi<sup><a href="#user-content-fn-4" id="user-content-fnref-4" data-footnote-ref="" aria-describedby="footnote-label">4</a></sup> installed because games usually didn’t have proper private online servers or port forwarding was too complicated for most people.</p>
 <p>If you wanted to play Minecraft, Garry’s Mod, or any other game with your friends, you would usually have that one friend in your group that would always be the person that rented the game server (usually me 😅) or you had to use Hamachi<sup><a href="#user-content-fn-4" id="user-content-fnref-4-2" data-footnote-ref="" aria-describedby="footnote-label">4</a></sup>.</p>
-<p>Nowadays Hamachi<sup><a href="#user-content-fn-4" id="user-content-fnref-4-3" data-footnote-ref="" aria-describedby="footnote-label">4</a></sup> is extremely business-oriented and not really usable for private persons anymore, but the same issues are resurfacing, just in a different form.</p>
+<p>Nowadays Hamachi<sup><a href="#user-content-fn-4" id="user-content-fnref-4-3" data-footnote-ref="" aria-describedby="footnote-label">4</a></sup> is extremely business-oriented and not really usable for private customers anymore, but the same issues are resurfacing, just in a different form.</p>
 <h2 id="tunnels">Tunnels</h2>
 <p><img src="/_astro/elbtunnel.BAWfWW2J_Z1WR8an.webp" alt="Tunnel" title="Tunnel Image by Henry Mühlpfordt" width="1024" height="683" loading="lazy" decoding="async"><em>Image by Henry Mühlpfordt<sup><a href="#user-content-fn-6" id="user-content-fnref-6" data-footnote-ref="" aria-describedby="footnote-label">5</a></sup></em></p>
 <p>If you want to host something at home, you could still use hamachi-like solutions such as ZeroTier<sup><a href="#user-content-fn-3" id="user-content-fnref-3" data-footnote-ref="" aria-describedby="footnote-label">6</a></sup>, which do work quite marvelously, but that really isn’t an option for everyone,
