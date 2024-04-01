@@ -11,16 +11,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8.5.1
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v1
 
       - name: Install
-        run: pnpm install
+        run: bun install
 
       - name: Build
-        run: pnpm run build
+        run: bun run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
