@@ -177,7 +177,8 @@ LOADING ...
             text-2xl
             md:text-3xl
             lg:text-4xl
-        "> IPv6, Germany and Tunnels </div> <div>  <article> <div class="flex flex-row justify-between"> <div class="description text-base-text-color/80 font-medium text-lg"> <p>Alias: How to host stuff without IPv4 for free</p> </div> <div class="date text-base-text-color/60"> <time datetime="2024-03-29T00:00:00.000Z"> Mar 29, 2024 </time>  </div> </div> <div class="hero-image">  </div> <br> <hr> <br>  <div class="prose"> <div class="
+        "> IPv6, Germany and Tunnels </div> <div>  <article> <div class="flex flex-row justify-between"> <div class="description text-base-text-color/80 font-medium text-lg"> <p>Alias: How to host stuff without IPv4 for free</p> </div> <div class="date text-base-text-color/60"> <time datetime="2024-03-29T00:00:00.000Z"> Mar 29, 2024 </time> <div class="last-updated-on">
+Last updated on <time datetime="2024-04-04T00:00:00.000Z"> Apr 4, 2024 </time> </div> </div> </div> <div class="hero-image">  </div> <br> <hr> <br>  <div class="prose"> <div class="
 				prose-zinc
                 prose-lg
                 prose-a:text-base-text-color
@@ -230,12 +231,14 @@ for example, FoundryVTT doesn’t seem to work well with DS-Lite, and you can’
 <p>If you want to host something at home, you could still use hamachi-like solutions such as ZeroTier<sup><a href="#user-content-fn-3" id="user-content-fnref-3" data-footnote-ref="" aria-describedby="footnote-label">6</a></sup>, which do work quite marvelously, but that really isn’t an option for everyone,
 and if you want to host something like a website, you can’t really use that, the internet kinda moved past smaller networks like that and I don’t think I’ll convince users to install ZeroTier<sup><a href="#user-content-fn-3" id="user-content-fnref-3-2" data-footnote-ref="" aria-describedby="footnote-label">6</a></sup> to visit my website 😆.</p>
 <p>You could also use IPv6 but considering the aforementioned issues, that’s not really an option for everyone either, if I want my American or Dutch friends to visit my website, there is a quite high chance that they won’t be able to access it.</p>
-<p>So what can you do? Well, it’s time for my disclosure that this isn’t meant to glorify Cloudflare, but they do have a really nice solution for this problem, and it’s free.</p>
-<p>Cloudflare offers a service called “Tunnels” and “Access” that allows you to tunnel your traffic through their network <strong>without</strong> exposing your IP address or even having a public IPv4 address.</p>
+<p>So what can you do? <del>Well, it’s time for my disclosure that this isn’t meant to glorify Cloudflare, but they do have a really nice solution for this problem (Tunnels &amp; Access) which I can’t really find any good alternative for, and it’s free.</del></p>
+<p><strong>Edit:</strong> Thanks to <a href="https://github.com/jakibaki">Emily</a> I have been made aware about the fact that <a href="https://tailscale.com/">Tailscale</a> also provides a simlilar service, <em>also for free</em>, including a public subdomain, even when you don’t own your own domain (Though you can still use a custom domain if you want to).
+It also provides very similar features to ZeroTier<sup><a href="#user-content-fn-3" id="user-content-fnref-3-3" data-footnote-ref="" aria-describedby="footnote-label">6</a></sup> so you get the best of both worlds, including the ability to mix and match between public and vpn-only services.</p>
+<p>Tailscale allows you to tunnel your traffic through their network <strong>without</strong> exposing your IP address or even having a public IPv4 address.</p>
 <p>It’s so extremely simple to set up that I’m surprised that more people don’t use it, I have struggled to find a good solution for this problem that isn’t “rent a Ipv4 from us and proxy your traffic through us” and there it is, completely free.</p>
-<p>You can even use “Cloudflare Access” to restrict access to your tunnel to only certain people, which is quite nice if you want to host something private.</p>
+<p>You can even use their SSO identity service to restrict access to your tunnel to only certain people, which is quite nice if you want to host something private.</p>
 <p>For example, you can expose Portainer to the internet without having to worry that much.
-That probably made Network Admins shiver in fear but rest assured, Cloudflare allows you to greatly secure the entire tunnel (OAuth2 + Passkey + Security Key).
+That probably made Network Admins shiver in fear but rest assured, Tailscale allows you to greatly secure the entire tunnel (OAuth2 + Passkey + Security Key).
 (Though you should still secure your services, the more layers of security the better).</p>
 <p>Either way, if you’re in a similar situation as me, I can highly recommend this solution, it’s free, it’s easy to set up, and it’s secure.</p>
 <p>That’s it. I’ll now go touch some grass. 🌱</p>
@@ -259,7 +262,7 @@ That probably made Network Admins shiver in fear but rest assured, Cloudflare al
 <p><a href="https://www.flickr.com/photos/wimox/5344581240">Elbtunnel by Henry Mühlpfordt</a> <a href="#user-content-fnref-6" data-footnote-backref="" aria-label="Back to reference 5" class="data-footnote-backref">↩</a></p>
 </li>
 <li id="user-content-fn-3">
-<p><a href="https://www.zerotier.com/">ZeroTier</a> <a href="#user-content-fnref-3" data-footnote-backref="" aria-label="Back to reference 6" class="data-footnote-backref">↩</a> <a href="#user-content-fnref-3-2" data-footnote-backref="" aria-label="Back to reference 6-2" class="data-footnote-backref">↩<sup>2</sup></a></p>
+<p><a href="https://www.zerotier.com/">ZeroTier</a> <a href="#user-content-fnref-3" data-footnote-backref="" aria-label="Back to reference 6" class="data-footnote-backref">↩</a> <a href="#user-content-fnref-3-2" data-footnote-backref="" aria-label="Back to reference 6-2" class="data-footnote-backref">↩<sup>2</sup></a> <a href="#user-content-fnref-3-3" data-footnote-backref="" aria-label="Back to reference 6-3" class="data-footnote-backref">↩<sup>3</sup></a></p>
 </li>
 </ol>
 </section>  </div> </div> </article>  </div> </div> </div> </div>  </div>  <div class="w-full max-sm:mt-4 md:w-fit flex flex-col-reverse h-full md:h-screen 4k:justify-center sm:justify-start gap-y-4"> <div class="w-full"> <div class="justify-items-center xl:max-w-64 grid grid-flow-row auto-rows-max gap-4 justify-between items-center h-full md:m-8"> <div class="w-full"> <div class="
