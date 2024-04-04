@@ -10,6 +10,7 @@ tags: [
     "germany",
     "dslite",
 ]
+updatedDate: "2024-04-04"
 hidden: false
 ---
 
@@ -74,16 +75,19 @@ and if you want to host something like a website, you can't really use that, the
 
 You could also use IPv6 but considering the aforementioned issues, that's not really an option for everyone either, if I want my American or Dutch friends to visit my website, there is a quite high chance that they won't be able to access it.
 
-So what can you do? Well, it's time for my disclosure that this isn't meant to glorify Cloudflare, but they do have a really nice solution for this problem, and it's free.
+So what can you do? ~~Well, it's time for my disclosure that this isn't meant to glorify Cloudflare, but they do have a really nice solution for this problem (Tunnels & Access) which I can't really find any good alternative for, and it's free.~~
 
-Cloudflare offers a service called "Tunnels" and "Access" that allows you to tunnel your traffic through their network **without** exposing your IP address or even having a public IPv4 address. 
+**Edit:** Thanks to [Emily](https://github.com/jakibaki) I have been made aware about the fact that [Tailscale](https://tailscale.com/) also provides a simlilar service, _also for free_, including a public subdomain, even when you don't own your own domain (Though you can still use a custom domain if you want to).
+It also provides very similar features to ZeroTier[^3] so you get the best of both worlds, including the ability to mix and match between public and vpn-only services.
+
+Tailscale allows you to tunnel your traffic through their network **without** exposing your IP address or even having a public IPv4 address.
 
 It's so extremely simple to set up that I'm surprised that more people don't use it, I have struggled to find a good solution for this problem that isn't "rent a Ipv4 from us and proxy your traffic through us" and there it is, completely free.
 
-You can even use "Cloudflare Access" to restrict access to your tunnel to only certain people, which is quite nice if you want to host something private. 
+You can even use their SSO identity service to restrict access to your tunnel to only certain people, which is quite nice if you want to host something private. 
 
 For example, you can expose Portainer to the internet without having to worry that much. 
-That probably made Network Admins shiver in fear but rest assured, Cloudflare allows you to greatly secure the entire tunnel (OAuth2 + Passkey + Security Key). 
+That probably made Network Admins shiver in fear but rest assured, Tailscale allows you to greatly secure the entire tunnel (OAuth2 + Passkey + Security Key). 
 (Though you should still secure your services, the more layers of security the better).
 
 Either way, if you're in a similar situation as me, I can highly recommend this solution, it's free, it's easy to set up, and it's secure.
