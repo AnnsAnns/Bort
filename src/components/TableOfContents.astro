@@ -1,35 +1,31 @@
 ---
-import type { MarkdownHeading } from "astro";
-import Box from "./Box.astro";
+import type { MarkdownHeading } from 'astro'
+import Box from './Box.astro';
 
 interface Props {
-  tableOfContents: MarkdownHeading[];
+    tableOfContents: MarkdownHeading[]
 }
 
 const tableOfContents: MarkdownHeading[] = Astro.props.tableOfContents;
 
 // Only showcase depth 1 and 2
-const filteredTableOfContents = tableOfContents.filter(
-  (heading) => heading.depth <= 3
-);
+const filteredTableOfContents = tableOfContents.filter((heading) => heading.depth <= 3);
 ---
-
 {
-  tableOfContents && (
-    <Box title="Contents">
-      <div class="">
-        <ul class="list-disc list-inside text-lg ">
-          {filteredTableOfContents.map((heading) => (
-            <a href={`#${heading.slug}`}>
-              <li
-                class={`ml-${heading.depth * 2 - 2} hover:bg-base-text-color/40 active:bg-base-text-color/60`}
-              >
-                {heading.text}
-              </li>
-            </a>
-          ))}
-        </ul>
-      </div>
-    </Box>
-  )
+    tableOfContents && (
+        <Box title='Contents' className='min-h-64'>
+            <div class='overflow-auto'>
+            <ul class='list-disc list-inside text-lg'>
+                {filteredTableOfContents.map((heading) => (
+                    <a class="" href={`#${heading.slug}`}>
+                    <li class={`ml-${heading.depth <= 2 ? 4 : 2} text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/6 0`}>
+                                {heading.text}
+                
+                    </li>
+                    </a>
+                ))}
+            </ul>
+            </div>
+        </Box>
+    )
 }
