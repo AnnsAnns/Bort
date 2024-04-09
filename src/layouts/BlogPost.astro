@@ -1,62 +1,87 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import FormattedDate from '../components/FormattedDate.astro';
-import BaseLayout from './BaseLayout.astro';
-import Box from '../components/Box.astro';
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+import BaseLayout from "./BaseLayout.astro";
+import Box from "../components/Box.astro";
+import type { MarkdownHeading } from "astro";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<"blog">["data"] & {
+  tableOfContents?: MarkdownHeading[];
+};
 
-const { title, description, pubDate, updatedDate, heroImage, legacy, audioSource } = Astro.props;
-
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage,
+  legacy,
+  audioSource,
+  tableOfContents,
+} = Astro.props;
 ---
 
-<BaseLayout audioSource={audioSource} title={title} desc={description}>
-	<div class="h-full w-full flex flex-col items-center">
-	<Box title={title} className='w-full md:w-fit'>
-		<article>
-			<div class="flex flex-row justify-between">
-				{
-					description && (
-						<div class="description text-base-text-color/80 font-medium text-lg">
-							<p>{description}</p>
-						</div>
-					)
-				}
-				<div class="date text-base-text-color/60">
-					<FormattedDate date={pubDate} />
-					{
-						updatedDate && (
-							<div class="last-updated-on">
-								Last updated on <FormattedDate date={updatedDate} />
-							</div>
-						)
-					}
-				</div>
-			</div>
+<BaseLayout
+  audioSource={audioSource}
+  title={title}
+  desc={description}
+  tableOfContents={tableOfContents}
+>
+  <div class="h-full w-full flex flex-col items-center">
+    <Box title={title} className="w-full md:w-fit">
+      <article>
+        <div class="flex flex-row justify-between">
+          {
+            description && (
+              <div class="description text-base-text-color/80 font-medium text-lg">
+                <p>{description}</p>
+              </div>
+            )
+          }
+          <div class="date text-base-text-color/60">
+            <FormattedDate date={pubDate} />
+            {
+              updatedDate && (
+                <div class="last-updated-on">
+                  Last updated on <FormattedDate date={updatedDate} />
+                </div>
+              )
+            }
+          </div>
+        </div>
 
-			<div class="hero-image">
-				{heroImage && <img class="max-h-[350px] w-auto text-center" src={heroImage} alt="" />}
-			</div>
+        <div class="hero-image">
+          {
+            heroImage && (
+              <img
+                class="max-h-[350px] w-auto text-center"
+                src={heroImage}
+                alt=""
+              />
+            )
+          }
+        </div>
 
-			<br />
-			<hr />
-			<br />
+        <br />
+        <hr />
+        <br />
 
-			{
-				legacy && (
-					<div class="legacy-warning">
-						<h1 class='text-slate-500 text-xl font-bold'>
-							This is a legacy blog post from a long time ago.<br/>
-							It might contain outdated or incorrect information.
-						</h1>
-						<br/>
-					</div>
-				)
-			}
+        {
+          legacy && (
+            <div class="legacy-warning">
+              <h1 class="text-slate-500 text-xl font-bold">
+                This is a legacy blog post from a long time ago.
+                <br />
+                It might contain outdated or incorrect information.
+              </h1>
+              <br />
+            </div>
+          )
+        }
 
-			<div class="prose">
-				<div class="
-				prose-zinc
+        <div class="prose">
+          <div
+            class="prose-zinc
                 prose-lg
                 prose-a:text-base-text-color
                 prose-headings:text-base-text-color
@@ -73,12 +98,12 @@ const { title, description, pubDate, updatedDate, heroImage, legacy, audioSource
 				prose-strong:text-base-text-color
                 prose-a:underline
 				prose-code:bg-base-text-color/10
-				prose-code:text-base-text-color
-				">
-					<slot />
-				</div>
-			</div>
-		</article>
-	</Box>
-</div>
+				prose-code:text-base-text-color"
+          >
+            <slot />
+          </div>
+        </div>
+      </article>
+    </Box>
+  </div>
 </BaseLayout>

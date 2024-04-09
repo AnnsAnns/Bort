@@ -1,59 +1,77 @@
 ---
-import Themes from "../components/Themes.astro"
-import Sidebar from "../components/Sidebar.astro"
-import BaseHead from "../components/BaseHead.astro"
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
-import "../styles/global.css"
-import RightColumn from "../components/RightColumn.astro"
-import { ViewTransitions } from "astro:transitions"
+import Themes from "../components/Themes.astro";
+import Sidebar from "../components/Sidebar.astro";
+import BaseHead from "../components/BaseHead.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import "../styles/global.css";
+import RightColumn from "../components/RightColumn.astro";
+import { ViewTransitions } from "astro:transitions";
+import type { MarkdownHeading } from "astro";
+import TableOfContents from "../components/TableOfContents.astro";
 
 interface Props {
-    audioSource?: string
-    title?: string
-    desc?: string
+  audioSource?: string;
+  title?: string;
+  desc?: string;
+  tableOfContents?: MarkdownHeading[];
 }
 
-const { audioSource, title, desc } = Astro.props;
+const { audioSource, title, desc, tableOfContents } = Astro.props;
 
 const meta_title = `${SITE_TITLE}  ${title ? ` - ${title}` : ""}`;
 const meta_desc = desc || SITE_DESCRIPTION;
 ---
 
 <script>
-    import { loadSetTheme } from "../utils/themes";
+  import { loadSetTheme } from "../utils/themes";
 
-    loadSetTheme();
+  loadSetTheme();
 
-    document.addEventListener("astro:after-swap", loadSetTheme);
+  document.addEventListener("astro:after-swap", loadSetTheme);
 </script>
 
-<!doctype html>
 <html lang="en" transition:persist class="standard">
   <head>
     <BaseHead title={meta_title} description={meta_desc} />
     <ViewTransitions />
   </head>
   <body>
-    <div class={`h-full sm:h-screen w-full bg-base-bd-background-color md:overflow-clip`}>
-        <div class='md:grid md:grid-cols-4 lg:grid-cols-4 md:gap-8 p-4 justify-center h-full w-full sm:h-screen'>
+    <div
+      class={`h-full sm:h-screen w-full bg-base-bd-background-color md:overflow-clip`}
+    >
+      <div
+        class="md:grid md:grid-cols-4 lg:grid-cols-4 md:gap-8 p-4 justify-center h-full w-full sm:h-screen"
+      >
         {/** Sidebar */}
-        <div class='flex justify-self-end gap-y-6 lg:gap-y-16 lg:py-20 py-4 flex-col w-full md:w-min h-full md:h-screen sm:justify-evenly lg:justify-start'>
-            <Sidebar />
-            <div class=''>
-                <Themes transition:persist />
-            </div>
+        <div
+          class="flex justify-self-end gap-y-6 lg:gap-y-16 lg:py-20 py-4 flex-col w-full md:w-min h-full md:h-screen sm:justify-evenly lg:justify-start"
+        >
+          <Sidebar />
+          {
+            tableOfContents && (
+              <TableOfContents tableOfContents={tableOfContents} />
+            )
+          }
+          <div class="">
+            <Themes transition:persist />
+          </div>
         </div>
-        
+
         {/** Middle / Content */}
-        <div transition:animate="slide" class='md:col-span-3 justify-center lg:col-span-2 h-full sm:h-screen w-full sm:max-h-screen sm:max-w-full'>
-            <slot />
+        <div
+          transition:animate="slide"
+          class="md:col-span-3 justify-center lg:col-span-2 h-full sm:h-screen w-full sm:max-h-screen sm:max-w-full"
+        >
+          <slot />
         </div>
 
         {/** Right Sidebar-ish */}
-        <div class="w-full max-sm:mt-4 md:w-fit flex flex-col-reverse h-full md:h-screen 4k:justify-center sm:justify-start gap-y-4">
-            <RightColumn audioSource={audioSource} transition:persist />
+        <div
+          class="w-full max-sm:mt-4 md:w-fit flex flex-col-reverse h-full md:h-screen 4k:justify-center sm:justify-start gap-y-4"
+        >
+          <RightColumn audioSource={audioSource} transition:persist />
         </div>
-        </div>
+      </div>
     </div>
-    </body>
+  </body>
 </html>
