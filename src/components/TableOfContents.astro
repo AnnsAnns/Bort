@@ -10,17 +10,25 @@ const tableOfContents: MarkdownHeading[] = Astro.props.tableOfContents;
 
 // Only showcase depth 1 and 2
 const filteredTableOfContents = tableOfContents.filter((heading) => heading.depth <= 3);
+
+const depthEmojiTable = [
+    "❗",
+    "ℹ️",
+    "🐸",
+    "→🪰",
+    "–→🍍",
+    "🥚",
+]
 ---
 {
     tableOfContents && (
-        <Box title='Contents' className='min-h-64'>
+        <Box title='🏝️ Contents' className='min-h-64'>
             <div class='overflow-auto'>
-            <ul class='list-disc list-inside text-lg'>
+            <ul class='list-inside text-lg'>
                 {filteredTableOfContents.map((heading) => (
-                    <a class="" href={`#${heading.slug}`}>
-                    <li class={`ml-${heading.depth <= 2 ? 4 : 2} text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/6 0`}>
-                                {heading.text}
-                
+                    <a href={`#${heading.slug}`}>
+                    <li class={`ml-${heading.depth > 3 ? 2 : 4} text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60`}>
+                        {depthEmojiTable[heading.depth]} {heading.text}
                     </li>
                     </a>
                 ))}
