@@ -6,52 +6,76 @@ import Box from "../../components/Box.astro";
 const posts = await getCollection("ramblings");
 const title = "A list of all my rambling posts 👵🎺";
 
+const maxPreviewLength = 400;
 ---
 
-<BaseLayout title='Friends' desc='A list of cool people 😎'>
-    <div class='
-            grid
-            xl:grid-cols-3
-            md:grid-cols-2
-            4k:grid-cols-4
-            grid-cols-1
-            grid-flow-row-dense
-            gap-4
-            lg:py-8
-            content-start
-            justify-between
-            sm:overflow-y-scroll
-            h-full
-            items-center
-            pr-4
-            scrollbar-thin
-            scrollbar-track-base-background-color
-            scrollbar-thumb-box-color-standard
-          '>    
-    {
-        posts.map(post => {
+<BaseLayout title="Ramblings" desc="Talking about absolutely random stuff">
+  <section>
+    <div class="max-h-full flex justify-center">
+      <div
+        class="flex
+        flex-row
+        flex-wrap
+        items-center
+        justify-evenly
+        w-full
+        max-sm:h-full
+        sm:max-h-screen
+        sm:overflow-y-auto
+        scrollbar-thin s
+        crollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard"
+      >
+        {
+          posts.map(async (post) => {
+            const { Content } = await post.render();
+
             return (
-                <a 
-                    id={post.id}
-                    href={`#${post.slug}`}
-                    class='max-w-full grow'>
-                    <a href={`/ramblings/${post.slug}/`}>
-                    <Box
-                        title={`${post.data.title}`}
-                        className={`text-center h-full`}
-                    >
-                        <div class='p-1 gap-2 flex justify-center flex-col items-center'>
-                            <div class='pt-2 text-center text-ellipsis'>
-                                {post.data.description}
-                            </div>
-                            <div class="text-sm text-base-text-color/60">
-                                [Click to visit]    
-                            </div>
+              <a
+                id={post.slug}
+                class="grow py-3 px-2 max-w-full min-w-[80%] flex flex-col items-center"
+              >
+                <a href={`/ramblings/${post.slug}/`}>
+                  <Box
+                    title={`${post.data.title || "🐸💬"}`}
+                    className={`text-center h-full w-fit max-w-4xl`}
+                  >
+                    <div class="flex flex-col gap-x-2 mt-2 items-center h-full w-full content-center justify-around">
+                      <div class="flex flex-col items-center">
+                        <div class="pt-2 text-center text-ellipsis min-w-[80vw] md:min-w-80 xl:min-w-96">
+                          {post.body.length > maxPreviewLength ? (
+                            `${post.body.slice(0, maxPreviewLength / 2)} [...]`
+                          ) : (
+                            <Content />
+                          )}
                         </div>
-                    </Box>
+
+                        <div class="text-sm text-base-text-color/60">
+                          {post.body.length > maxPreviewLength
+                            ? "[Click to see full post]"
+                            : ""}
+                        </div>
+
+                        <div class="text-left self-end text-sm text-base-text-color/60">
+                          <div>
+                            {post.data.tags
+                              ? `${post.data.tags.map((val) => `#${val} `)} - `
+                              : ""}
+                            Click to expand post
+                            {post.data.pubDate
+                              ? ` - ${post.data.pubDate.toLocaleDateString()}`
+                              : ""}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Box>
                 </a>
-                </a>
-            )
-        })
-    }
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
 </BaseLayout>

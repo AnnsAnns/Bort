@@ -3,9 +3,10 @@
 interface Props {
     title: string;
     className?: string;
+    shareSlug?: string;
 }
 
-const { title, className } = Astro.props;
+const { title, className, shareSlug } = Astro.props;
 
 let additionalClasses = className ?? '';
 const baseClasses = `
@@ -30,6 +31,28 @@ const classes = `${baseClasses} ${additionalClasses}`;
 
 ---
 
+<!-- <script>    
+    function shareButton() {
+        const element = document.getElementById("SHAREBUTTON");
+        if (element) {
+            const slug = element.getAttribute("href") || "";
+            navigator.clipboard.writeText(`${location.protocol}//${location.host}${location.pathname}${slug}`).then(function() {
+            }, function(err) {
+                console.error('Could not copy url: ', err);
+            });
+            const previoustext = element.innerText;
+            element.innerText = "✅ Copied URL into Clipboard";
+
+            // Sleep for 2 seconds
+            setTimeout(() => {
+                element.innerText = previoustext;
+            }, 2000);
+        }
+    }
+
+    document.getElementById("SHAREBUTTON")?.addEventListener("click", shareButton);
+</script> -->
+
 <div class={classes}>
     <div class="
         bg-box-color-standard
@@ -47,6 +70,13 @@ const classes = `${baseClasses} ${additionalClasses}`;
         gap-1
         text-base-background-color
     ">
+    {
+        shareSlug && (
+            <a id="SHAREBUTTON" href={`#${shareSlug}`}>
+                🔗 Share Link
+            </a>
+        )
+    }
         ➖⏹️❌
     </div>
     <div class="

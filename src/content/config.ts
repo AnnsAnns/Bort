@@ -21,10 +21,8 @@ const ramblings = defineCollection({
 	type: 'content',
 	schema: z.object({
 		title: z.string().optional(),
-		description: z.string().optional(),
-		type: z.enum(["blog", "microblog", "image"]),
 		// Transform string to Date object
-		pubDate: z.coerce.date(),
+		pubDate: z.coerce.date().optional(),
 		updatedDate: z.coerce.date().optional(),
 		tags: z.array(z.string()).optional(),
 		heroImage: z.string().optional()

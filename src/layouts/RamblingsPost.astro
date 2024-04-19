@@ -1,0 +1,90 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+import BaseLayout from "./BaseLayout.astro";
+import Box from "../components/Box.astro";
+import type { MarkdownHeading } from "astro";
+
+type Props = CollectionEntry<"ramblings">["data"] & {
+  tableOfContents?: MarkdownHeading[];
+};
+
+const {
+  title,
+  pubDate,
+  updatedDate,
+  heroImage,
+  tableOfContents,
+} = Astro.props;
+
+---
+
+<BaseLayout
+  title={title}
+  desc={"Rambling"}
+  tableOfContents={tableOfContents}
+>
+  <div class="h-full w-full flex flex-col items-center">
+    <Box title={title || ""} className="w-full md:w-fit">
+      <article>
+        <div class="flex flex-row justify-between">
+          {
+            pubDate && (
+            <div class="date text-base-text-color/60">
+            <FormattedDate date={pubDate} />
+            {
+              updatedDate && (
+                <div class="last-updated-on">
+                  Last updated on <FormattedDate date={updatedDate} />
+                </div>
+              )
+            }
+          </div>
+            )
+          }
+        </div>
+
+        <div class="hero-image">
+          {
+            heroImage && (
+              <img
+                class="max-h-[350px] w-auto text-center"
+                src={heroImage}
+                alt=""
+              />
+            )
+          }
+        </div>
+
+        <br />
+        <hr />
+        <br />
+
+        <div class="prose">
+          <div
+            class="prose-zinc
+                prose-lg
+                prose-a:text-base-text-color
+                prose-headings:text-base-text-color
+                prose-headings:font-headerf
+                font-medium
+                text-base-text-color
+                font-bodyf
+                leading-snug
+                prose-img:max-h-96
+                prose-img:w-auto
+                prose-img:text-center
+                prose-blockquote:bg-base-text-color/10
+                prose-a:text-base-text-color/90
+				prose-strong:text-base-text-color
+                prose-a:underline
+				prose-code:bg-base-text-color/10
+				prose-code:text-base-text-color"
+          >
+            <slot />
+          </div>
+        </div>
+      </article>
+    </Box>
+  </div>
+</BaseLayout>
