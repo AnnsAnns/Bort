@@ -1,0 +1,122 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "astro",
+  "frontMatter.preview.host": "http://localhost:4321",
+  "frontMatter.content.publicFolder": "public",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "blog",
+      "path": "[[workspace]]/src/content/blog"
+    },
+    {
+      "title": "ramblings",
+      "path": "[[workspace]]/src/content/ramblings"
+    }
+  ],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "ramblings",
+      "previewPath": "'ramblings'",
+      "pageBundle": false,
+      "clearEmpty": true,
+      "fields": [
+        {
+          "name": "title",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "type",
+          "type": "choice",
+          "choices": [
+            "blog",
+            "microblog",
+            "image"
+          ],
+          "required": true
+        },
+        {
+          "name": "pubDate",
+          "type": "datetime",
+          "default": "{{now}}",
+          "required": true
+        },
+        {
+          "name": "updatedDate",
+          "type": "datetime",
+          "default": "{{now}}"
+        },
+        {
+          "name": "tags",
+          "type": "tags"
+        },
+        {
+          "name": "heroImage",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "name": "blog",
+      "previewPath": "'blog'",
+      "pageBundle": false,
+      "clearEmpty": true,
+      "fields": [
+        {
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "pubDate",
+          "type": "datetime",
+          "default": "{{now}}",
+          "required": true
+        },
+        {
+          "name": "updatedDate",
+          "type": "datetime",
+          "default": "{{now}}"
+        },
+        {
+          "name": "heroImage",
+          "type": "image"
+        },
+        {
+          "name": "tags",
+          "type": "tags"
+        },
+        {
+          "name": "legacy",
+          "type": "boolean"
+        },
+        {
+          "name": "sideVideo",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "audioSource",
+          "type": "string",
+          "single": true
+        }
+      ]
+    }
+  ],
+  "frontMatter.framework.startCommand": "bun dev",
+  "frontMatter.website.host": "https://annsann.eu",
+  "frontMatter.git.enabled": true,
+  "frontMatter.git.commitMessage": "Sync blog posts"
+}
