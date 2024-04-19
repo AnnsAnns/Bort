@@ -21,7 +21,7 @@ const depthEmojiTable = [
 ]
 ---
 {
-    tableOfContents && (
+    (tableOfContents && tableOfContents.length > 0) && (
         <Box title='🏝️ Contents' className='min-h-64'>
             <div class='overflow-auto'>
             <ul class='list-inside text-lg'>
