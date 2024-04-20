@@ -333,7 +333,75 @@ Does this work?
 Does this work?
 Does th [...] </div> <div class="text-sm text-base-text-color/60"> [Click to see full post] </div> <div class="text-left self-end text-sm text-base-text-color/60"> <div> #bluesky ,#blog  - 
 Click to expand post
- - 4/19/2024 </div> </div> </div> </div>  </div> </div> </div> </a><a id="microblogtest" class="grow py-3 px-2 max-w-full min-w-[80%] flex flex-col items-center"></a><a href="/ramblings/microblogtest/"> <!-- <script>    
+ - 4/19/2024 </div> </div> </div> </div>  </div> </div> </div> </a><a id="rustscripting" class="grow py-3 px-2 max-w-full min-w-[80%] flex flex-col items-center"></a><a href="/ramblings/rustscripting/"> <!-- <script>    
+    function shareButton() {
+        const element = document.getElementById("SHAREBUTTON");
+        if (element) {
+            const slug = element.getAttribute("href") || "";
+            navigator.clipboard.writeText(`${location.protocol}//${location.host}${location.pathname}${slug}`).then(function() {
+            }, function(err) {
+                console.error('Could not copy url: ', err);
+            });
+            const previoustext = element.innerText;
+            element.innerText = "✅ Copied URL into Clipboard";
+
+            // Sleep for 2 seconds
+            setTimeout(() => {
+                element.innerText = previoustext;
+            }, 2000);
+        }
+    }
+
+    document.getElementById("SHAREBUTTON")?.addEventListener("click", shareButton);
+</script> --><div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+ text-center h-full w-fit max-w-4xl"> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+    "> 
+➖⏹️❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        "> Rust as a Scripting Language </div> <div>  <div class="flex flex-col gap-x-2 mt-2 items-center h-full w-full content-center justify-around"> <div class="flex flex-col items-center"> <div class="pt-2 text-center text-ellipsis min-w-[80vw] md:min-w-80 xl:min-w-96"> 
+![GuyExplaining](https://media.tenor.com/6RvyvMjx3XMAAAAd/he-is-speaking-guy-explaining-with-a-whiteboard.gif &quot;Guy Explaining Meme&quot;)
+
+Recently I had to solve a probably very niche problem. A team, of [...] </div> <div class="text-sm text-base-text-color/60"> [Click to see full post] </div> <div class="text-left self-end text-sm text-base-text-color/60"> <div> #rust ,#tooling  - 
+Click to expand post
+ - 11/5/2023 </div> </div> </div> </div>  </div> </div> </div> </a><a id="microblogtest" class="grow py-3 px-2 max-w-full min-w-[80%] flex flex-col items-center"></a><a href="/ramblings/microblogtest/"> <!-- <script>    
     function shareButton() {
         const element = document.getElementById("SHAREBUTTON");
         if (element) {
