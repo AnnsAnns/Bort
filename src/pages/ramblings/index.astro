@@ -4,6 +4,16 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Box from "../../components/Box.astro";
 
 const posts = await getCollection("ramblings");
+
+// Sort by date
+posts.sort((a, b) => {
+  if (a.data.pubDate && b.data.pubDate) {
+    return b.data.pubDate.getDate() - a.data.pubDate.getDate();
+  } else {
+    return -1;
+  }
+});
+
 const title = "A list of all my rambling posts 👵🎺";
 
 const maxPreviewLength = 400;
