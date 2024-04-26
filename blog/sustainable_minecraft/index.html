@@ -88,7 +88,7 @@
             text-2xl
             md:text-3xl
             lg:text-4xl
-        ">  </div> <div>  <div class="flex flex-col min-h-fit min-w-[120px] pt-3"> <a href="/"> <div class="flex flex-col trans justify-center self-center text-center font-semibold items-center"> <img src="/_astro/CharacterTransparent.DHggqFHF_Z22MWyu.webp" alt="logo" class="justify-self-center bg-base-text-color/25 p-2 py-1 w-28 shadow-xl rounded-3xl bg-cover" loading="eager" width="112" height="112" decoding="async"> <div class="text-xl font-bodyf font-bold">
+        ">  </div> <div>  <div class="flex flex-col min-h-fit min-w-[120px] pt-3"> <a href="/"> <div class="flex flex-col trans justify-center self-center text-center font-semibold items-center"> <img src="/_astro/CharacterTransparent.BWhSgiXX_26EHPR.webp" alt="logo" class="justify-self-center bg-base-text-color/25 p-2 py-1 w-28 shadow-xl rounded-3xl bg-cover" loading="eager" width="112" height="112" decoding="async"> <div class="text-xl font-bodyf font-bold">
 AnnsAnn
 </div> </div> </a> <hr class="h-[2px] my-2 bg-gray-200 border-0 "> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/">
 Home
@@ -328,7 +328,7 @@ Last updated on <time datetime="2024-04-07T00:00:00.000Z"> Apr 7, 2024 </time> <
 <h2 id="the-problem">The problem</h2>
 <p>I have been hosting Minecraft servers for my friends for quite some time now, actually, by now it’s been over 10 years of hosting Minecraft servers every now and then.</p>
 <p>Initially, I hosted the servers on my own computer using Hamachi to create a small VPN network. This worked quite well, esp. since we were still children back then and renting a server would have been too expensive.</p>
-<p><img src="/_astro/hamachi.COmwAebm_ZyhOXy.webp" alt="Hamachi" title="Hamachi App nostalgia" width="512" height="475" loading="lazy" decoding="async"></p>
+<p><img src="/_astro/hamachi.XYRTnoA9_Z1aoIzL.webp" alt="Hamachi" title="Hamachi App nostalgia" width="512" height="475" loading="lazy" decoding="async"></p>
 <p>Later, renting a server started to make more sense. However, it also normally gave our projects a time limit, as we would only rent the server for a month or so.</p>
 <p>This was fine for most projects since Minecraft projects tend to only last a few weeks. However, it was always a bit sad to see the server go offline, and the world we built together disappear.</p>
 <p>Having a server at home would solve this problem, but it would also introduce a new one:</p>
@@ -340,7 +340,7 @@ in Germany, esp. in the North that produces a lot of electricity<sup><a href="#u
 <h2 id="the-solution">The solution</h2>
 <p>There are three parts to the solution that combined make it quite feasible to host a Minecraft server at home:</p>
 <h3 id="1-deep-sleep-server-wrapper">1. Deep Sleep Server Wrapper</h3>
-<p><img src="/_astro/sleepingserver.BJ8oV-DJ_ZoJOqQ.webp" alt="Sleeping Server" title="The image of the sleeping server" width="679" height="407" loading="lazy" decoding="async"></p>
+<p><img src="/_astro/sleepingserver.BhFdLo5u_FadTV.webp" alt="Sleeping Server" title="The image of the sleeping server" width="679" height="407" loading="lazy" decoding="async"></p>
 <p>The most useful part is <a href="https://github.com/vincss/mcsleepingserverstarter">MC Sleeping Server Starter</a> by <a href="https://github.com/vincss">Vincss</a>.
 This little node server wraps around the Minecraft server and waits for a connection request by a whitelisted user to cold start the server.</p>
 <p>This does result in a small wait time when connecting to the server, but it also <strong>drastically</strong> reduces the energy consumption of the server.</p>
@@ -351,7 +351,7 @@ This little node server wraps around the Minecraft server and waits for a connec
 <p><strong>EDIT: I’ve been informed about <a href="../minecraft_use_custom_domains/">a really cool way to use a custom domain with nearly every server/tunnel provider. You can check it out HERE</a>.</strong></p>
 <p>Technically this is also doable using Tailscale but requires far more setup and is not as plug and play for game servers as PlayIt is.</p>
 <p>After less than a minute of setup, I had my server running and publicly accessible.</p>
-<p><img src="/_astro/playitstats.UpxGzo-M_1kGJOP.webp" alt="PlayIt" title="PlayIt Stats of the server" width="1531" height="1054" loading="lazy" decoding="async"></p>
+<p><img src="/_astro/playitstats.CjreVhE5_Z2gBwON.webp" alt="PlayIt" title="PlayIt Stats of the server" width="1531" height="1054" loading="lazy" decoding="async"></p>
 <h3 id="3-empty-server-stopper">3. Empty Server Stopper</h3>
 <p>The last part isn’t as crazy as the other two, but it provides the essential functionality to stop the server when no one is online.
 There are many plugins that do this for nearly every modding framework, plugin system and Minecraft version. For my server I used <a href="https://github.com/GHYAKIMA/emptyserverstopper-mod">Empty Server Stopper (Fabric)</a>.</p>
@@ -360,7 +360,7 @@ There are many plugins that do this for nearly every modding framework, plugin s
 <p>There are a lot of mods that can help you optimize your server even further. Currently we’re using a custom modpack that is 90% optimization mods with some minor Vanilla+ mods thrown in.</p>
 <p>If you’re curious, here is a MRPack of the mods we’re using: <a href="/random/server.mrpack">MRPack download</a></p>
 <h2 id="conclusion">Conclusion</h2>
-<p><img src="/_astro/cpu_usage.CtZBRLwb_ZIOT7N.webp" alt="CPU usage" title="CPU usage of the server, dropping close to 0% when no one is online" width="1564" height="494" loading="lazy" decoding="async"></p>
+<p><img src="/_astro/cpu_usage.BJwLopUC_YTh9g.webp" alt="CPU usage" title="CPU usage of the server, dropping close to 0% when no one is online" width="1564" height="494" loading="lazy" decoding="async"></p>
 <p><em>CPU usage of the server, dropping close to 0% when no one is online</em></p>
 <p>With these three tools combined, I was able to host a Minecraft server at home, sustainably, securely and without any additional costs.</p>
 <p>The server can run indefinitely without any additional costs and only starts when someone wants to play on it, making this the ultimate solution for long term minecraft projects.</p>
@@ -497,4 +497,4 @@ There are many plugins that do this for nearly every modding framework, plugin s
             text-2xl
             md:text-3xl
             lg:text-4xl
-        ">  </div> <div>  <div class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1"> <a href="https://www.youtube.com/watch?v=1U9ls3vAt5I"> <img src="/_astro/jerma.Dvz9-M6x_5BL3K.webp" alt="Jerma Blinky" width="150" height="20" loading="lazy" decoding="async"> </a> <a href="https://www.youtube.com/watch?v=PLaanhBuiVU"> <img src="/_astro/da%20blinkie.D8zGGJVl_2ltmlK.webp" alt="Da Blinki?!?" width="150" height="20" loading="lazy" decoding="async"> </a> <a href="https://archlinux.org/"> <img src="/_astro/trans.Z-HUyix4_1dU0U4.webp" alt="Trans Rights" width="150" height="20" loading="lazy" decoding="async"> </a> <a href="https://www.youtube.com/watch?v=iBF_mDFgtH4"> <img src="/_astro/mikujerma.B4X_zxFm_28UkeB.webp" alt="Miku Jerma" width="150" height="20" loading="lazy" decoding="async"> </a> <a href="https://www.youtube.com/watch?v=0Qs_jRerdSg"> <img src="/_astro/jermamiku.5QlUaEGj_D8EjV.webp" alt="Jerma Miku" width="150" height="20" loading="lazy" decoding="async"> </a> <div class="w-full columns-2"> <a href="https://www.youtube.com/watch?v=yD2FSwTy2lw"> <img src="/_astro/bob.DeuMGCJO_Zkjcg8.webp" alt="Bob from Animal Crossing spinning" width="88" height="31" loading="lazy" decoding="async"> </a> <a href="https://www.mozilla.org/en-US/firefox/windows/"> <img src="/_astro/fftake.juBJ8bzE_eLaK.webp" alt="Download Firefox" width="88" height="31" loading="lazy" decoding="async"> </a> </div> </div>  </div> </div> </div> </div> </div> </div> </div> </div> </body></html>
+        ">  </div> <div>  <div class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1"> <a href="https://www.youtube.com/watch?v=1U9ls3vAt5I"> <img src="/_astro/jerma.Dvz9-M6x_5BL3K.webp" alt="Jerma Blinky" width="150" height="20" loading="lazy" decoding="async"> </a> <a href="https://www.youtube.com/watch?v=PLaanhBuiVU"> <img src="/_astro/da%20blinkie.D8zGGJVl_2ltmlK.webp" alt="Da Blinki?!?" width="150" height="20" loading="lazy" decoding="async"> </a> <a href="https://archlinux.org/"> <img src="/_astro/trans.C404quiq_xcCWQ.webp" alt="Trans Rights" width="150" height="20" loading="lazy" decoding="async"> </a> <a href="https://www.youtube.com/watch?v=iBF_mDFgtH4"> <img src="/_astro/mikujerma.DtdjFOHq_1HK3cq.webp" alt="Miku Jerma" width="150" height="20" loading="lazy" decoding="async"> </a> <a href="https://www.youtube.com/watch?v=0Qs_jRerdSg"> <img src="/_astro/jermamiku.BHalGsbT_Zt482V.webp" alt="Jerma Miku" width="150" height="20" loading="lazy" decoding="async"> </a> <div class="w-full columns-2"> <a href="https://www.youtube.com/watch?v=yD2FSwTy2lw"> <img src="/_astro/bob.DeuMGCJO_Zkjcg8.webp" alt="Bob from Animal Crossing spinning" width="88" height="31" loading="lazy" decoding="async"> </a> <a href="https://www.mozilla.org/en-US/firefox/windows/"> <img src="/_astro/fftake.juBJ8bzE_eLaK.webp" alt="Download Firefox" width="88" height="31" loading="lazy" decoding="async"> </a> </div> </div>  </div> </div> </div> </div> </div> </div> </div> </div> </body></html>
