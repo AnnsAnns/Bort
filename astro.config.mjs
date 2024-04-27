@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+import embeds from 'astro-embed/integration';
 import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
 
@@ -9,5 +10,5 @@ export default defineConfig({
   experimental: {
     directRenderScript: true
   },
-  integrations: [mdx(), sitemap(), tailwind()]
+  integrations: [embeds(), mdx(), sitemap(), tailwind()]
 });
