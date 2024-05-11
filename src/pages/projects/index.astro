@@ -20,7 +20,7 @@ posts.sort((a, b) => {
   }
 });
 
-const title = "A list of all my rambling posts 👵🎺";
+const title = "A list of all my projects";
 
 const maxPreviewLength = 400;
 ---
@@ -71,9 +71,9 @@ const maxPreviewLength = 400;
                             {post.data.pubDate
                               ? ` - ${post.data.pubDate.toLocaleDateString('de-DE', { year: 'numeric', month: 'short'})}`
                               : "UNKNOWN"}
-                            {post.data.endDate
+                            {/* {post.data.endDate
                               ? ` - ${post.data.endDate.toLocaleDateString('de-DE', { year: 'numeric', month: 'short'})}`
-                              : "- Now"}
+                              : "- Now"} */}
                           </div>
                         </div>
                       </div>
