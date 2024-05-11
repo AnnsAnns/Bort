@@ -32,10 +32,10 @@ const ramblings = defineCollection({
 const projects = defineCollection({
 	type: 'content',
 	schema: z.object({
-		title: z.string().optional(),
+		title: z.string(),
 		// Transform string to Date object
 		link: z.string().optional(),
-		pubDate: z.coerce.date().optional(),
+		pubDate: z.coerce.date(),
 		endDate: z.coerce.date().optional(),
 		tags: z.array(z.string()).optional(),
 		heroImage: z.string().optional()
