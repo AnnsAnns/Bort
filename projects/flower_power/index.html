@@ -1,4 +1,4 @@
-<!DOCTYPE html><script type="module" src="/_astro/BaseLayout.astro_astro_type_script_index_0_lang.Bn0F6yBh.js"></script> <html lang="en" class="standard" data-astro-transition-persist="astro-djjcnqsn-1"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Astro v4.8.2"><!-- Font preloads --><link rel="preload" href="/fonts/NationalPark-Regular.otf" as="font" type="font/otf" crossorigin><link rel="preload" href="/fonts/Reglisse_Fill.otf" as="font" type="font/otf" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://annsann.eu/blog/rust_microcontrollers/"><!-- Primary Meta Tags --><title>AnnsAnn 🐸   - Rust, Risc-V and embedded systems</title><meta name="title" content="AnnsAnn 🐸   - Rust, Risc-V and embedded systems"><meta name="description" content="First Steps: The Sipeed Longan Nano Risc-V microcontroller and Rust"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://annsann.eu/blog/rust_microcontrollers/"><meta property="og:title" content="AnnsAnn 🐸   - Rust, Risc-V and embedded systems"><meta property="og:description" content="First Steps: The Sipeed Longan Nano Risc-V microcontroller and Rust"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://annsann.eu/blog/rust_microcontrollers/"><meta property="twitter:title" content="AnnsAnn 🐸   - Rust, Risc-V and embedded systems"><meta property="twitter:description" content="First Steps: The Sipeed Longan Nano Risc-V microcontroller and Rust"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ViewTransitions.astro_astro_type_script_index_0_lang.BI3gJRLK.js"></script><link rel="stylesheet" href="/_astro/_slug_.DqjXetxY.css">
+<!DOCTYPE html><script type="module" src="/_astro/BaseLayout.astro_astro_type_script_index_0_lang.Bn0F6yBh.js"></script> <html lang="en" class="standard" data-astro-transition-persist="astro-djjcnqsn-1"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Astro v4.8.2"><!-- Font preloads --><link rel="preload" href="/fonts/NationalPark-Regular.otf" as="font" type="font/otf" crossorigin><link rel="preload" href="/fonts/Reglisse_Fill.otf" as="font" type="font/otf" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://annsann.eu/projects/flower_power/"><!-- Primary Meta Tags --><title>AnnsAnn 🐸   - Flower Power</title><meta name="title" content="AnnsAnn 🐸   - Flower Power"><meta name="description" content="Rambling"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://annsann.eu/projects/flower_power/"><meta property="og:title" content="AnnsAnn 🐸   - Flower Power"><meta property="og:description" content="Rambling"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://annsann.eu/projects/flower_power/"><meta property="twitter:title" content="AnnsAnn 🐸   - Flower Power"><meta property="twitter:description" content="Rambling"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ViewTransitions.astro_astro_type_script_index_0_lang.BI3gJRLK.js"></script><link rel="stylesheet" href="/_astro/_slug_.DqjXetxY.css">
 <link rel="stylesheet" href="/_astro/_slug_.Djgxuvwd.css"><style>.twitter-tweet:not(.twitter-tweet-rendered){padding:var(--tc-padding, 1em);border:1px solid var(--tc-border-color, #cfd9de)}.twitter-tweet:not(.twitter-tweet-rendered)>:first-child{margin-top:0}.twitter-tweet:not(.twitter-tweet-rendered)>:last-child{margin-bottom:0}
 </style><style>lite-vimeo{font-size:10px;background-color:#000;position:relative;display:block;contain:content;background-position:center center;background-size:cover}lite-vimeo:after{content:"";display:block;padding-bottom:56.25%}lite-vimeo>iframe{all:unset!important;width:100%!important;height:100%!important;position:absolute!important;inset:0!important;border:0!important}lite-vimeo>.ltv-playbtn{content:"";position:absolute;inset:0;width:100%;background:transparent;outline:0;border:0;cursor:pointer}lite-vimeo>.ltv-playbtn:before{width:6.5em;height:4em;background:#172322bf;opacity:.8;border-radius:.25rem;transition:all .2s cubic-bezier(0,0,.2,1)}lite-vimeo>.ltv-playbtn:focus:before{outline:auto}lite-vimeo:hover>.ltv-playbtn:before{background-color:#00adef;background-color:var(--ltv-color, #00adef);opacity:1}lite-vimeo>.ltv-playbtn:after{border-style:solid;border-width:1em 0 1em 1.7em;border-color:transparent transparent transparent #fff}lite-vimeo>.ltv-playbtn:before,lite-vimeo>.ltv-playbtn:after{content:"";position:absolute;top:50%;left:50%;transform:translate3d(-50%,-50%,0)}lite-vimeo.ltv-activated:before,lite-vimeo.ltv-activated>.ltv-playbtn{cursor:unset;opacity:0;pointer-events:none}
 </style><style>lite-youtube>iframe{all:unset!important;width:100%!important;height:100%!important;position:absolute!important;inset:0!important;border:0!important}
@@ -108,70 +108,7 @@ Friends
 Ramblings
 </a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="https://github.com/AnnsAnns">
 Github
-</a> </div>  </div> </div> </div> </div> <!-- <script>    
-    function shareButton() {
-        const element = document.getElementById("SHAREBUTTON");
-        if (element) {
-            const slug = element.getAttribute("href") || "";
-            navigator.clipboard.writeText(`${location.protocol}//${location.host}${location.pathname}${slug}`).then(function() {
-            }, function(err) {
-                console.error('Could not copy url: ', err);
-            });
-            const previoustext = element.innerText;
-            element.innerText = "✅ Copied URL into Clipboard";
-
-            // Sleep for 2 seconds
-            setTimeout(() => {
-                element.innerText = previoustext;
-            }, 2000);
-        }
-    }
-
-    document.getElementById("SHAREBUTTON")?.addEventListener("click", shareButton);
-</script> --><div class="
-    bg-base-background-color
-    ring-box-color-standard
-    ring-4
-    break-words
-    overflow-hidden
-    shadow-square
-    shadow-box-color-standard/50
-    min-h-[120px]
-    min-w-[120px]
-    flex flex-col
-    m-1
-    px-3
-    pb-3
-    sm:max-h-notfullscreen
-    text-base-text-color
- min-h-64"> <div class="
-        bg-box-color-standard
-        mx-[-12px]
-        min-w-max
-        min-h-min
-        items-end
-        text-left
-        text-end
-        flex
-        justify-end
-        align-middle
-        p-1
-        pb-2
-        gap-1
-        text-base-background-color
-    "> 
-➖⏹️❌
-</div> <div class="
-        sm:overflow-y-auto
-        scrollbar-thin
-        scrollbar-track-base-background-color
-        scrollbar-thumb-box-color-standard
-    "> <div class="
-            font-headerf
-            text-2xl
-            md:text-3xl
-            lg:text-4xl
-        "> 🏝️ Contents </div> <div> <div class="overflow-auto"><ul class="list-inside text-lg"><a href="#my-setup"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰My Setup</li></a><a href="#broken-drivers"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Broken drivers</li></a><a href="#the-longan-nano-rust-crate"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰The Longan Nano Rust Crate</li></a><a href="#wsl-and-microcontrollers-dont-pair-well"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰WSL and microcontrollers don’t pair well</li></a><a href="#building-the-examples"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Building the examples</li></a><a href="#the-present"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰The Present</li></a></ul></div> </div> </div> </div> <div class=""> <script type="module" src="/_astro/Themes.astro_astro_type_script_index_0_lang.aDLsSDSU.js"></script> <!-- <script>    
+</a> </div>  </div> </div> </div> </div>  <div class=""> <script type="module" src="/_astro/Themes.astro_astro_type_script_index_0_lang.aDLsSDSU.js"></script> <!-- <script>    
     function shareButton() {
         const element = document.getElementById("SHAREBUTTON");
         if (element) {
@@ -309,11 +246,7 @@ LOADING ...
             text-2xl
             md:text-3xl
             lg:text-4xl
-        "> Rust, Risc-V and embedded systems </div> <div>  <article> <div class="flex flex-row justify-between"> <div class="description text-base-text-color/80 font-medium text-lg"> <p>First Steps: The Sipeed Longan Nano Risc-V microcontroller and Rust</p> </div> <div class="date text-base-text-color/60"> <time datetime="2021-02-11T00:00:00.000Z"> Feb 11, 2021 </time>  </div> </div> <div class="hero-image">  </div> <br> <hr> <br> <div class="legacy-warning"> <h1 class="text-slate-500 text-xl font-bold">
-This is a legacy blog post from a long time ago.
-<br>
-It might contain outdated or incorrect information.
-</h1> <br> </div> <div class="prose"> <div class="prose-zinc
+        "> Flower Power </div> <div>  <article> <div class="flex flex-row justify-between"> <div class="date text-base-text-color/60"> <time datetime="2023-05-01T00:00:00.000Z"> May 1, 2023 </time>  </div> </div> <div class="hero-image">  </div> <br> <hr> <br> <div class="prose"> <div class="prose-zinc
                 prose-lg
                 prose-a:text-base-text-color
                 prose-headings:text-base-text-color
@@ -330,31 +263,8 @@ It might contain outdated or incorrect information.
 				prose-strong:text-base-text-color
                 prose-a:underline
 				prose-code:bg-base-text-color/10
-				prose-code:text-base-text-color">  <p>Recently I bought a Risc-V development board, the Sipeed Longan Nano to be exact. Risc-V has always been something I just wanted to work on sooner or later, it’s one of the few CPU architectures that fascinate me and I strongly believe that sooner or later it’ll run most of our devices. The open source and modular nature of it makes it a wonderful contender for IoT and anything that needs to be fast, cheap and small.</p>
-<img src="/_astro/compare.BlmtqtGs_1zhBP6.webp" alt="The Longan Nano, Raspberry Pi Pico and a pen for scale." width="3968" height="2976" loading="lazy" decoding="async">
-<p>The Longan Nano in itself is actually quite amazing for the price. It offers 128 KB of Flash, 32 KB of SRAM and a lot of different peripherals while running at a <em>blazing fast</em> 32.768KHz [Low Spec Mode] and 8MHz at it’s highest speed ;) Yes, those specs aren’t that impressive compared to the Pico given that both share the same pricetag but the Longan Nano also comes with a MicroSD reader, USB-C and a 160x80 IPS RGB LCD which I’d call quite the package for it’s price of only 5€.</p>
-<p>Now, naturally one would assume that you’d have to use good old C/C++ with it and you’d probably be right in 9 out of 10 cases but I thought that was boring and really wanted to use the most hyped language of them all, Rust. I mostly blame <a href="https://github.com/shadowninja108">Shadow</a> for his work on skyline, <a href="https://github.com/EliseZeroTwo">Elise</a> for her WARS-8 project and <a href="https://github.com/jam1garner">Jam1garner</a> for his really amazing and detailed blog posts that strongly inspired me (If you’re reading this, thank you for inspiring me even though you probably never talked to me before).
-Sooner or later I really want to write a blogpost about Rust itself but I feel like I’m not too comfortable with the language yet to share my knowledge with random internet strangers.</p>
-<p>Anyways, 1 + 1 = 2 and so I decided to try to use Rust for the microcontroller which at first seemed surprisingly easy but as everything in the low-level development world, it ofc had thousands of small problems that lurked behind the corner to destroy you once you tried it. Given that I want people to not fall into the same pitfalls, this simple and short blog post should hopefully solve most common problems when trying this (and might arouse interest for some, idk).</p>
-<h3 id="my-setup">My Setup</h3>
-<p>Before writing about many of the problems, I gotta admit something. My setup is really really cursed when it comes to such stuff.
-I’m currently running Windows 10 Pro on my main machine with 99.9% of all development related stuff running inside a WSL2 Arch instance. For those that are familiar with the Windows Subsystem for Linux stuff, Arch actually isn’t one of the officially supported systems for it. My Arch WSL only exists and works because of the amazing work and dedication by Arch fans. If you also dedicate your existence to sharing the word of our lord and saviour Arch, I’d recommend this: <a href="https://github.com/yuk7/ArchWSL">https://github.com/yuk7/ArchWSL</a></p>
-<img src="/_astro/meme.BAQueRs__Z2pFlUp.webp" alt="btw I use arch meme" width="801" height="803" loading="lazy" decoding="async">
-<p>It honestly works really well and after having Arch as my main OS for quite some time, I really can’t live without the AUR and rolling releases. So far I haven’t experienced any major issues (With some exceptions for WSL scripts that were meant for debian based systems).</p>
-<h3 id="broken-drivers">Broken drivers</h3>
-<p>For some unknown reason my Longan Nano shipped with really broken drivers and Windows 10 had extreme issues installing any drivers for it. Normally it should just easily go into the flashing mode through a button combination and then appear in Zadig to simply install the WinUSB (or similar) driver.
-In my case Zadig broke completely and I had to do it manually. At first this annoyed and confused me but thanks to the <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/usbcon/winusb-installation">Microsoft WinUSB installation guide</a> and <a href="https://ribesjordi.wordpress.com/2020/04/10/setting-up-the-pio-ide-for-sipeed-longan-nano-in-windows-10/">another developer</a> that had the same issue, I was able to fix it quite painlessly.</p>
-<h3 id="the-longan-nano-rust-crate">The Longan Nano Rust Crate</h3>
-<p>Luckily, there is a well done and ready to use rust crate for my device already, you can find it here: <a href="https://github.com/riscv-rust/longan-nano">https://github.com/riscv-rust/longan-nano</a></p>
-<p>The Getting Started part wasn’t actually that hard aside from the fact that you had to basically install forks of every single thing because Risc-V related stuff isn’t streamlined in most projects yet.
-Once again, I gotta thank the AUR for saving my from a lot of hassle by simply providing easily installable packages of most of these forks. Sadly the openocd package appeared to be broken for now because of some dependency issue but luckily there are three different ways to flash and use the rust crate so I could just switch to dfu-util.</p>
-<h3 id="wsl-and-microcontrollers-dont-pair-well">WSL and microcontrollers don’t pair well</h3>
-<p>WSL is awesome but it sucks when it comes to physical devices. Given the nature of a subsystem, I sadly couldn’t flash the microcontroller from my Arch instance and had to install dfu-util on my Windows machine to flash the device. Luckily the filesystem integration in WSL2 is so well done that I could simple open a powershell inside my WSL2 files and use my Windows tools on them. Glory to the monopoly of Microsoft I guess. All in all this was more of a minor hindrance that can easily be fixed with a custom buildscript.</p>
-<h3 id="building-the-examples">Building the examples</h3>
-<p>At first this seemed easy, there is one minor error in the documentation in which it tried to link to a wrong directory but that was quite easy to spot and fix. After a bit of tinkering I had a flashable file that I could just throw onto the Longan Nano and be happy with and that’s what I did. The blinking example worked and so I moved on.</p>
-<h3 id="the-present">The Present</h3>
-<p>As I said at the start of this blogpost, this blog post isn’t as detailed as I originally expected my second blog post to be in order to be more consistent and actually have some form of content on my site. For now I’m still working on my own project with the library and have made some, even if little, progress with it over a few hours of testing. My aim is to get something more impressive to work for the next blogpost so I can explain most of peripherals the Longan Nano has.</p>
-<p>The endgoal is to get Rust running on the Raspberry Pi Pico but for now I thank everyone that read this blogpost till this point and hope to see you in the next part of this series. ~~~Lets just hope that I’m motivated enough to write the next one~~~</p>  </div> </div> </article>  </div> </div> </div> </div>  </div>  <div class="w-full max-sm:mt-4 md:w-fit flex flex-col-reverse h-full md:h-screen 4k:justify-center sm:justify-start gap-y-4"> <div class="w-full"> <div class="justify-items-center xl:max-w-64 grid grid-flow-row auto-rows-max gap-4 justify-between items-center h-full md:m-8"> <div class="w-full"> <!-- <script>    
+				prose-code:text-base-text-color">  <p>Flower Power aims to implement the petal form that was/will be introduced together with the cherry blossom tree for all Vanilla flowers.</p>
+<p><img src="/_astro/flowerpower.D4FmpAgc_1cWzfD.webp" alt="Flowerpower Example" title="A showcase of Flower Power field in Minecraft" width="854" height="480" loading="lazy" decoding="async"></p>  </div> </div> </article>  </div> </div> </div> </div>  </div>  <div class="w-full max-sm:mt-4 md:w-fit flex flex-col-reverse h-full md:h-screen 4k:justify-center sm:justify-start gap-y-4"> <div class="w-full"> <div class="justify-items-center xl:max-w-64 grid grid-flow-row auto-rows-max gap-4 justify-between items-center h-full md:m-8"> <div class="w-full"> <!-- <script>    
     function shareButton() {
         const element = document.getElementById("SHAREBUTTON");
         if (element) {
