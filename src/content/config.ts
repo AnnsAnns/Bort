@@ -29,4 +29,17 @@ const ramblings = defineCollection({
 	})
 });
 
+const projects = defineCollection({
+	type: 'content',
+	schema: z.object({
+		title: z.string().optional(),
+		// Transform string to Date object
+		link: z.string().optional(),
+		pubDate: z.coerce.date().optional(),
+		updatedDate: z.coerce.date().optional(),
+		tags: z.array(z.string()).optional(),
+		heroImage: z.string().optional()
+	})
+});
+
 export const collections = { blog, ramblings };

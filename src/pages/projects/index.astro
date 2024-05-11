@@ -1,0 +1,91 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Box from "../../components/Box.astro";
+
+const posts = await getCollection("projects");
+
+// Sort by date
+posts.sort((a, b) => {
+  if (a.data.pubDate && b.data.pubDate) {
+    return b.data.pubDate.getDate() - a.data.pubDate.getDate();
+  } else {
+    return -1;
+  }
+});
+
+const title = "A list of all my rambling posts 👵🎺";
+
+const maxPreviewLength = 400;
+---
+
+<BaseLayout title="Projects" desc="A showcase of my projects">
+  <section>
+    <div class="max-h-full flex justify-center">
+      <div
+        class="flex
+        flex-row
+        flex-wrap
+        items-center
+        justify-evenly
+        w-full
+        max-sm:h-full
+        sm:max-h-screen
+        sm:overflow-y-auto
+        scrollbar-thin s
+        crollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard"
+      >
+        {
+          posts.map(async (post) => {
+            const { Content } = await post.render();
+
+            return (
+              <a
+                id={post.slug}
+                class="grow py-3 px-2 max-w-full min-w-[80%] flex flex-col items-center"
+              >
+                <a href={post.data.link || `/ramblings/${post.slug}/`}>
+                  <Box
+                    title={`${post.data.title || "🐸💬"}`}
+                    className={`text-center h-full w-fit max-w-4xl`}
+                  >
+                    <div class="flex flex-col gap-x-2 mt-2 items-center h-full w-full content-center justify-around">
+                      <div class="flex flex-col items-center">
+                        <div class="pt-2 text-center text-ellipsis min-w-[80vw] md:min-w-80 xl:min-w-96">
+                          {post.body.length > maxPreviewLength ? (
+                            `${post.body.slice(0, maxPreviewLength / 2)} [...]`
+                          ) : (
+                            <Content />
+                          )}
+                        </div>
+
+                        <div class="text-sm text-base-text-color/60">
+                          {post.body.length > maxPreviewLength
+                            ? "[Click to see full post]"
+                            : ""}
+                        </div>
+
+                        <div class="text-left self-end text-sm text-base-text-color/60">
+                          <div>
+                            {post.data.tags
+                              ? `${post.data.tags.map((val) => `#${val} `)} - `
+                              : ""}
+                            Click to expand post
+                            {post.data.pubDate
+                              ? ` - ${post.data.pubDate.toLocaleDateString()}`
+                              : ""}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Box>
+                </a>
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
