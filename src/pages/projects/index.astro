@@ -7,7 +7,13 @@ const posts = await getCollection("projects");
 
 // Sort by date
 posts.sort((a, b) => {
-  if (a.data.pubDate && b.data.pubDate) {
+  if (a.data.endDate && b.data.endDate) {
+    return b.data.endDate.getDate() - a.data.endDate.getDate();
+  } else if (a.data.endDate && !b.data.endDate) {
+    return 1;
+  } else if (!a.data.endDate && b.data.endDate) {
+    return -1;
+  } else if (a.data.pubDate && b.data.pubDate) {
     return b.data.pubDate.getDate() - a.data.pubDate.getDate();
   } else {
     return -1;
@@ -52,18 +58,8 @@ const maxPreviewLength = 400;
                   >
                     <div class="flex flex-col gap-x-2 mt-2 items-center h-full w-full content-center justify-around">
                       <div class="flex flex-col items-center">
-                        <div class="pt-2 text-center text-ellipsis min-w-[80vw] md:min-w-80 xl:min-w-96">
-                          {post.body.length > maxPreviewLength ? (
-                            `${post.body.slice(0, maxPreviewLength / 2)} [...]`
-                          ) : (
-                            <Content />
-                          )}
-                        </div>
-
-                        <div class="text-sm text-base-text-color/60">
-                          {post.body.length > maxPreviewLength
-                            ? "[Click to see full post]"
-                            : ""}
+                        <div class="pt-2 text-center text-ellipsis min-w-[80vw] md:min-w-80 xl:min-w-96 flex flex-col items-center justify-center">
+                          <Content />
                         </div>
 
                         <div class="text-left self-end text-sm text-base-text-color/60">
@@ -71,10 +67,13 @@ const maxPreviewLength = 400;
                             {post.data.tags
                               ? `${post.data.tags.map((val) => `#${val} `)} - `
                               : ""}
-                            Click to expand post
+                            {post.data.link ? "Click to visit" : "Click to expand"}
                             {post.data.pubDate
-                              ? ` - ${post.data.pubDate.toLocaleDateString()}`
-                              : ""}
+                              ? ` - ${post.data.pubDate.toLocaleDateString('de-DE', { year: 'numeric', month: 'short'})}`
+                              : "UNKNOWN"}
+                            {post.data.endDate
+                              ? ` - ${post.data.endDate.toLocaleDateString('de-DE', { year: 'numeric', month: 'short'})}`
+                              : "- Now"}
                           </div>
                         </div>
                       </div>

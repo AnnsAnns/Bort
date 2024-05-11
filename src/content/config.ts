@@ -36,7 +36,7 @@ const projects = defineCollection({
 		// Transform string to Date object
 		link: z.string().optional(),
 		pubDate: z.coerce.date().optional(),
-		updatedDate: z.coerce.date().optional(),
+		endDate: z.coerce.date().optional(),
 		tags: z.array(z.string()).optional(),
 		heroImage: z.string().optional()
 	})
