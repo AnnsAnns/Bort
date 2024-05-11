@@ -69,7 +69,7 @@ const maxPreviewLength = 400;
                         <div class="text-left self-end text-sm text-base-text-color/60">
                           <div>
                             {post.data.tags
-                              ? `${post.data.tags.map((val) => `#${val} `)} - `
+                              ? `${post.data.tags.map((val: string) => `#${val} `)} - `
                               : ""}
                             Click to expand post
                             {post.data.pubDate
