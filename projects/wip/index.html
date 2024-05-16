@@ -1,4 +1,4 @@
-<!DOCTYPE html><script type="module" src="/_astro/BaseLayout.astro_astro_type_script_index_0_lang.Bn0F6yBh.js"></script> <html lang="en" class="standard" data-astro-transition-persist="astro-djjcnqsn-1"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Astro v4.8.4"><!-- Font preloads --><link rel="preload" href="/fonts/NationalPark-Regular.otf" as="font" type="font/otf" crossorigin><link rel="preload" href="/fonts/Reglisse_Fill.otf" as="font" type="font/otf" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://annsann.eu/ramblings/rustscripting/"><!-- Primary Meta Tags --><title>AnnsAnn 🐸   - Rust as a Scripting Language</title><meta name="title" content="AnnsAnn 🐸   - Rust as a Scripting Language"><meta name="description" content="Rambling"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://annsann.eu/ramblings/rustscripting/"><meta property="og:title" content="AnnsAnn 🐸   - Rust as a Scripting Language"><meta property="og:description" content="Rambling"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://annsann.eu/ramblings/rustscripting/"><meta property="twitter:title" content="AnnsAnn 🐸   - Rust as a Scripting Language"><meta property="twitter:description" content="Rambling"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ViewTransitions.astro_astro_type_script_index_0_lang.DZL4CV8D.js"></script><link rel="stylesheet" href="/_astro/_slug_.DtUd5LsF.css">
+<!DOCTYPE html><script type="module" src="/_astro/BaseLayout.astro_astro_type_script_index_0_lang.Bn0F6yBh.js"></script> <html lang="en" class="standard" data-astro-transition-persist="astro-djjcnqsn-1"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Astro v4.8.4"><!-- Font preloads --><link rel="preload" href="/fonts/NationalPark-Regular.otf" as="font" type="font/otf" crossorigin><link rel="preload" href="/fonts/Reglisse_Fill.otf" as="font" type="font/otf" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://annsann.eu/projects/wip/"><!-- Primary Meta Tags --><title>AnnsAnn 🐸   - Work in Progress</title><meta name="title" content="AnnsAnn 🐸   - Work in Progress"><meta name="description" content="Rambling"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://annsann.eu/projects/wip/"><meta property="og:title" content="AnnsAnn 🐸   - Work in Progress"><meta property="og:description" content="Rambling"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://annsann.eu/projects/wip/"><meta property="twitter:title" content="AnnsAnn 🐸   - Work in Progress"><meta property="twitter:description" content="Rambling"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ViewTransitions.astro_astro_type_script_index_0_lang.DZL4CV8D.js"></script><link rel="stylesheet" href="/_astro/_slug_.DtUd5LsF.css">
 <link rel="stylesheet" href="/_astro/_slug_.CzIpPiuC.css"><style>.twitter-tweet:not(.twitter-tweet-rendered){padding:var(--tc-padding, 1em);border:1px solid var(--tc-border-color, #cfd9de)}.twitter-tweet:not(.twitter-tweet-rendered)>:first-child{margin-top:0}.twitter-tweet:not(.twitter-tweet-rendered)>:last-child{margin-bottom:0}
 </style><style>lite-vimeo{font-size:10px;background-color:#000;position:relative;display:block;contain:content;background-position:center center;background-size:cover}lite-vimeo:after{content:"";display:block;padding-bottom:56.25%}lite-vimeo>iframe{all:unset!important;width:100%!important;height:100%!important;position:absolute!important;inset:0!important;border:0!important}lite-vimeo>.ltv-playbtn{content:"";position:absolute;inset:0;width:100%;background:transparent;outline:0;border:0;cursor:pointer}lite-vimeo>.ltv-playbtn:before{width:6.5em;height:4em;background:#172322bf;opacity:.8;border-radius:.25rem;transition:all .2s cubic-bezier(0,0,.2,1)}lite-vimeo>.ltv-playbtn:focus:before{outline:auto}lite-vimeo:hover>.ltv-playbtn:before{background-color:#00adef;background-color:var(--ltv-color, #00adef);opacity:1}lite-vimeo>.ltv-playbtn:after{border-style:solid;border-width:1em 0 1em 1.7em;border-color:transparent transparent transparent #fff}lite-vimeo>.ltv-playbtn:before,lite-vimeo>.ltv-playbtn:after{content:"";position:absolute;top:50%;left:50%;transform:translate3d(-50%,-50%,0)}lite-vimeo.ltv-activated:before,lite-vimeo.ltv-activated>.ltv-playbtn{cursor:unset;opacity:0;pointer-events:none}
 </style><style>lite-youtube>iframe{all:unset!important;width:100%!important;height:100%!important;position:absolute!important;inset:0!important;border:0!important}
@@ -110,72 +110,7 @@ Friends
 Ramblings
 </a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="https://github.com/AnnsAnns">
 Github
-</a> </div>  </div> </div> </div> </div> <!-- <script>    
-    function shareButton() {
-        const element = document.getElementById("SHAREBUTTON");
-        if (element) {
-            const slug = element.getAttribute("href") || "";
-            navigator.clipboard.writeText(`${location.protocol}//${location.host}${location.pathname}${slug}`).then(function() {
-            }, function(err) {
-                console.error('Could not copy url: ', err);
-            });
-            const previoustext = element.innerText;
-            element.innerText = "✅ Copied URL into Clipboard";
-
-            // Sleep for 2 seconds
-            setTimeout(() => {
-                element.innerText = previoustext;
-            }, 2000);
-        }
-    }
-
-    document.getElementById("SHAREBUTTON")?.addEventListener("click", shareButton);
-</script> --><div class="
-    bg-base-background-color
-    ring-box-color-standard
-    ring-4
-    break-words
-    overflow-hidden
-    shadow-square
-    shadow-box-color-standard/50
-    min-h-[120px]
-    min-w-[120px]
-    flex flex-col
-    rotate-0
-    m-1
-    px-3
-    pb-3
-    sm:max-h-notfullscreen
-    text-base-text-color
-    rounded-sm
- min-h-64"> <div class="
-        bg-box-color-standard
-        mx-[-12px]
-        min-w-max
-        min-h-min
-        items-end
-        text-left
-        text-end
-        flex
-        justify-end
-        align-middle
-        p-1
-        pb-2
-        gap-1
-        text-base-background-color
-    "> 
-➖⏹️❌
-</div> <div class="
-        sm:overflow-y-auto
-        scrollbar-thin
-        scrollbar-track-base-background-color
-        scrollbar-thumb-box-color-standard
-    "> <div class="
-            font-headerf
-            text-2xl
-            md:text-3xl
-            lg:text-4xl
-        "> 🏝️ Contents </div> <div> <div class="overflow-auto"><ul class="list-inside text-lg"><a href="#requirements"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">🐸Requirements</li></a><a href="#what-language-should-i-use"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">🐸What language should I use?</li></a><a href="#the-initial-plan"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">🐸The initial plan</li></a><a href="#windows-symlinks"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">🐸Windows Symlinks</li></a><a href="#the-results"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">🐸The Results</li></a></ul></div> </div> </div> </div> <div class=""> <script type="module" src="/_astro/Themes.astro_astro_type_script_index_0_lang.aDLsSDSU.js"></script> <!-- <script>    
+</a> </div>  </div> </div> </div> </div>  <div class=""> <script type="module" src="/_astro/Themes.astro_astro_type_script_index_0_lang.aDLsSDSU.js"></script> <!-- <script>    
     function shareButton() {
         const element = document.getElementById("SHAREBUTTON");
         if (element) {
@@ -317,7 +252,7 @@ LOADING ...
             text-2xl
             md:text-3xl
             lg:text-4xl
-        "> Rust as a Scripting Language </div> <div>  <article> <div class="flex flex-row justify-between"> <div class="date text-base-text-color/60"> <time datetime="2023-11-05T00:00:00.000Z"> Nov 5, 2023 </time>  </div> </div> <div class="hero-image">  </div> <br> <hr> <br> <div class="prose"> <div class="prose-zinc
+        "> Work in Progress </div> <div>  <article> <div class="flex flex-row justify-between"> <div class="date text-base-text-color/60"> <time datetime="3123-08-01T00:00:00.000Z"> Aug 1, 3123 </time>  </div> </div> <div class="hero-image">  </div> <br> <hr> <br> <div class="prose"> <div class="prose-zinc
                 prose-lg
                 prose-a:text-base-text-color
                 prose-headings:text-base-text-color
@@ -334,38 +269,7 @@ LOADING ...
 				prose-strong:text-base-text-color
                 prose-a:underline
 				prose-code:bg-base-text-color/10
-				prose-code:text-base-text-color">  <p><img src="https://media.tenor.com/6RvyvMjx3XMAAAAd/he-is-speaking-guy-explaining-with-a-whiteboard.gif" alt="GuyExplaining" title="Guy Explaining Meme"/></p>
-<p>Recently I had to solve a probably very niche problem. A team, of somewhat new developers and I had to develop a project for a very specific target processor using a very specific development tooling which naturally causes the tooling itself to be quite inflexible as the code basically goes into a small black box. This caused us many headaches when we wanted to include a definition-based flag together with symlink hotswaps of specific files. The tool we use does support makefiles, it however doesn’t appear to properly support target based options (At least we weren’t able to find any support for that).
-So, because I decided to not reinvent the wheel the only easy and fast way to solve this appeared to be a small little script that solves this issue manually by moving some files around and modifying the makefile.</p>
-<h2 id="requirements">Requirements</h2>
-<p>There are a few important factors that needed to be accounted for.</p>
-<ol>
-<li>It needs to be as easy to use as possible</li>
-<li>It needs to function on both windows and linux but only on windows do requirements 4 and 1 matter the most.</li>
-<li>I can’t expect people to download specific runtimes/software to use it</li>
-<li>It needs to work out of the box. There are many different systems this will be used on and any kind of “setup” would cause problems</li>
-<li>It doesn’t need to be good, it needs to work, and preferably asap. You could probably solve this through complicated cmake files and “reverse engineering” some parts of the toolchain but I could also just write my own compiler for the target architecture if you give me 5 years, doesn’t mean it makes the most sense for my use-case.</li>
-</ol>
-<h2 id="what-language-should-i-use">What language should I use?</h2>
-<p>Naturally my first thought was Python, then, because I wanted to be fancy my second thought was a shell script till, I realized that I suck at that and, this would either require specialized software or two versions in order to support both windows and linux, thus I had to rule out a shell script.
-Python used to always be my go-to language, esp. when it comes to scripting and even if my usage of Python has dramatically reduced over time, I’d still always choose it if I need something done quick and dirty. But then I realized something I tend to forget; Python doesn’t work out of the box which would conflict with requirements 3 and 4.
-Which brings me to Rust, Rust is a compiled language, which would mean that I could, given that the tool would only ever be run on x86 processors, simply provide a windows binary with the project. Both because Rust is starting to be the only language I pick when I’m not obligated to use another language and because I wanted to try using Rust for tooling/scripting I decided to go with it.</p>
-<h2 id="the-initial-plan">The initial plan</h2>
-<ol>
-<li>Backup the makefile</li>
-<li>Switch it out with the required makefile</li>
-<li>Add required defines depending on the target</li>
-<li>The code imports different things based on those defines</li>
-<li>Add a few libraries that hook over some parts of the code through dark macro magic</li>
-</ol>
-<h2 id="windows-symlinks">Windows Symlinks</h2>
-<p>The initial and cleanest solution to hot swapping was using symlinks but as always windows threw a wrench into that whole process. Windows “symlinks” a notorious for sucking and even with recent developments in the space such as Microsoft implementing new “Dev Tools” settings to allow people to create symlinks without admin permission they still often don’t behave the way I’d expect coming from Linux with their own weirdness, which I probably why to this day nobody dares to touch them.
-Thus, even though the code worked on Linux, I had to sacrifice the “neatness” of the code and simply copy and paste code.</p>
-<h2 id="the-results">The Results</h2>
-<p>Talking about the code itself would probably not make that much sense, it’s a simple case of parsing the arguments and then copying a few files. The code itself isn’t even the important part, heck, this blog post took longer to write than the code itself.
-The important part is that it just works, nobody complained, nobody had issues because their computer didn’t have certain libraries, or they used msys, or they didn’t. It just works™️ and that is all that is important.
-<img src="/_astro/heyaslong.C5gWLWm0_ZUdoO2.webp" alt="AsLongAsItWorks" title="Hey as long as it works, Fist of the North Star" width="600" height="409" loading="lazy" decoding="async">
-Yeah okay, that’s it, that’s the blog post. See you next time when I write a tutorial on how to make Kimchi or something and make it all philosophical about the way we write code. Goodbye 👍</p>  </div> </div> </article>  </div> </div> </div> </div>  </div>  <div class="w-full max-sm:mt-4 md:w-fit flex flex-col-reverse h-full md:h-screen 4k:justify-center sm:justify-start gap-y-4"> <div class="w-full"> <div class="justify-items-center xl:max-w-64 grid grid-flow-row auto-rows-max gap-4 justify-between items-center h-full md:m-8"> <div class="w-full"> <!-- <script>    
+				prose-code:text-base-text-color">  <p><strong><strong>Warning: This page is a work in progress. It will be updated soon and contain more information.</strong></strong></p>  </div> </div> </article>  </div> </div> </div> </div>  </div>  <div class="w-full max-sm:mt-4 md:w-fit flex flex-col-reverse h-full md:h-screen 4k:justify-center sm:justify-start gap-y-4"> <div class="w-full"> <div class="justify-items-center xl:max-w-64 grid grid-flow-row auto-rows-max gap-4 justify-between items-center h-full md:m-8"> <div class="w-full"> <!-- <script>    
     function shareButton() {
         const element = document.getElementById("SHAREBUTTON");
         if (element) {
