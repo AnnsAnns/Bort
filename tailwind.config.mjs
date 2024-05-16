@@ -27,10 +27,19 @@ export default {
 			  "0%": {
 				"opacity": "0.0"
 			  }
-			}
+			},
+			"animatedgradient": {
+				'0%': { backgroundPosition: '0% 50%' },
+				'50%': { backgroundPosition: '100% 50%' },
+				'100%': { backgroundPosition: '0% 50%' },
+			  },
+		  },
+		  backgroundSize: {
+			'300%': '300%',
 		  },
 		  animation: {
 			'fade-out': 'fade 2s cubic-bezier(0.4, 0, 0.6, 1) linear',
+			"gradient": 'animatedgradient 6s ease infinite alternate',
 		  },
 		  colors: {
 		  "phlox": "#C04CFD",

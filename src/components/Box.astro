@@ -4,9 +4,15 @@ interface Props {
     title: string;
     className?: string;
     shareSlug?: string;
+    createRandomness?: boolean;
 }
 
-const { title, className, shareSlug } = Astro.props;
+let { title, className, shareSlug, createRandomness } = Astro.props;
+
+createRandomness = false; // Temporarily disable randomness till I decide whether to keep it or not
+
+const randomRotation = createRandomness ? Math.floor(Math.random() * 2) : 0;
+const is_negative = createRandomness ? Math.random() < 0.5 : false;
 
 let additionalClasses = className ?? '';
 const baseClasses = `
@@ -20,11 +26,13 @@ const baseClasses = `
     min-h-[120px]
     min-w-[120px]
     flex flex-col
+    ${is_negative ? '-rotate-' : 'rotate-'}${randomRotation}
     m-1
     px-3
     pb-3
     sm:max-h-notfullscreen
     text-base-text-color
+    rounded-sm
 `;
 
 const classes = `${baseClasses} ${additionalClasses}`;

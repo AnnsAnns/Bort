@@ -36,7 +36,7 @@ const posts = (posts_collection).sort(
           {
             posts.map((post) => (
 			<div class="py-3 px-2 max-w-full min-w-[80%] flex flex-col items-center">
-              <Box title="" className="w-fit max-w-2xl">
+              <Box title="" className="w-fit max-w-2xl" createRandomness>
                 <a href={`/blog/${post.slug}/`} class="flex flex-col gap-x-2 mt-2 items-center h-full w-full content-center justify-around">
                   <div class="flex flex-col items-center">
                     <h4 class="title text-center font-headerf text-2xl md:text-3xl lg:text-4xl">{post.data.title}</h4>

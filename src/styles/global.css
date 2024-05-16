@@ -55,3 +55,20 @@ padding: 3px 10px;
 .navitem.is-active {
 @apply bg-base-text-color/50;
 }
+
+.animate-gradient {
+	background-size: 400%;
+	animation: animatedgradient 60s linear infinite;
+  }
+  
+  @keyframes animatedgradient {
+	0% {
+	  background-position: 0% 50%;
+	}
+	50% {
+	  background-position: 100% 50%;
+	}
+	100% {
+	  background-position: 0% 50%;
+	}
+  }
