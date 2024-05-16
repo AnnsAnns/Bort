@@ -7,12 +7,10 @@ import Box from "../../components/Box.astro";
 const posts = (await getCollection("projects")).sort(
   (a, b) => {
 
-    if (a.data.endDate && b.data.endDate) {
-      return b.data.endDate.valueOf() - a.data.endDate.valueOf()
-    } else if (a.data.endDate) {
-      return 1
-    } else if (b.data.endDate) {
+    if (a.data.highlight && !b.data.highlight) {
       return -1
+    } else if (!a.data.highlight && b.data.highlight) {
+      return 1
     } else {
       return b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
     }
@@ -69,9 +67,7 @@ const maxPreviewLength = 400;
                             {post.data.pubDate
                               ? ` - ${post.data.pubDate.toLocaleDateString('de-DE', { year: 'numeric', month: 'short'})}`
                               : "UNKNOWN"}
-                            {/* {post.data.endDate
-                              ? ` - ${post.data.endDate.toLocaleDateString('de-DE', { year: 'numeric', month: 'short'})}`
-                              : "- Now"} */}
+                            {post.data.highlight ? " ⭐" : ""}
                           </div>
                         </div>
                       </div>

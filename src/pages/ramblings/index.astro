@@ -8,7 +8,7 @@ const posts = await getCollection("ramblings");
 // Sort by date
 posts.sort((a, b) => {
   if (a.data.pubDate && b.data.pubDate) {
-    return b.data.pubDate.getDate() - a.data.pubDate.getDate();
+    return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
   } else {
     return -1;
   }
@@ -52,7 +52,7 @@ const maxPreviewLength = 400;
                   >
                     <div class="flex flex-col gap-x-2 mt-2 items-center h-full w-full content-center justify-around">
                       <div class="flex flex-col items-center">
-                        <div class="pt-2 text-center text-ellipsis min-w-[80vw] md:min-w-80 xl:min-w-96">
+                        <div class="pt-2 text-center text-ellipsis min-w-[80vw] md:min-w-80 xl:min-w-96 flex flex-col items-center justify-center">
                           {post.body.length > maxPreviewLength ? (
                             `${post.body.slice(0, maxPreviewLength / 2)} [...]`
                           ) : (
