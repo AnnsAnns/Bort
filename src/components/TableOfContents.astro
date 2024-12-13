@@ -26,7 +26,7 @@ const depthEmojiTable = [
             <div class='overflow-auto'>
             <ul class='list-inside text-lg'>
                 {filteredTableOfContents.map((heading) => (
-                    <a href={`#${heading.id}`}>
+                    <a href={`#${heading.slug}`}>
                     <li class={`ml-${heading.depth > 3 ? 2 : 4} text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60`}>
                         {depthEmojiTable[heading.depth]} {heading.text}
                     </li>

@@ -1,6 +1,5 @@
 ---
 import { getCollection, render } from "astro:content";
-import ClickToSeeMore from '../components/ClickToSeeMore.astro';
 
 import Box from '../components/Box.astro';
 
@@ -23,7 +22,7 @@ const { Content } = await render(newestPost);
 <a class="" href={`/ramblings/${newestPost.id}`}>
     <Box title="🐸 Latest Rambling" createRandomness>
       <div class="pt-2 text-center text-ellipsis min-w-[80vw] md:min-w-40 xl:min-w-80 flex flex-col items-center justify-center">
-        {newestPost.body.length > maxPreviewLength ? (
+        {newestPost.body && newestPost.body.length > maxPreviewLength ? (
           `${newestPost.body.slice(0, maxPreviewLength / 2)} [...]`
         ) : (
           <Content />
@@ -31,7 +30,7 @@ const { Content } = await render(newestPost);
       </div>
 
       <div class="text-sm text-base-text-color/60">
-        {newestPost.body.length > maxPreviewLength
+        {newestPost.body && newestPost.body.length > maxPreviewLength
           ? "[Click to see full post]"
           : ""}
       </div>
