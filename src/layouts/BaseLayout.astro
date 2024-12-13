@@ -5,7 +5,7 @@ import BaseHead from "../components/BaseHead.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import "../styles/global.css";
 import RightColumn from "../components/RightColumn.astro";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import type { MarkdownHeading } from "astro";
 import TableOfContents from "../components/TableOfContents.astro";
 
@@ -33,7 +33,7 @@ const meta_desc = desc || SITE_DESCRIPTION;
 <html lang="en" transition:persist class="standard">
   <head>
     <BaseHead title={meta_title} description={meta_desc} />
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <div

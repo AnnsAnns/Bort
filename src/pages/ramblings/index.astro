@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Box from "../../components/Box.astro";
 
@@ -38,14 +38,14 @@ const maxPreviewLength = 400;
       >
         {
           posts.map(async (post) => {
-            const { Content } = await post.render();
+            const { Content } = await render(post);
 
             return (
               <a
-                id={post.slug}
+                id={post.id}
                 class="grow py-3 px-2 max-w-full min-w-[80%] flex flex-col items-center"
               >
-                <a href={`/ramblings/${post.slug}/`}>
+                <a href={`/ramblings/${post.id}/`}>
                   <Box
                     title={`${post.data.title || "🐸💬"}`}
                     className={`text-center h-full w-fit max-w-4xl`}
