@@ -1,0 +1,50 @@
+---
+import { getCollection, render } from "astro:content";
+import ClickToSeeMore from '../components/ClickToSeeMore.astro';
+
+import Box from '../components/Box.astro';
+
+const posts = (await getCollection("ramblings")).sort((a, b) => {
+  if (a.data.pubDate && b.data.pubDate) {
+    return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+  } else {
+    return -1;
+  }
+});
+
+const newestPost = posts[0];
+
+const maxPreviewLength = 100;
+
+const { Content } = await render(newestPost);
+
+---
+
+<a class="" href={`/ramblings/${newestPost.id}`}>
+    <Box title="🐸 Latest Rambling" createRandomness>
+      <div class="pt-2 text-center text-ellipsis min-w-[80vw] md:min-w-40 xl:min-w-80 flex flex-col items-center justify-center">
+        {newestPost.body.length > maxPreviewLength ? (
+          `${newestPost.body.slice(0, maxPreviewLength / 2)} [...]`
+        ) : (
+          <Content />
+        )}
+      </div>
+
+      <div class="text-sm text-base-text-color/60">
+        {newestPost.body.length > maxPreviewLength
+          ? "[Click to see full post]"
+          : ""}
+      </div>
+
+      <div class="text-left self-end text-sm text-base-text-color/60">
+        <div>
+          {newestPost.data.tags
+            ? `${newestPost.data.tags.map((val: string) => `#${val} `)} - `
+            : ""}
+          Click to expand post
+          {newestPost.data.pubDate
+            ? ` - ${newestPost.data.pubDate.toLocaleDateString()}`
+            : ""}
+        </div>
+      </Box>
+</a>

@@ -1,55 +1,82 @@
 ---
+import Image from "astro/components/Image.astro";
 
-import Image from 'astro/components/Image.astro'
+import Audio from "./AudioPlayer.astro";
+import Box from "../components/Box.astro";
 
-import Audio from './AudioPlayer.astro'
-import Box from '../components/Box.astro'
+import bob from "./resources/blinkies/bob.gif";
+import jerma from "./resources/blinkies/jerma.gif";
+import fftake from "./resources/blinkies/fftake.gif";
+import dablinkie from "./resources/blinkies/da blinkie.gif";
+import trans from "./resources/blinkies/trans.gif";
+import jermamiku from "./resources/blinkies/jermamiku.gif";
+import mikujerma from "./resources/blinkies/mikujerma.gif";
+import OwnBlinky from "../../public/annsann.gif";
 
-import bob from './resources/blinkies/bob.gif'
-import jerma from './resources/blinkies/jerma.gif'
-import fftake from './resources/blinkies/fftake.gif'
-import dablinkie from './resources/blinkies/da blinkie.gif'
-import trans from './resources/blinkies/trans.gif'
-import jermamiku from './resources/blinkies/jermamiku.gif'
-import mikujerma from './resources/blinkies/mikujerma.gif'
+const blinky_url = "/annsann.gif";
 
 interface Props {
-    audioSource?: string;
+  audioSource?: string;
 }
 
 const { audioSource } = Astro.props;
-
 ---
 
 <div class="w-full">
-    <div class="justify-items-center xl:max-w-64 grid grid-flow-row auto-rows-max gap-4 justify-between items-center h-full md:m-8">
-    <Audio audioSource={audioSource} /> 
+  <div
+    class="justify-items-center xl:max-w-64 w-full grid grid-flow-row auto-rows-max gap-4 justify-between items-center h-full"
+  >
+    <Audio audioSource={audioSource} />
     <Box title="">
-        <div class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1">
-            <a href="https://www.youtube.com/watch?v=1U9ls3vAt5I">
-                <Image src={jerma} alt="Jerma Blinky"/>
-            </a>
-            <a href="https://www.youtube.com/watch?v=PLaanhBuiVU">
-                <Image src={dablinkie} alt="Da Blinki?!?"/>
-            </a>
-            <a href="https://archlinux.org/">
-                <Image src={trans} alt="Trans Rights" />
-            </a>
-            <a href="https://www.youtube.com/watch?v=iBF_mDFgtH4">
-                <Image src={mikujerma} alt="Miku Jerma"/>
-            </a>
-            <a href="https://www.youtube.com/watch?v=0Qs_jRerdSg">
-                <Image src={jermamiku} alt="Jerma Miku"/>
-            </a>
-            <div class="w-full columns-2">
-                <a href="https://www.youtube.com/watch?v=yD2FSwTy2lw"> 
-                    <Image src={bob} alt="Bob from Animal Crossing spinning"/>
-                </a>
-                <a href="https://www.mozilla.org/en-US/firefox/windows/" >
-                    <Image src={fftake} alt="Download Firefox"/>
-                </a>
-            </div>
+      <div
+        class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1"
+      >
+        <a href="https://www.youtube.com/watch?v=1U9ls3vAt5I">
+          <Image src={jerma} alt="Jerma Blinky" />
+        </a>
+        <a href="https://www.youtube.com/watch?v=PLaanhBuiVU">
+          <Image src={dablinkie} alt="Da Blinki?!?" />
+        </a>
+        <a href="https://archlinux.org/">
+          <Image src={trans} alt="Trans Rights" />
+        </a>
+        <a href="https://www.youtube.com/watch?v=iBF_mDFgtH4">
+          <Image src={mikujerma} alt="Miku Jerma" />
+        </a>
+        <a href="https://www.youtube.com/watch?v=0Qs_jRerdSg">
+          <Image src={jermamiku} alt="Jerma Miku" />
+        </a>
+        <div class="w-full columns-2">
+          <a href="https://www.youtube.com/watch?v=yD2FSwTy2lw">
+            <Image src={bob} alt="Bob from Animal Crossing spinning" />
+          </a>
+          <a href="https://www.mozilla.org/en-US/firefox/windows/">
+            <Image src={fftake} alt="Download Firefox" />
+          </a>
         </div>
+      </div>
     </Box>
-    </div>  
+
+    <Box title="">
+      <div
+        class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1"
+      >
+        <Image src={OwnBlinky} alt="blinky" />
+        
+        <label
+          for="blinky"
+          class="text-slate-500 text-xs pt-2"
+          >Copy this code to use the blinky</label>
+        <textarea
+          id="blinky"
+          readonly
+          class="p-1 border rounded text-slate-500 text-xs"
+          rows="1"
+          >{
+            `<a href='${Astro.url.origin}' target='_blank'><img src='${Astro.url.origin}/${blinky_url}' alt='AnnsAnn🐸'></a>`
+          }</textarea
+        >
+      </div>
+    </Box>
+  </div>
 </div>
