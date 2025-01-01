@@ -1,1 +1,0 @@
-import{a,l as c,T as n,c as o}from"./themes.DrAGYdDy.js";function t(){let m=a();c();const e=document.querySelector(".theme-name");e&&(e.textContent=n[m]),document.getElementById("themeSwitcherClick")?.addEventListener("click",o)}document.addEventListener("astro:after-swap",t);t();
