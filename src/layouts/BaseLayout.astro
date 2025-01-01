@@ -37,14 +37,14 @@ const meta_desc = desc || SITE_DESCRIPTION;
   </head>
   <body>
     <div
-      class={`h-full sm:h-screen w-full bg-base-bd-background-color md:overflow-clip`}
+      class={`h-full my-1 sm:my-2 sm:h-screen w-full bg-base-bd-background-color md:overflow-clip`}
     >
       <div
-        class="md:grid md:grid-cols-4 lg:grid-cols-4 md:gap-8 p-4 justify-center h-full w-full sm:h-screen"
+        class="md:grid md:grid-cols-4 lg:grid-cols-4 md:gap-8 p-4 justify-around xl:justify-center h-full w-full sm:h-screen"
       >
         {/** Sidebar */}
         <div
-          class="flex justify-self-end gap-y-6 lg:gap-y-16 lg:py-20 py-4 flex-col w-full md:w-min h-full md:h-screen sm:justify-evenly lg:justify-start overflow-auto"
+          class="flex justify-self-end gap-y-6 py-4 flex-col w-full md:w-min h-full md:h-screen sm:justify-around overflow-auto"
         >
           <Sidebar />
           {
@@ -67,7 +67,7 @@ const meta_desc = desc || SITE_DESCRIPTION;
 
         {/** Right Sidebar-ish */}
         <div
-          class="flex justify-self-start gap-y-6 lg:gap-y-16 lg:py-20 py-4 flex-col w-full h-full md:h-screen sm:justify-evenly lg:justify-start overflow-auto"
+          class="w-full h-full md:h-screen overflow-auto"
         >
           <RightColumn audioSource={audioSource} transition:persist />
         </div>
