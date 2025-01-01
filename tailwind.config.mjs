@@ -68,7 +68,31 @@ export default {
 		require('@tailwindcss/aspect-ratio'),
 		require('tailwind-scrollbar'),
 		createThemes({
-		  standard: {
+		  ayy4: {
+			"base-text-color": "#00303b",
+			"box-color-standard": "#ffce96",
+			"base-background-color": "#f1f2da",
+			"base-bd-background-color": "#ff7777",
+		  },
+		  curiosities: {
+			"base-text-color": "#46425e",
+			"box-color-standard": "#ffb0a3",
+			"base-background-color": "#ffeecc",
+			"base-bd-background-color": "#46425e",
+		  },
+		  latenightbath: {
+			"base-text-color": "#46425e",
+			"box-color-standard": "#f69197",
+			"base-background-color": "#ffeecc",
+			"base-bd-background-color": "#ffc4b8",
+		  },
+		  sunnyswamp: {
+			"base-text-color": "#46425e",
+			"box-color-standard": "#d1ad82",
+			"base-background-color": "#dbd1b4",
+			"base-bd-background-color": "#98a681",
+		  },
+		  standard_og: {
 			"base-text-color": "#5E2BFF",
 			"box-color-standard": "#B1EDE8",
 			"base-background-color": "#FFFCF9",

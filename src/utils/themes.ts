@@ -1,9 +1,16 @@
 export enum Themes {
-    standard,
+    ayy4,
+    latenightbath,
+    curiosities,
+    sunnyswamp,
+    standard_og,
     werwolvdark,
-    trans,
     nostalgia,
 }
+
+export const standard_theme = Themes.latenightbath;
+export const theme_version = 3;
+export const theme_cookie = "theme_v" + theme_version;
 
 // TS Enums have no (good) way of finding the last element to prevent rollovers
 // So it's either this or a cursed function
@@ -23,10 +30,10 @@ export function loadSetTheme() {
 
 export function loadTheme(): number {
     let storedTheme: unknown = null;
-    let retTheme = Themes.standard;
+    let retTheme = standard_theme;
   
     if (typeof window !== "undefined") {
-      storedTheme = localStorage.getItem("theme_v2");
+      storedTheme = localStorage.getItem(theme_cookie);
     }
   
     if (typeof storedTheme === 'number') {
@@ -34,7 +41,7 @@ export function loadTheme(): number {
     } else if (typeof storedTheme === 'string') {
       retTheme = parseInt(storedTheme);
     } else {
-      retTheme = Themes.standard;
+      retTheme = standard_theme;
     }
 
     return retTheme;
@@ -44,7 +51,7 @@ export function clickLoadTheme(e: Event) {
     e.preventDefault();
     const theme = loadTheme();
     const newTheme = theme < lastTheme ? theme+1 : 0;
-    localStorage.setItem("theme_v2", newTheme.toString())
+    localStorage.setItem(theme_cookie, newTheme.toString())
 
     // Reload the page to apply the new theme
     // This way we can have a static site with dynamic themes
