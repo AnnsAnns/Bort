@@ -1,11 +1,11 @@
 export enum Themes {
-    ayy4,
-    latenightbath,
-    curiosities,
-    sunnyswamp,
-    standard_og,
-    werwolvdark,
-    nostalgia,
+  latenightbath,
+  ayy4,
+  curiosities,
+  sunnyswamp,
+  standard_og,
+  werwolvdark,
+  nostalgia,
 }
 
 export const standard_theme = Themes.latenightbath;
@@ -23,46 +23,48 @@ export function loadSetTheme() {
 
   // Go through each theme and remove the class if it exists
   for (let i = 0; i <= lastTheme; i++) {
-    if (Themes[i] === Themes[theme]) {continue;}
+    if (Themes[i] === Themes[theme]) {
+      continue;
+    }
     document.documentElement.classList.remove(Themes[i]);
   }
 }
 
 export function loadTheme(): number {
-    let storedTheme: unknown = null;
-    let retTheme = standard_theme;
-  
-    if (typeof window !== "undefined") {
-      storedTheme = localStorage.getItem(theme_cookie);
-    }
-  
-    if (typeof storedTheme === 'number') {
-      retTheme = storedTheme;
-    } else if (typeof storedTheme === 'string') {
-      retTheme = parseInt(storedTheme);
-    } else {
-      retTheme = standard_theme;
-    }
+  let storedTheme: unknown = null;
+  let retTheme = standard_theme;
 
-    return retTheme;
+  if (typeof window !== "undefined") {
+    storedTheme = localStorage.getItem(theme_cookie);
+  }
+
+  if (typeof storedTheme === "number") {
+    retTheme = storedTheme;
+  } else if (typeof storedTheme === "string") {
+    retTheme = parseInt(storedTheme);
+  } else {
+    retTheme = standard_theme;
+  }
+
+  return retTheme;
 }
 
 export function clickLoadTheme(e: Event) {
-    e.preventDefault();
-    const theme = loadTheme();
-    const newTheme = theme < lastTheme ? theme+1 : 0;
-    localStorage.setItem(theme_cookie, newTheme.toString())
+  e.preventDefault();
+  const theme = loadTheme();
+  const newTheme = theme < lastTheme ? theme + 1 : 0;
+  localStorage.setItem(theme_cookie, newTheme.toString());
 
-    // Reload the page to apply the new theme
-    // This way we can have a static site with dynamic themes
-    //location.reload();
+  // Reload the page to apply the new theme
+  // This way we can have a static site with dynamic themes
+  //location.reload();
 
-    loadSetTheme();
+  loadSetTheme();
 
-    // Change text within "theme-name" div
-    const themeName = document.querySelector('.theme-name');
+  // Change text within "theme-name" div
+  const themeName = document.querySelector(".theme-name");
 
-    if (themeName) {
-      themeName.textContent = Themes[newTheme];
-    }
+  if (themeName) {
+    themeName.textContent = Themes[newTheme];
+  }
 }
