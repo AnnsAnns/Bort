@@ -11,22 +11,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Deno
-        uses: denoland/setup-deno@v2
-
-      - name: Cache Deno modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/deno
-          key: ${{ runner.os }}-deno-${{ hashFiles('**/deno.json') }}
-          restore-keys: |
-            ${{ runner.os }}-deno-
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
 
       - name: Install dependencies
-        run: deno cache --allow-scripts deno.json
+        run: npm install
 
       - name: Build
-        run: deno task build
+        run: npm run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
