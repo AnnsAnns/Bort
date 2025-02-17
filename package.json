@@ -25,7 +25,6 @@
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.15",
-    "@types/bun": "^1.1.14",
     "tailwind-scrollbar": "^3.1.0"
   }
 }
