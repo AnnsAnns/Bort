@@ -26,6 +26,8 @@ jobs:
           branch: gh-pages
           folder: dist
           clean: true
+          force: false
           clean-exclude: |
             .nojekyll
             CNAME
+            pr-preview/
