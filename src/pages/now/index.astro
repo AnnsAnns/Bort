@@ -1,0 +1,30 @@
+---
+import { getCollection, render } from "astro:content";
+import RamblingsPost from "../../layouts/RamblingsPost.astro";
+import BlogPost from "../../layouts/BlogPost.astro";
+
+const posts = await getCollection("now");
+
+// Sort by date
+posts.sort((a, b) => {
+  if (a.data.pubDate && b.data.pubDate) {
+    return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+  } else {
+    return -1;
+  }
+});
+
+const post = posts[0];
+const { Content, headings } = await render(post);
+const date_readable = post.data.pubDate.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+
+---
+
+<BlogPost
+  {...post.data}
+  tableOfContents={headings}
+  description={`Whats happening in my life as of (${date_readable})`}
+  title={`Now (${date_readable})`}
+>
+  <Content />
+</BlogPost>

@@ -1,0 +1,25 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import RamblingsPost from "../../layouts/RamblingsPost.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("now");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"now">;
+
+const post = Astro.props;
+
+const { Content, headings } = await render(post);
+---
+
+<RamblingsPost
+  {...post.data}
+  tableOfContents={headings}
+  title={`Now (${post.data.pubDate.toLocaleDateString("en-US", { month: "short", year: "numeric" })})`}
+>
+  <Content />
+</RamblingsPost>
