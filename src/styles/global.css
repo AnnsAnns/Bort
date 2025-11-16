@@ -1,7 +1,5 @@
  /* Init Tailwind */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 body {
     margin: 0;
@@ -72,3 +70,103 @@ padding: 3px 10px;
 	  background-position: 0% 50%;
 	}
   }
+
+@theme inline {
+	--color-base-text-color: var(--base-text-color);
+	--color-box-color-standard: var(--box-color-standard);
+	--color-base-background-color: var(--base-background-color);
+	--color-base-bd-background-color: var(--base-bd-background-color);
+}
+
+[data-theme="ayy4"] {
+	--base-text-color: #00303b;
+	--box-color-standard: #ffce96;
+	--base-background-color: #f1f2da;
+	--base-bd-background-color: #ff7777;
+}
+
+[data-theme="curiosities"] {
+	--base-text-color: #46425e;
+	--box-color-standard: #ffb0a3;
+	--base-background-color: #ffeecc;
+	--base-bd-background-color: #46425e;
+}
+
+[data-theme="latenightbath"] {
+	--base-text-color: #46425e;
+	--box-color-standard: #f69197;
+	--base-background-color: #ffeecc;
+	--base-bd-background-color: #ffc4b8;
+}
+
+[data-theme="sunnyswamp"] {
+	--base-text-color: #46425e;
+	--box-color-standard: #d1ad82;
+	--base-background-color: #dbd1b4;
+	--base-bd-background-color: #98a681;
+}
+
+[data-theme="standard_og"] {
+	--base-text-color: #5E2BFF;
+	--box-color-standard: #B1EDE8;
+	--base-background-color: #FFFCF9;
+	--base-bd-background-color: #FF6978;
+}
+
+[data-theme="werwolvdark"] {
+	--base-text-color: #f3f4f4;
+	--box-color-standard: #686299;
+	--base-background-color: #1e2127;
+	--base-bd-background-color: #242424;
+}
+
+[data-theme="trans"] {
+	--base-text-color: #55CDFC;
+	--box-color-standard: #B1EDE8;
+	--base-background-color: #FFFCF9;
+	--base-bd-background-color: #F7A8B8;
+}
+
+[data-theme="nostalgia"] {
+	--base-text-color: #b8b5b9;
+	--box-color-standard: #53a788;
+	--base-background-color: #131620;
+	--base-bd-background-color: #181c28;
+}
+
+@theme {
+	--breakpoint-4k: 2000px;
+	
+	--color-phlox: #C04CFD;
+	--color-hot-pink: #FC6DAB;
+	--color-cream: #F7F6C5;
+	--color-beige: #F3FAE1;
+	--color-darkpurpleish: #310A31;
+	--color-greypurpleish: #847996;
+	--color-eggplant: #6D435A;
+	
+	--max-height-notfullscreen: 95vh;
+	--height-notfullscreen: 95vh;
+	
+	--background-size-300\%: 300%;
+	
+	--font-family-bodyf: "National Park", "Helvetica";
+	--font-family-headerf: "Reglisse Fill", "Arial Black";
+	
+	--shadow-square: 8px 8px var(--secondary_muted);
+	
+	--animate-fade-out: fade 2s cubic-bezier(0.4, 0, 0.6, 1) linear;
+	--animate-gradient: animatedgradient 6s ease infinite alternate;
+}
+
+@keyframes fade {
+	0% {
+		opacity: 0.0;
+	}
+	50% {
+		opacity: 0.5;
+	}
+}
+
+@plugin "@tailwindcss/typography";
+@plugin "tailwind-scrollbar";

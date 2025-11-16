@@ -19,15 +19,7 @@ export const lastTheme = Themes.nostalgia;
 export function loadSetTheme() {
   const theme = loadTheme();
 
-  document.documentElement.classList.add(Themes[theme]);
-
-  // Go through each theme and remove the class if it exists
-  for (let i = 0; i <= lastTheme; i++) {
-    if (Themes[i] === Themes[theme]) {
-      continue;
-    }
-    document.documentElement.classList.remove(Themes[i]);
-  }
+  document.body.setAttribute("data-theme", Themes[theme]);
 }
 
 export function loadTheme(): number {
