@@ -13,7 +13,9 @@ export default defineConfig({
   site: 'https://annsann.eu',
   integrations: [embeds(), mdx(), sitemap()],
   base: base_url,
-
+  prefetch: {
+    prefetchAll: true,
+  },
   vite: {
     plugins: [tailwindcss()],
   },

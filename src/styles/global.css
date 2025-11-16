@@ -12,9 +12,35 @@ body {
 	}
   }
   
-:root {
---body-font: "National Park", "Helvetica";
---header-font: "Reglisse Fill", "Arial Black";
+@theme {
+	--breakpoint-4k: 2000px;
+	
+	--color-phlox: #C04CFD;
+	--color-hot-pink: #FC6DAB;
+	--color-cream: #F7F6C5;
+	--color-beige: #F3FAE1;
+	--color-darkpurpleish: #310A31;
+	--color-greypurpleish: #847996;
+	--color-eggplant: #6D435A;
+	
+	--max-height-notfullscreen: 95vh;
+	--height-notfullscreen: 95vh;
+	
+	--background-size-300\%: 300%;
+	--font-bodyf: "National Park", sans-serif;
+	--font-headerf: "Reglisse Fill", sans-serif;
+	
+	--font-family-bodyf: "National Park", "Helvetica";
+	--font-family-headerf: "Reglisse Fill", "Arial Black";
+	
+	--shadow-square: 8px 8px var(--secondary_muted);
+	
+	--animate-fade-out: fade 2s cubic-bezier(0.4, 0, 0.6, 1) linear;
+	--animate-gradient: animatedgradient 6s ease infinite alternate;
+}
+
+html {
+	font-family: var(--font-family-bodyf);
 }
 
 @font-face {
@@ -33,18 +59,10 @@ font-style: normal;
 font-display: swap;
 }
 
-@layer base {
-html {
-	font-family: var(--body-font);
-}
-}
-
 * {
 box-sizing: border-box;
 }
-a {
-text-decoration: none;
-}
+
 
 .navitem {
 padding: 3px 10px;
@@ -132,31 +150,6 @@ padding: 3px 10px;
 	--box-color-standard: #53a788;
 	--base-background-color: #131620;
 	--base-bd-background-color: #181c28;
-}
-
-@theme {
-	--breakpoint-4k: 2000px;
-	
-	--color-phlox: #C04CFD;
-	--color-hot-pink: #FC6DAB;
-	--color-cream: #F7F6C5;
-	--color-beige: #F3FAE1;
-	--color-darkpurpleish: #310A31;
-	--color-greypurpleish: #847996;
-	--color-eggplant: #6D435A;
-	
-	--max-height-notfullscreen: 95vh;
-	--height-notfullscreen: 95vh;
-	
-	--background-size-300\%: 300%;
-	
-	--font-family-bodyf: "National Park", "Helvetica";
-	--font-family-headerf: "Reglisse Fill", "Arial Black";
-	
-	--shadow-square: 8px 8px var(--secondary_muted);
-	
-	--animate-fade-out: fade 2s cubic-bezier(0.4, 0, 0.6, 1) linear;
-	--animate-gradient: animatedgradient 6s ease infinite alternate;
 }
 
 @keyframes fade {
