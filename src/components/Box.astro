@@ -33,13 +33,14 @@ const baseClasses = `
     sm:max-h-notfullscreen
     text-base-text-color
     rounded-sm
+    relative
 `;
 
 const classes = `${baseClasses} ${additionalClasses}`;
 
 ---
 
-<div class={classes}>
+<div class={classes} data-draggable-box>
     <div class="
         bg-box-color-standard
         mx-[-12px]
@@ -55,7 +56,8 @@ const classes = `${baseClasses} ${additionalClasses}`;
         pb-2
         gap-1
         text-base-background-color
-    ">
+        cursor-move
+    " data-drag-handle>
     {
         shareSlug && (
             <a id="SHAREBUTTON" href={`#${shareSlug}`}>
@@ -84,3 +86,64 @@ const classes = `${baseClasses} ${additionalClasses}`;
         </div>
     </div>
 </div>
+
+<!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> -->
