@@ -103,7 +103,7 @@ There are three important factors to consider here:
 2. The server should be really really cheap. I don't need an actual beefy VPS, I need an exit node to my cheap local homeserver with fairly minimal web traffic.
 3. The server needs to have a fully dedicated IPv4. I'm not about to settle with another hack, if I commit to it I want to do it right.
 
-In the end the boiled down to a few options, till I finally settled on IONOS 1€/month VPS.
+In the end the boiled down to a few options, till I finally settled on the [IONOS 1€/month VPS](https://www.ionos.de/server/vps).
 It doesn't really offer much, at 1 vCore, 1 GB RAM and 10 GB NVMe storage, but also like, I don't need much, as long as it can run a reverse proxy I am happy.
 
 ### Setting up the Server
@@ -118,6 +118,10 @@ It's a very simple way to setup a VPN between multiple devices, including routin
 It's mostly targeted towards businesses, however, their free plan is more than enough for personal use.
 The main reason to use it here is that it allows me to easily SSH into the server without exposing the port, nor having to deal with setting up SSH keys,
 e.g. if something breaks I can easily check from any computer or phone as long as I have my security key, password and Tailscale access.
+
+Technically I could also use tailscale exit nodes to route traffic from my home server through the IONOS VPS, however, I don't want
+tailscale to be a hard dependency in my network. Right now tailscale is more like a convenient little helper tool that allows me to easily access my servers
+and using it for exit nodes would make it a hard dependency that I couldn't simply remove if I wanted to.
 
 ### Rathole
 
