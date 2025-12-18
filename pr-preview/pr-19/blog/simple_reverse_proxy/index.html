@@ -1,0 +1,986 @@
+<!DOCTYPE html><script type="module" src="/pr-preview/pr-19/_astro/BaseLayout.astro_astro_type_script_index_0_lang.C2A0M2Up.js"></script> <html lang="en" class="standard" data-astro-transition-persist="astro-djjcnqsn-1"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Astro v5.16.5"><!-- Font preloads --><link rel="preload" href="/fonts/NationalPark-Regular.otf" as="font" type="font/otf" crossorigin><link rel="preload" href="/fonts/Reglisse_Fill.otf" as="font" type="font/otf" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://annsann.eu/pr-preview/pr-19/blog/simple_reverse_proxy/"><!-- Primary Meta Tags --><title>AnnsAnn 🐸   - Simple Cheap Reverse Proxy in a few Minutes</title><meta name="title" content="AnnsAnn 🐸   - Simple Cheap Reverse Proxy in a few Minutes"><meta name="description" content="Alias IPv6, Germany and Tunnels 4: A New Hope"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://annsann.eu/pr-preview/pr-19/blog/simple_reverse_proxy/"><meta property="og:title" content="AnnsAnn 🐸   - Simple Cheap Reverse Proxy in a few Minutes"><meta property="og:description" content="Alias IPv6, Germany and Tunnels 4: A New Hope"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://annsann.eu/pr-preview/pr-19/blog/simple_reverse_proxy/"><meta property="twitter:title" content="AnnsAnn 🐸   - Simple Cheap Reverse Proxy in a few Minutes"><meta property="twitter:description" content="Alias IPv6, Germany and Tunnels 4: A New Hope"><!-- ActivityPub Creds --><link rel="me" href="https://norden.social/@AnnsAnn"><meta name="fediverse:creator" content="@AnnsAnn@norden.social"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/pr-preview/pr-19/_astro/ClientRouter.astro_astro_type_script_index_0_lang.DmLMM95P.js"></script><link rel="stylesheet" href="/pr-preview/pr-19/_astro/_slug_.DOEv4cUu.css"><script type="module" src="/pr-preview/pr-19/_astro/page.D6sK1WDe.js"></script><style>.link-preview[data-astro-cid-ztfdmrby]{--lp-width: var(--link-preview-width, 30em);--lp-pad-x: var(--link-preview-padding-inline, 0);--lp-pad-y: var(--link-preview-padding-block, .5em);--lp-corners: var(--link-preview-corners, 0);--lp-desc-lines: var(--link-preview-description-lines, 1);position:relative;width:var(--lp-width);max-width:100%;display:flex;flex-direction:column-reverse;border-radius:var(--lp-corners)}.link-preview[data-astro-cid-ztfdmrby] [data-astro-cid-ztfdmrby]{margin:0!important}.link-preview__content[data-astro-cid-ztfdmrby]{display:flex;flex-direction:column;padding:var(--lp-pad-y) var(--lp-pad-x)}.link-preview[data-astro-cid-ztfdmrby] header[data-astro-cid-ztfdmrby]{display:flex;flex-direction:column-reverse}.link-preview__description[data-astro-cid-ztfdmrby]{display:-webkit-box;-webkit-line-clamp:var(--lp-desc-lines);-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis}.link-preview[data-astro-cid-ztfdmrby]:not(.link-preview--has-video) a[data-astro-cid-ztfdmrby]:after{content:"";position:absolute;inset:0}.link-preview[data-astro-cid-ztfdmrby] img[data-astro-cid-ztfdmrby],.link-preview[data-astro-cid-ztfdmrby] video[data-astro-cid-ztfdmrby]{aspect-ratio:1200 / 630;width:100%;height:auto;object-fit:cover;border-top-left-radius:var(--lp-corners);border-top-right-radius:var(--lp-corners)}
+</style><style>.twitter-tweet:not(.twitter-tweet-rendered){padding:var(--tc-padding, 1em);border:1px solid var(--tc-border-color, #cfd9de)}.twitter-tweet:not(.twitter-tweet-rendered)>:first-child{margin-top:0}.twitter-tweet:not(.twitter-tweet-rendered)>:last-child{margin-bottom:0}.twitter-tweet.twitter-tweet-rendered{color-scheme:normal}
+</style><style>lite-vimeo{font-size:10px;background-color:#000;position:relative;display:block;contain:content;background-position:center center;background-size:cover}lite-vimeo:after{content:"";display:block;padding-bottom:56.25%}lite-vimeo>iframe{all:unset!important;width:100%!important;height:100%!important;position:absolute!important;inset:0!important;border:0!important}lite-vimeo>.ltv-playbtn{content:"";position:absolute;inset:0;width:100%;background:transparent;outline:0;border:0;cursor:pointer}lite-vimeo>.ltv-playbtn:before{width:6.5em;height:4em;background:#172322bf;opacity:.8;border-radius:.25rem;transition:all .2s cubic-bezier(0,0,.2,1)}lite-vimeo>.ltv-playbtn:focus:before{outline:auto}lite-vimeo:hover>.ltv-playbtn:before{background-color:#00adef;background-color:var(--ltv-color, #00adef);opacity:1}lite-vimeo>.ltv-playbtn:after{border-style:solid;border-width:1em 0 1em 1.7em;border-color:transparent transparent transparent #fff}lite-vimeo>.ltv-playbtn:before,lite-vimeo>.ltv-playbtn:after{content:"";position:absolute;top:50%;left:50%;transform:translate3d(-50%,-50%,0)}lite-vimeo.ltv-activated:before,lite-vimeo.ltv-activated>.ltv-playbtn{cursor:unset;opacity:0;pointer-events:none}
+</style><style>lite-youtube>iframe{all:unset!important;width:100%!important;height:100%!important;position:absolute!important;inset:0!important;border:0!important}
+</style><style>.avatar[data-astro-cid-manwa2bn]{border-radius:var(--bluesky-radius-full);overflow:hidden;background-color:var(--bluesky-color-border);flex-shrink:0}.avatar[data-astro-cid-manwa2bn] img[data-astro-cid-manwa2bn]{width:100%;height:100%;object-fit:cover}.medium[data-astro-cid-manwa2bn]{width:2.5rem;height:2.5rem}.small[data-astro-cid-manwa2bn]{width:1rem;height:1rem}
+</style><style>.card[data-astro-cid-ovxpf64e]{display:flex;flex-direction:column;width:100%;border:var(--bluesky-card-border);border-radius:var(--bluesky-radius-md);overflow:hidden;text-decoration:none;color:var(--bluesky-color-text);background:var(--bluesky-color-background);transition:var(--bluesky-card-transition)}.card[data-astro-cid-ovxpf64e]:hover{background:var(--bluesky-color-background-hover)}.cover-image[data-astro-cid-ovxpf64e]{aspect-ratio:var(--bluesky-aspect-ratio-thumb);width:100%;height:auto;object-fit:cover}.content[data-astro-cid-ovxpf64e]{padding:var(--bluesky-content-padding)}.header[data-astro-cid-ovxpf64e]{display:flex;gap:var(--bluesky-card-gap);align-items:center}.avatar[data-astro-cid-ovxpf64e]{width:var(--bluesky-avatar-md);height:var(--bluesky-avatar-md)}.title-group[data-astro-cid-ovxpf64e]{display:flex;flex-direction:column;gap:var(--bluesky-space-2xs)}.title[data-astro-cid-ovxpf64e]{font-weight:var(--bluesky-font-weight-semibold);line-height:var(--bluesky-line-height-title);margin:0;color:var(--bluesky-color-text)}.subtitle[data-astro-cid-ovxpf64e]{font-size:var(--bluesky-font-size-sm);color:var(--bluesky-color-text-secondary);line-height:var(--bluesky-line-height-subtitle);margin:0}.description[data-astro-cid-ovxpf64e]{font-size:var(--bluesky-font-size-sm);color:var(--bluesky-color-text-secondary);line-height:var(--bluesky-line-height-normal);margin:var(--bluesky-space-xs) 0 0 0}
+</style><style>.record-with-media[data-astro-cid-ojlygtsz]{display:flex;flex-direction:column;gap:var(--bluesky-space-sm)}
+</style><style>.external-link[data-astro-cid-stjl7fun]{display:flex;flex-direction:column;width:100%;border:var(--bluesky-card-border);border-radius:var(--bluesky-radius-md);overflow:hidden;text-decoration:none;color:var(--bluesky-color-text);background:var(--bluesky-color-background);transition:var(--bluesky-card-transition)}.thumbnail[data-astro-cid-stjl7fun]{aspect-ratio:var(--bluesky-aspect-ratio-thumb);width:100%;height:auto;object-fit:cover}.content[data-astro-cid-stjl7fun]{padding:var(--bluesky-content-padding)}.domain[data-astro-cid-stjl7fun]{font-size:var(--bluesky-font-size-sm);color:var(--bluesky-color-text-secondary);margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.title[data-astro-cid-stjl7fun]{font-weight:var(--bluesky-font-weight-semibold);margin:0;color:var(--bluesky-color-text);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.description[data-astro-cid-stjl7fun]{font-size:var(--bluesky-font-size-sm);color:var(--bluesky-color-text-secondary);margin:var(--bluesky-space-xs) 0 0 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+</style><style>.image-grid-container[data-astro-cid-tayatr6q]{width:100%;max-width:var(--bluesky-content-max-width);margin:0 auto;aspect-ratio:var(--bluesky-aspect-ratio-thumb)}.image-grid[data-astro-cid-tayatr6q]{width:100%;height:100%;display:grid;gap:var(--bluesky-space-xs);border-radius:var(--bluesky-radius-md);overflow:hidden}.image-grid-item[data-astro-cid-tayatr6q]{position:relative;overflow:hidden;width:100%;height:100%;background-color:var(--bluesky-color-border)}.image-grid-item[data-astro-cid-tayatr6q] img[data-astro-cid-tayatr6q]{width:100%;height:100%;object-fit:cover}.image-grid--1[data-astro-cid-tayatr6q]{grid-template-columns:1fr}.image-grid--2[data-astro-cid-tayatr6q],.image-grid--3[data-astro-cid-tayatr6q]{grid-template-columns:repeat(2,1fr)}.image-grid--3[data-astro-cid-tayatr6q] .image-grid-item[data-astro-cid-tayatr6q]:first-child{grid-row:span 2}.image-grid--4[data-astro-cid-tayatr6q]{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,1fr)}
+</style><style>lite-youtube{background-color:#000;position:relative;display:block;contain:content;background-position:center center;background-size:cover;cursor:pointer;max-width:720px}lite-youtube:before{content:attr(data-title);display:block;position:absolute;top:0;background-image:linear-gradient(180deg,#000000ab,#0000008a 14%,#00000026 54%,#0000000d 72%,#0000 94%);height:99px;width:100%;font-family:YouTube Noto,Roboto,Arial,Helvetica,sans-serif;color:#eee;text-shadow:0 0 2px rgba(0,0,0,.5);font-size:18px;padding:25px 20px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;box-sizing:border-box}lite-youtube:hover:before{color:#fff}lite-youtube:after{content:"";display:block;padding-bottom:56.25%}lite-youtube>iframe{width:100%;height:100%;position:absolute;top:0;left:0;border:0}lite-youtube>.lyt-playbtn{display:block;width:100%;height:100%;background:no-repeat center/68px 48px;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24 27 14v20" fill="white"/></svg>');position:absolute;cursor:pointer;z-index:1;filter:grayscale(100%);transition:filter .1s cubic-bezier(0,0,.2,1);border:0}lite-youtube:hover>.lyt-playbtn,lite-youtube .lyt-playbtn:focus{filter:none}lite-youtube.lyt-activated{cursor:unset}lite-youtube.lyt-activated:before,lite-youtube.lyt-activated>.lyt-playbtn{opacity:0;pointer-events:none}.lyt-visually-hidden{clip:rect(0 0 0 0);clip-path:inset(50%);height:1px;overflow:hidden;position:absolute;white-space:nowrap;width:1px}
+</style><style>.media-container[data-astro-cid-kx6yyo6i]{width:100%;overflow:hidden;border-radius:var(--bluesky-radius-md);position:relative;background-color:var(--bluesky-color-border)}.media-container[data-astro-cid-kx6yyo6i]>img[data-astro-cid-kx6yyo6i]{width:100%;height:100%;object-fit:cover}
+</style><style>.post-container[data-astro-cid-focmzavi]{border:var(--bluesky-card-border);border-radius:var(--bluesky-radius-md);display:flex;flex-direction:column;gap:var(--bluesky-space-xs);padding:var(--bluesky-space-sm);text-decoration:none;color:var(--bluesky-color-text);transition:var(--bluesky-card-transition)}.post-link[data-astro-cid-focmzavi]{text-decoration:none}.post-container[data-astro-cid-focmzavi]:hover{background-color:var(--bluesky-color-background-hover)}.user-info[data-astro-cid-focmzavi]{display:flex;gap:var(--bluesky-space-xs);align-items:center}.user-text[data-astro-cid-focmzavi]{font-size:var(--bluesky-font-size-sm);margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--bluesky-color-text)}.name[data-astro-cid-focmzavi]{font-weight:var(--bluesky-font-weight-bold);color:var(--bluesky-color-text)}.handle[data-astro-cid-focmzavi]{color:var(--bluesky-color-text-secondary);margin-left:var(--bluesky-space-xs)}.content[data-astro-cid-focmzavi]{font-size:var(--bluesky-font-size-sm);color:var(--bluesky-color-text);margin:0;line-height:var(--bluesky-line-height-normal)}
+</style><style>.bluesky-post-container{--bluesky-color-overlay: rgba(0, 0, 0, .5);--bluesky-color-link: rgb(59 130 246);--bluesky-color-text--light: #000000;--bluesky-color-text-secondary--light: rgb(66 87 108);--bluesky-color-border--light: #e5e5e5;--bluesky-color-background--light: #ffffff;--bluesky-color-background-hover--light: #fafafa;--bluesky-color-text--dark: white;--bluesky-color-text-secondary--dark: rgb(174, 187, 201);--bluesky-color-border--dark: rgb(46, 64, 82);--bluesky-color-background--dark: hsl(211, 20%, 20%);--bluesky-color-background-hover--dark: hsl(211, 20%, 15%);--bluesky-color-text: var(--bluesky-color-text--light);--bluesky-color-text-secondary: var(--bluesky-color-text-secondary--light);--bluesky-color-border: var(--bluesky-color-border--light);--bluesky-color-background: var(--bluesky-color-background--light);--bluesky-color-background-hover: var( --bluesky-color-background-hover--light );--bluesky-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;--bluesky-font-size-sm: .875rem;--bluesky-font-size-base: 1rem;--bluesky-font-size-lg: 1.125rem;--bluesky-font-weight-normal: 400;--bluesky-font-weight-medium: 500;--bluesky-font-weight-semibold: 600;--bluesky-font-weight-bold: 700;--bluesky-line-height-tight: 1.2;--bluesky-line-height-normal: 1.4;--bluesky-line-height-relaxed: 1.6;--bluesky-line-height-title: 21px;--bluesky-line-height-subtitle: 18px;--bluesky-space-2xs: .125rem;--bluesky-space-xs: .25rem;--bluesky-space-sm: .5rem;--bluesky-space-md: .75rem;--bluesky-space-lg: 1rem;--bluesky-space-xl: 1.25rem;--bluesky-space-2xl: 1.5rem;--bluesky-radius-sm: .25rem;--bluesky-radius-md: .5rem;--bluesky-radius-lg: .75rem;--bluesky-radius-full: 9999px;--bluesky-content-max-width: 600px;--bluesky-content-min-width: 300px;--bluesky-content-padding-x: var(--bluesky-space-lg);--bluesky-content-padding-y: var(--bluesky-space-md);--bluesky-content-padding: var(--bluesky-content-padding-y) var(--bluesky-content-padding-x);--bluesky-card-gap: var(--bluesky-space-sm);--bluesky-card-border: 1px solid var(--bluesky-color-border);--bluesky-card-padding: var(--bluesky-content-padding);--bluesky-card-transition: background-color .2s ease;--bluesky-aspect-ratio-thumb: 1.91/1;--bluesky-aspect-ratio-square: 1/1;--bluesky-aspect-ratio-video: 16/9;--bluesky-icon-size-sm: 1rem;--bluesky-icon-size-md: 1.5rem;--bluesky-icon-size-lg: 2rem}@media (prefers-color-scheme: dark){.bluesky-post-container{--bluesky-color-text: var(--bluesky-color-text--light);--bluesky-color-text-secondary: var(--bluesky-color-text-secondary--light);--bluesky-color-border: var(--bluesky-color-border--light);--bluesky-color-background: var(--bluesky-color-background--light);--bluesky-color-background-hover: var( --bluesky-color-background-hover--light )}}@supports (--color: light-dark(var(--a), var(--b))){.bluesky-post-container{--bluesky-color-text: light-dark( var(--bluesky-color-text--light), var(--bluesky-color-text--dark) );--bluesky-color-text-secondary: light-dark( var(--bluesky-color-text-secondary--light), var(--bluesky-color-text-secondary--dark) );--bluesky-color-border: light-dark( var(--bluesky-color-border--light), var(--bluesky-color-border--dark) );--bluesky-color-background: light-dark( var(--bluesky-color-background--light), var(--bluesky-color-background--dark) );--bluesky-color-background-hover: light-dark( var(--bluesky-color-background-hover--light), var(--bluesky-color-background-hover--dark) )}}
+</style><style>.play-button[data-astro-cid-pkddrwlf]{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:6rem;height:6rem;border-radius:var(--bluesky-radius-full);background-color:var(--bluesky-color-overlay);display:flex;align-items:center;justify-content:center}.play-icon[data-astro-cid-pkddrwlf]{width:60%;height:60%;object-fit:cover}.thumbnail[data-astro-cid-pkddrwlf]{width:100%;height:100%;object-fit:cover}
+</style><style>[data-astro-transition-scope="astro-64dgry3h-3"] { view-transition-name: astro-64dgry3h-3; }@layer astro { ::view-transition-old(astro-64dgry3h-3) { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }::view-transition-new(astro-64dgry3h-3) { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back]::view-transition-old(astro-64dgry3h-3) { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back]::view-transition-new(astro-64dgry3h-3) { 
+	animation-name: astroFadeIn, astroSlideFromLeft; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-name: astroFadeIn, astroSlideFromLeft; }</style></head> <body> <div class="h-full my-1 sm:my-2 sm:h-screen w-full  bg-base-bd-background-color md:overflow-clip"> <div class="md:grid md:grid-cols-4 lg:grid-cols-4 md:gap-8 p-4 justify-around xl:justify-center h-full w-full sm:h-screen">  <div class="flex justify-self-end gap-y-6 py-4 flex-col w-full md:w-min h-full md:h-screen sm:justify-around overflow-auto"> <div class="font-headerf w-full md:w-44 lg:w-60 text-lg"> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="flex flex-col min-h-fit min-w-[120px] pt-3"> <a href="/"> <div class="flex flex-col trans justify-center self-center text-center font-semibold items-center"> <img src="/pr-preview/pr-19/_astro/avatar.dtpPEdAL_WyQAz.webp" alt="logo" loading="eager" decoding="async" fetchpriority="auto" width="112" height="112" class="justify-self-center p-2 w-28 shadow-md bg-black/10 rounded-full"> <div class="text-3xl font-bold">
+Ann
+</div> </div> </a> <hr class="h-[2px] my-2 bg-gray-200 border-0 "> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/">
+Home
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/blog">
+Blog
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/projects">
+Projects
+</a> <!-- <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/about">
+                About
+            </a> --> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/friends">
+Friends
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/ramblings">
+Ramblings
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/now">
+Now
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="https://github.com/AnnsAnns">
+Github
+</a> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ min-h-64" data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        "> 🏝️ Contents </div> <div> <div class="overflow-auto"><ul class="list-inside text-lg"><a href="#a-timeline"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">🐸A timeline</li></a><a href="#the-beginnings"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰The Beginnings</li></a><a href="#aternos"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Aternos</li></a><a href="#minecraft-vps"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Minecraft VPS’</li></a><a href="#hosting-locally"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Hosting Locally</li></a><a href="#reverse-proxy"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">🐸Reverse Proxy</li></a><a href="#finding-the-right-server-for-the-job"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Finding the right server for the job</li></a><a href="#setting-up-the-server"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Setting up the Server</li></a><a href="#rathole"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Rathole</li></a><a href="#the-result"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">🐸The Result</li></a><a href="#footnote-label"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">🐸Footnotes</li></a></ul></div> </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> <div class=""> <script type="module" src="/pr-preview/pr-19/_astro/Themes.astro_astro_type_script_index_0_lang.w8ZucabI.js"></script> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="content-center p-3 text-center"> <button id="themeSwitcherClick" class="
+            font-headerf
+            text-lg
+            md:text-xl
+            lg:text-2xl
+            bg-base-text-color/25
+            rounded-lg
+            p-3
+        ">
+Change Theme
+</button> <div class="theme-name font-light text-base-text-color/40 mb-[-12px]">
+LOADING ...
+</div> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> </div>  <div class="md:col-span-3 justify-center lg:col-span-2 h-full sm:h-screen w-full sm:max-h-screen sm:max-w-full" data-astro-transition-scope="astro-64dgry3h-3">  <div class="h-full w-full flex flex-col items-center"> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ w-full md:w-fit" data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        "> Simple Cheap Reverse Proxy in a few Minutes </div> <div>  <article> <div class="flex flex-row justify-between"> <div class="description text-base-text-color/80 font-medium text-lg"> <p>Alias IPv6, Germany and Tunnels 4: A New Hope</p> </div> <div class="date text-base-text-color/60"> <time datetime="2025-12-18T00:00:00.000Z"> Dec 18, 2025 </time>  </div> </div> <div class="hero-image">  </div> <br> <hr> <br>  <div class="prose"> <div class="prose-zinc
+                prose-lg
+                prose-a:text-base-text-color
+                prose-headings:text-base-text-color
+                prose-headings:font-headerf
+                font-medium
+                text-base-text-color
+                font-bodyf
+                leading-snug
+                prose-img:max-h-96
+                prose-img:w-auto
+                prose-img:text-center
+                prose-blockquote:bg-base-text-color/10
+                prose-a:text-base-text-color/90
+				prose-strong:text-base-text-color
+                prose-a:underline
+				prose-code:bg-base-text-color/10
+				prose-code:text-base-text-color">  <p>This is technically a sequel to <a href="/blog/minecraft_use_custom_domains/">Minecraft SRV Record Magic</a>,
+which is a bonus to <a href="/blog/sustainable_minecraft/">How to host a Minecraft server, sustainably, locally, and securely</a>,
+which is a sequel to <a href="/blog/ipv6_germany_tunnels/">IPv6, Germany and Tunnels</a>. <del>I swear this is the last one.</del></p>
+<p>As with every year for the last decade, some friends and I are having the yearly Minecraft winter project.</p>
+<h2 id="a-timeline">A timeline</h2>
+<p>Lets quickly talk about a rough timeline of how we played Minecraft in the past, to better understand why.
+If you are bored by this, it would be truly rude to -&gt; skip to <a href="/blog/simple_reverse_proxy/#reverse-proxy">The Reverse Proxy Part</a> &lt;-.</p>
+<h3 id="the-beginnings">The Beginnings</h3>
+<p>Over the years the way I have hosted this server has changed drastically.
+It all started with a simple hamachi setup.
+Thanks to have fundementally broken IPv4 is on the modern web, we didn’t understand NAT,
+nor how to forward ports, it was also complicated and confusing.</p>
+<p><img src="/pr-preview/pr-19/_astro/hamachi.XYRTnoA9_Z2pxWmf.webp" alt="Hamachi" title="Hamachi App screenshot on Windows 7" loading="lazy" decoding="async" fetchpriority="auto" width="512" height="475"></p>
+<p>Back then nearly everyone had Hamachi installed, from Minecraft to Terraria, if you were playing
+a game back then, you were pretty much bound to use hamachi.</p>
+<p>Later, after finding out how paysafecards work, we rented small servers, think of Nitrado <sup><a href="#user-content-fn-3" id="user-content-fnref-3" data-footnote-ref aria-describedby="footnote-label">1</a></sup> or other
+insanely expensive Minecraft server hosts. They honestly served their function well, as with most
+Minecraft projects it would usually die after the holy <em>2 Week Minecraft Phase</em>, thus we usually
+only paid a few bucks. Nonetheless, a few bucks can be a gigantic amount of money, esp. for children.</p>
+<h3 id="aternos">Aternos</h3>
+<p><img src="/pr-preview/pr-19/_astro/aternoslogo.BN8MA8mx_XcNr8.svg" alt="Aternos Logo" title="The Aternos Logo (by Aternos)" loading="lazy" decoding="async" fetchpriority="auto" width="1058" height="225"></p>
+<p>At some point Aternos <sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref aria-describedby="footnote-label">2</a></sup> servers were becoming fairly usable. Aternos provided free servers financed
+through website ad-revenue. Given that a simple VPS can be fairly affordable, that would seem like a fairly
+niche business model, however, esp. for children this provides one of the very few safe and trusted ways to
+easily play Minecraft together.</p>
+<p>Nowadays Aternos even provides a paid service called Exaroton <sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref aria-describedby="footnote-label">3</a></sup>, which basically just provides a supercharged Aternos
+experience to you. However, one notable downside that Aternos had was the fact that A. you had to wait in a queue to start
+your server and B. somebody had to be on the server for it to keep running. Honestly considering that this service is totally
+free those stipulations were quite fair, however, as we became older, esp. stipulation B started become annoying,
+in the teens sleep schedules and free time started to drift more and more apart, until we finally made the switch to actual
+servers again.</p>
+<h3 id="minecraft-vps">Minecraft VPS’</h3>
+<p>While money was still a problem, considering we were still children, we started finally buying servers again, this time from cheaper Minecraft VPS’ hosts.
+Nitrado <sup><a href="#user-content-fn-3" id="user-content-fnref-3-2" data-footnote-ref aria-describedby="footnote-label">1</a></sup> usually offered a far better UX, however, it’s not like it’s rocket science to start a Minecraft server.</p>
+<p>One of the longest lasting providers since we moved to using VPS’ is probably ExtraVM <sup><a href="#user-content-fn-4" id="user-content-fnref-4" data-footnote-ref aria-describedby="footnote-label">4</a></sup>. At first their UI was a bit rough, but as a kid your
+most important decision factor was the price and esp. nowadays I feel like their prices were always super fair.</p>
+<p>However, as I grew older and actually started understand what the heck a NAT even is, hosting stuff locally started becoming both feasible
+and also interesting, mostly as a challenge, esp. considering that every blog post over the last (nearly) 2 years was about the pitfalls
+and annoyances that come from it.</p>
+<h3 id="hosting-locally">Hosting Locally</h3>
+<p>Most of it is honestly explored in fairly great length in both <a href="/blog/ipv6_germany_tunnels/">IPv6, Germany &amp; Tunnels</a> and esp. <a href="/blog/sustainable_minecraft/">Hosting a Minecraft server sustainably</a>.</p>
+<p>The TLDR of that is that Germany provides a unique challenge for self-hosting nowadays. My ISP does have IPv6 support, which is great, but a lot of my friends don’t have IPv6 support. But I also can’t really use
+IPv4 because NAT is unforgiving and even more importantly, because I quite literally can’t even really open ports anymore. My IPv4 is shared with countless other customers and also changes every X hours.</p>
+<p><img src="/pr-preview/pr-19/_astro/playit.BN65r4CV_1J1JXa.webp" alt="PlayIt" title="PlayIt Logo (by Playit.gg)" loading="lazy" decoding="async" fetchpriority="auto" width="1912" height="1588"></p>
+<p>My past solution to this was to simply use a combination of Playit <sup><a href="#user-content-fn-6" id="user-content-fnref-6" data-footnote-ref aria-describedby="footnote-label">5</a></sup> (See <a href="/blog/sustainable_minecraft/#2-playit">The Playit section</a>) for game TCP/UDP traffic,
+esp. for Minecraft, and Cloudflare Tunnels for web stuff.</p>
+<p>This still works, <em>for the most part</em>. In the most recent winter project, we wanted to include Minecraft Bedrock players on the server.</p>
+<p>Generally, Playit <sup><a href="#user-content-fn-6" id="user-content-fnref-6-2" data-footnote-ref aria-describedby="footnote-label">5</a></sup> does support this usecase, with the tradeoffs mentioned within that blog article.
+However, this year, for a reason I’m still not properly sure about, Playit kept breaking the port.
+First users could connect but then after some time both the Bedrock and Voice Chat ports would completely block up, not responding to any requests anymore.</p>
+<h2 id="reverse-proxy">Reverse Proxy</h2>
+<p><img src="/pr-preview/pr-19/_astro/Reverse_proxy_h2g2bob.B2DSZJBY_zvc9R.svg" alt="Reverse Proxy Image" title="A simple diagram of a reverse proxy (by h2g2bob CC0)" loading="lazy" decoding="async" fetchpriority="auto" width="400" height="150"></p>
+<p>A reverse proxy is basically a server that sits in front of your actual server and forwards requests to it, thus acting as an intermediary.</p>
+<p>I honestly don’t feel like using a free and “hacky” solution for so long was the wrong way to approach this but with this bug happening at the beginning of the only time my server ever gets traffic (Alias the big Minecraft project), settling with some weird solution to this problem felt wrong. What both Cloudflare and Playit offer are effectively limited and very specific solutions to Reverse Proxies.
+Both route local data through a tunnel, thus, the logical next step was to finally do it myself to get rid of the limitations and take control of the stack.</p>
+<h3 id="finding-the-right-server-for-the-job">Finding the right server for the job</h3>
+<p>There are three important factors to consider here:</p>
+<ol>
+<li>The server should be in Germany / EU. Both for digital sovereignty and because anything else would cause lag on game servers (which is arguably the most important part of this entire setup).</li>
+<li>The server should be really really cheap. I don’t need an actual beefy VPS, I need an exit node to my cheap local homeserver with fairly minimal web traffic.</li>
+<li>The server needs to have a fully dedicated IPv4. I’m not about to settle with another hack, if I commit to it I want to do it right.</li>
+</ol>
+<p>In the end the boiled down to a few options, till I finally settled on IONOS 1€/month VPS.
+It doesn’t really offer much, at 1 vCore, 1 GB RAM and 10 GB NVMe storage, but also like, I don’t need much, as long as it can run a reverse proxy I am happy.</p>
+<h3 id="setting-up-the-server">Setting up the Server</h3>
+<p>The first step was completely deleting the standard firewall configuration IONOS ships with.
+Depending on your willingness (and sanity) you could most likely do the entire setup within their web interface,
+however, since, for some absurd reason, it doesn’t even allow copy-pasting, I decided that setting up SSH access would be easier
+… until I remembered that I already set up a tailscale network that connects my home server, a few friends and my own computer.</p>
+<p>I <a href="/blog/ipv6_germany_tunnels/#tunnels">mentioned Tailscale in another blog post before</a>.
+It’s a very simple way to setup a VPN between multiple devices, including routing, security, and easy access.
+It’s mostly targeted towards businesses, however, their free plan is more than enough for personal use.
+The main reason to use it here is that it allows me to easily SSH into the server without exposing the port, nor having to deal with setting up SSH keys,
+e.g. if something breaks I can easily check from any computer or phone as long as I have my security key, password and Tailscale access.</p>
+<h3 id="rathole">Rathole</h3>
+<p><img src="/pr-preview/pr-19/_astro/rathole-logo.CbqLwdsc_Z1lIbO5.webp" alt="Rathole Logo" title="Rathole Logo (see their Github)" loading="lazy" decoding="async" fetchpriority="auto" width="1080" height="291"></p>
+<p>For the actual reverse proxy I used Rathole <sup><a href="#user-content-fn-7" id="user-content-fnref-7" data-footnote-ref aria-describedby="footnote-label">6</a></sup>, a fairly new reverse proxy/tunneling solution written in Rust.
+It’s fairly similar to ngrok, frp and other well established solutions, though with a higher bandwidth and smaller memory footprint, which is ideal for this usecase. <sup><a href="#user-content-fn-7" id="user-content-fnref-7-2" data-footnote-ref aria-describedby="footnote-label">6</a></sup></p>
+<p>All that is required is to install Rathole on both the server and the client (my home server), set up a simple systemd service on both sides and pass a configuration file to both sides.</p>
+<p><img src="/pr-preview/pr-19/_astro/tcp_bitrate.BAzBiG0S_ZmvUPp.svg" alt="TCP Bitrate" title="TCP Bitrate of Rathole vs frp (see their Github)" loading="lazy" decoding="async" fetchpriority="auto" width="600" height="371"></p>
+<h4 id="client-home-server">Client (Home Server)</h4>
+<p>On the client (my home server) we need to simply specify the server address, the token (which must match the server side) and the local address of the Minecraft server.
+The client will then connect to the server (reverse proxy IONOS VPS) and forward all traffic to the local Minecraft server.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="toml"><code><span class="line"><span style="color:#6A737D"># client.toml</span></span>
+<span class="line"><span style="color:#E1E4E8">[</span><span style="color:#B392F0">client</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">remote_addr = </span><span style="color:#9ECBFF">&quot;myserver.com:2333&quot;</span><span style="color:#6A737D"> # The address of the server. The port must be the same with the port in `server.bind_addr`</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">[</span><span style="color:#B392F0">client</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">services</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">minecraft</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">type = </span><span style="color:#9ECBFF">&quot;tcp&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">token = </span><span style="color:#9ECBFF">&quot;use_a_secret_that_only_you_know&quot;</span><span style="color:#6A737D"> # Must be the same with the server to pass the validation</span></span>
+<span class="line"><span style="color:#E1E4E8">local_addr = </span><span style="color:#9ECBFF">&quot;127.0.0.1:25565&quot;</span><span style="color:#6A737D"> # The address of the service that needs to be forwarded</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">[</span><span style="color:#B392F0">server</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">services</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">bedrock</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">type = </span><span style="color:#9ECBFF">&quot;udp&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">token = </span><span style="color:#9ECBFF">&quot;use_a_secret_that_only_you_know&quot;</span><span style="color:#6A737D"> # Token that is used to authenticate the client for the service.</span></span>
+<span class="line"><span style="color:#E1E4E8">bind_addr = </span><span style="color:#9ECBFF">&quot;0.0.0.0:19332&quot;</span><span style="color:#6A737D"> # The port that the service is exposed on, on the server side</span></span></code></pre>
+<h4 id="server-reverse-proxy-vps">Server (Reverse Proxy VPS)</h4>
+<p>The setup is fairly similar on the server side, we need to specify the bind address (the address that the server listens on) and the service configuration.
+Do remember to use a non-trivial token though (alias simply ask your password manager for a huge random password).</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="toml"><code><span class="line"><span style="color:#6A737D"># server.toml</span></span>
+<span class="line"><span style="color:#E1E4E8">[</span><span style="color:#B392F0">server</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">bind_addr = </span><span style="color:#9ECBFF">&quot;0.0.0.0:2333&quot;</span><span style="color:#6A737D"> # `2333` specifies the port that rathole listens for clients</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">[</span><span style="color:#B392F0">server</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">services</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">minecraft</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">type = </span><span style="color:#9ECBFF">&quot;tcp&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">token = </span><span style="color:#9ECBFF">&quot;use_a_secret_that_only_you_know&quot;</span><span style="color:#6A737D"> # Token that is used to authenticate the client for the service.</span></span>
+<span class="line"><span style="color:#E1E4E8">bind_addr = </span><span style="color:#9ECBFF">&quot;0.0.0.0:25565&quot;</span><span style="color:#6A737D"> # The port that the service is exposed on, on the server side</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">[</span><span style="color:#B392F0">server</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">services</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">bedrock</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">type = </span><span style="color:#9ECBFF">&quot;udp&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">token = </span><span style="color:#9ECBFF">&quot;use_a_secret_that_only_you_know&quot;</span><span style="color:#6A737D"> # Token that is used to authenticate the client for the service.</span></span>
+<span class="line"><span style="color:#E1E4E8">bind_addr = </span><span style="color:#9ECBFF">&quot;0.0.0.0:19332&quot;</span><span style="color:#6A737D"> # The port that the service is exposed on, on the server side</span></span></code></pre>
+<p>Also, remember to change the IONOS firewall to allow traffic to the specific port (25565 TCP for Java Edition, 19332 UDP for Bedrock Edition).</p>
+<h2 id="the-result">The Result</h2>
+<p>This setup has been running for the last month-ish, in that time I did not touch the VPS a single time (other than to add another port once).
+So far, compared to Playit, there hasn’t been a single instance where the port broke and other than some issues caused by the infamously broken Bedrock Edition,
+the server has been running flawlessly.</p>
+<p>In the end Playit is still a great service, however, considering that the entire setup took (literal) minutes, cost 1€/month and provides a far more reliable experience, I’ll probably stick with this setup for the foreseeable future.</p>
+<p>Anyways, that’s it. Now I can claim that I have written a blog post every single year and never missed a year since starting the blog :)</p>
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
+<ol>
+<li id="user-content-fn-3">
+<article class="link-preview link-preview--no-media" data-astro-cid-ztfdmrby><div class="link-preview__content" data-astro-cid-ztfdmrby><header data-astro-cid-ztfdmrby><a class="link-preview__title" href="https://server.nitrado.net/en-US" data-astro-cid-ztfdmrby>Nitrado Gameserver</a> <small class="link-preview__domain" data-astro-cid-ztfdmrby>server.nitrado.net</small></header><small class="link-preview__description" data-astro-cid-ztfdmrby>Spieleserver, Gameserver mieten, Hosting günstig und sofort | NITRADO</small></div></article>
+<a href="#user-content-fnref-3" data-footnote-backref aria-label="Back to reference 1" class="data-footnote-backref">↩</a>
+ 
+<a href="#user-content-fnref-3-2" data-footnote-backref aria-label="Back to reference 1-2" class="data-footnote-backref">↩<sup>2</sup></a>
+</li>
+<li id="user-content-fn-1">
+<div class="link-preview link-preview--no-metadata" data-astro-cid-ztfdmrby><a href="https://aternos.org/:en/" data-astro-cid-ztfdmrby>https://aternos.org/:en/</a></div>
+<a href="#user-content-fnref-1" data-footnote-backref aria-label="Back to reference 2" class="data-footnote-backref">↩</a>
+</li>
+<li id="user-content-fn-2">
+<article class="link-preview link-preview--no-media" data-astro-cid-ztfdmrby><div class="link-preview__content" data-astro-cid-ztfdmrby><header data-astro-cid-ztfdmrby><a class="link-preview__title" href="https://exaroton.com/:en/" data-astro-cid-ztfdmrby>exaroton - High-end on demand game servers</a> <small class="link-preview__domain" data-astro-cid-ztfdmrby>exaroton.com</small></header><small class="link-preview__description" data-astro-cid-ztfdmrby>Discover on demand Minecraft servers with exaroton.com. Our unique pricing model allows you to only pay for the time your server is active, giving you unmatched control and flexibility.</small></div></article>
+<a href="#user-content-fnref-2" data-footnote-backref aria-label="Back to reference 3" class="data-footnote-backref">↩</a>
+</li>
+<li id="user-content-fn-4">
+<article class="link-preview link-preview--no-media" data-astro-cid-ztfdmrby><div class="link-preview__content" data-astro-cid-ztfdmrby><header data-astro-cid-ztfdmrby><a class="link-preview__title" href="https://extravm.com/" data-astro-cid-ztfdmrby>ExtraVM - Performance SSD VPS Hosting, Game Servers, Web Hosting</a> <small class="link-preview__domain" data-astro-cid-ztfdmrby>extravm.com</small></header><small class="link-preview__description" data-astro-cid-ztfdmrby>ExtraVM offers high performance and reliable hosting services trusted by thousands of individuals and businesses. Whether you need VPS, web hosting, or a game server, we have them.</small></div></article>
+<a href="#user-content-fnref-4" data-footnote-backref aria-label="Back to reference 4" class="data-footnote-backref">↩</a>
+</li>
+<li id="user-content-fn-6">
+<article class="link-preview link-preview--no-media" data-astro-cid-ztfdmrby><div class="link-preview__content" data-astro-cid-ztfdmrby><header data-astro-cid-ztfdmrby><a class="link-preview__title" href="https://playit.gg/" data-astro-cid-ztfdmrby>playit.gg</a> <small class="link-preview__domain" data-astro-cid-ztfdmrby>playit.gg</small></header><small class="link-preview__description" data-astro-cid-ztfdmrby></small></div></article>
+<a href="#user-content-fnref-6" data-footnote-backref aria-label="Back to reference 5" class="data-footnote-backref">↩</a>
+ 
+<a href="#user-content-fnref-6-2" data-footnote-backref aria-label="Back to reference 5-2" class="data-footnote-backref">↩<sup>2</sup></a>
+</li>
+<li id="user-content-fn-7">
+<article class="link-preview" data-astro-cid-ztfdmrby><div class="link-preview__content" data-astro-cid-ztfdmrby><header data-astro-cid-ztfdmrby><a class="link-preview__title" href="https://github.com/rathole-org/rathole/" data-astro-cid-ztfdmrby>GitHub - rathole-org/rathole: A lightweight and high-performance reverse proxy for NAT traversal, written in Rust. An alternative to frp and ngrok.</a> <small class="link-preview__domain" data-astro-cid-ztfdmrby>github.com</small></header><small class="link-preview__description" data-astro-cid-ztfdmrby>A lightweight and high-performance reverse proxy for NAT traversal, written in Rust. An alternative to frp and ngrok. - rathole-org/rathole</small></div><img src="https://repository-images.githubusercontent.com/438123986/cad27d2c-5c4e-454e-a157-48832ffc63d5" alt="A lightweight and high-performance reverse proxy for NAT traversal, written in Rust. An alternative to frp and ngrok. - rathole-org/rathole" width="1200" height="630" data-astro-cid-ztfdmrby></article>
+<a href="#user-content-fnref-7" data-footnote-backref aria-label="Back to reference 6" class="data-footnote-backref">↩</a>
+ 
+<a href="#user-content-fnref-7-2" data-footnote-backref aria-label="Back to reference 6-2" class="data-footnote-backref">↩<sup>2</sup></a>
+</li>
+</ol>
+</section>  </div> </div> </article>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div>  </div>  <div class="w-full h-full md:h-screen overflow-auto"> <div class="flex items-center flex-col-reverse mt-2 md:mt-0 gap-y-3 sm:gap-y-5 md:gap-y-8 self-center h-full"> <div class="shrink"></div> <div class="flex flex-col-reverse items-center justify-evenly gap-y-2 md:gap-y-4 justify-items-center h-full basis-full md:basis-1/3"> <div class="w-fit overflow-x-auto"> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="flex flex-col justify-center items-center pt-6"> <audio controls loop data-astro-transition-persist="astro-gqvfa26k-5"> <source src="/CheckMiiOut.mp3" type="audio/mpeg"> </audio> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1"> <a href="https://www.youtube.com/watch?v=1U9ls3vAt5I"> <img src="/pr-preview/pr-19/_astro/jerma.Dvz9-M6x_Z29Isv8.webp" alt="Jerma Blinky" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://www.youtube.com/watch?v=PLaanhBuiVU"> <img src="/pr-preview/pr-19/_astro/da%20blinkie.D8zGGJVl_Z4y0eL.webp" alt="Da Blinki?!?" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://archlinux.org/"> <img src="/pr-preview/pr-19/_astro/trans.C404quiq_Z26czoU.webp" alt="Trans Rights" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://www.youtube.com/watch?v=iBF_mDFgtH4"> <img src="/pr-preview/pr-19/_astro/mikujerma.DtdjFOHq_13HNSx.webp" alt="Miku Jerma" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://www.youtube.com/watch?v=0Qs_jRerdSg"> <img src="/pr-preview/pr-19/_astro/jermamiku.BHalGsbT_Z1pwstN.webp" alt="Jerma Miku" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <div class="w-full columns-2"> <a href="https://www.youtube.com/watch?v=yD2FSwTy2lw"> <img src="/pr-preview/pr-19/_astro/bob.DeuMGCJO_1YeowO.webp" alt="Bob from Animal Crossing spinning" loading="lazy" decoding="async" fetchpriority="auto" width="88" height="31"> </a> <a href="https://www.mozilla.org/en-US/firefox/windows/"> <img src="/pr-preview/pr-19/_astro/fftake.juBJ8bzE_15wpjj.webp" alt="Download Firefox" loading="lazy" decoding="async" fetchpriority="auto" width="88" height="31"> </a> </div> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1"> <img src="/annsann.gif" alt="blinky" loading="lazy" decoding="async" fetchpriority="auto" width="88" height="31"> <label for="blinky" class="text-slate-500 text-xs pt-2">Copy this code to use the blinky</label> <textarea id="blinky" readonly class="p-1 border rounded text-slate-500 text-xs" rows="1">&lt;a href=&#39;https://annsann.eu&#39; target=&#39;_blank&#39;&gt;&lt;img src=&#39;https://annsann.eu//annsann.gif&#39; alt=&#39;AnnsAnn🐸&#39;&gt;&lt;/a&gt;</textarea> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> </div> </div> </div> <div class="md:absolute md:bottom-0 md:left-0 w-full text-left text-xs text-base-text-color/70">
+© 2025 Ann -
+<a href="/privacy_policy" class="">
+Privacy Policy
+</a> </div> </div></body></html>
