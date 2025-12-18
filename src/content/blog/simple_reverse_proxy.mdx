@@ -9,7 +9,14 @@ This is technically a sequel to [Minecraft SRV Record Magic](/blog/minecraft_use
 which is a bonus to [How to host a Minecraft server, sustainably, locally, and securely](/blog/sustainable_minecraft/),
 which is a sequel to [IPv6, Germany and Tunnels](/blog/ipv6_germany_tunnels/). ~~I swear this is the last one.~~
 
-As with every year for the last decade, some friends and I are having the yearly Minecraft winter project.
+![Minecraft Winter project server screenshot of tree](./resources/simple_reverse_proxy/tree.png "Minecraft Winter project server screenshot of christmas tree")
+
+As with every year for the last decade, some friends and I are having the yearly Minecraft winter project, 
+where we set up a Minecraft server for a few weeks and build some cool stuff together.
+
+This time around
+we wanted to include Minecraft Bedrock players on the server, which proved to be a bit tricky
+with my current setup.
 
 ## A timeline
 
@@ -168,6 +175,8 @@ bind_addr = "0.0.0.0:19332" # The port that the service is exposed on, on the se
 Also, remember to change the IONOS firewall to allow traffic to the specific port (25565 TCP for Java Edition, 19332 UDP for Bedrock Edition).
 
 ## The Result
+
+![Minecraft Winter project server screenshot](./resources/simple_reverse_proxy/minecraft.webp "Minecraft Winter project server screenshot")
 
 This setup has been running for the last month-ish, in that time I did not touch the VPS a single time (other than to add another port once).
 So far, compared to Playit, there hasn't been a single instance where the port broke and other than some issues caused by the infamously broken Bedrock Edition,
