@@ -13,6 +13,7 @@ const { posts_collection, title } = Astro.props;
 const posts = (posts_collection).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
 ---
 
 <BaseLayout desc={title}>
