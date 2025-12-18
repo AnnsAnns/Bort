@@ -453,7 +453,12 @@ LOADING ...
 				prose-code:text-base-text-color">  <p>This is technically a sequel to <a href="/blog/minecraft_use_custom_domains/">Minecraft SRV Record Magic</a>,
 which is a bonus to <a href="/blog/sustainable_minecraft/">How to host a Minecraft server, sustainably, locally, and securely</a>,
 which is a sequel to <a href="/blog/ipv6_germany_tunnels/">IPv6, Germany and Tunnels</a>. <del>I swear this is the last one.</del></p>
-<p>As with every year for the last decade, some friends and I are having the yearly Minecraft winter project.</p>
+<p><img src="/_astro/tree.XLDb1jX0_wYjgU.webp" alt="Minecraft Winter project server screenshot of tree" title="Minecraft Winter project server screenshot of christmas tree" loading="lazy" decoding="async" fetchpriority="auto" width="1888" height="1018"></p>
+<p>As with every year for the last decade, some friends and I are having the yearly Minecraft winter project,
+where we set up a Minecraft server for a few weeks and build some cool stuff together.</p>
+<p>This time around
+we wanted to include Minecraft Bedrock players on the server, which proved to be a bit tricky
+with my current setup.</p>
 <h2 id="a-timeline">A timeline</h2>
 <p>Lets quickly talk about a rough timeline of how we played Minecraft in the past, to better understand why.
 If you are bored by this, it would be truly rude to -&gt; skip to <a href="/blog/simple_reverse_proxy/#reverse-proxy">The Reverse Proxy Part</a> &lt;-.</p>
@@ -564,6 +569,7 @@ Do remember to use a non-trivial token though (alias simply ask your password ma
 <span class="line"><span style="color:#E1E4E8">bind_addr = </span><span style="color:#9ECBFF">&quot;0.0.0.0:19332&quot;</span><span style="color:#6A737D"> # The port that the service is exposed on, on the server side</span></span></code></pre>
 <p>Also, remember to change the IONOS firewall to allow traffic to the specific port (25565 TCP for Java Edition, 19332 UDP for Bedrock Edition).</p>
 <h2 id="the-result">The Result</h2>
+<p><img src="/_astro/minecraft.DIxWUzc2_ZMTcUG.webp" alt="Minecraft Winter project server screenshot" title="Minecraft Winter project server screenshot" loading="lazy" decoding="async" fetchpriority="auto" width="1436" height="757"></p>
 <p>This setup has been running for the last month-ish, in that time I did not touch the VPS a single time (other than to add another port once).
 So far, compared to Playit, there hasn’t been a single instance where the port broke and other than some issues caused by the infamously broken Bedrock Edition,
 the server has been running flawlessly.</p>
