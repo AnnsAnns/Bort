@@ -1,0 +1,19 @@
+---
+import { YouTube } from 'astro-embed';
+
+const { id, title } = Astro.props;
+
+---
+
+<div class="mx-1 p-2 bg-base-bd-background-color/50 ring-2 ring-base-bd-background-color/80 rounded-md shadow-lg">
+<YouTube
+  id={id}
+  title={title}
+  class="rounded-2xl"
+/>
+<div class="text-xs text-gray-500 mt-2">
+    Clicking on this video will load and embed external content from Youtube.
+    This includes potential tracking done by Youtube.
+    Please refer to their <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">privacy policy</a> for more information.
+</div>
+</div>
