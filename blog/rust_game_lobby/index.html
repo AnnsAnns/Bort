@@ -1,0 +1,939 @@
+<!DOCTYPE html><script type="module" src="/_astro/BaseLayout.astro_astro_type_script_index_0_lang.C2A0M2Up.js"></script> <html lang="en" class="standard" data-astro-transition-persist="astro-djjcnqsn-1"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Astro v5.16.5"><!-- Font preloads --><link rel="preload" href="/fonts/NationalPark-Regular.otf" as="font" type="font/otf" crossorigin><link rel="preload" href="/fonts/Reglisse_Fill.otf" as="font" type="font/otf" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://annsann.eu/blog/rust_game_lobby/"><!-- Primary Meta Tags --><title>AnnsAnn 🐸   - Using Rust for Game Servers (+ Godot)</title><meta name="title" content="AnnsAnn 🐸   - Using Rust for Game Servers (+ Godot)"><meta name="description" content="Is Rust a worthwhile companion for game devs? To test this, we create our own server for a game in Godot"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://annsann.eu/blog/rust_game_lobby/"><meta property="og:title" content="AnnsAnn 🐸   - Using Rust for Game Servers (+ Godot)"><meta property="og:description" content="Is Rust a worthwhile companion for game devs? To test this, we create our own server for a game in Godot"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://annsann.eu/blog/rust_game_lobby/"><meta property="twitter:title" content="AnnsAnn 🐸   - Using Rust for Game Servers (+ Godot)"><meta property="twitter:description" content="Is Rust a worthwhile companion for game devs? To test this, we create our own server for a game in Godot"><!-- ActivityPub Creds --><link rel="me" href="https://norden.social/@AnnsAnn"><meta name="fediverse:creator" content="@AnnsAnn@norden.social"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.DmLMM95P.js"></script><link rel="stylesheet" href="/_astro/_slug_.6x8uV1DA.css"><script type="module" src="/_astro/page.D6sK1WDe.js"></script><style>[data-astro-transition-scope="astro-64dgry3h-3"] { view-transition-name: astro-64dgry3h-3; }@layer astro { ::view-transition-old(astro-64dgry3h-3) { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }::view-transition-new(astro-64dgry3h-3) { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back]::view-transition-old(astro-64dgry3h-3) { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back]::view-transition-new(astro-64dgry3h-3) { 
+	animation-name: astroFadeIn, astroSlideFromLeft; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-name: astroFadeIn, astroSlideFromLeft; }</style></head> <body> <div class="h-full my-1 sm:my-2 sm:h-screen w-full  bg-base-bd-background-color md:overflow-clip"> <div class="md:grid md:grid-cols-4 lg:grid-cols-4 md:gap-8 p-4 justify-around xl:justify-center h-full w-full sm:h-screen">  <div class="flex justify-self-end gap-y-6 py-4 flex-col w-full md:w-min h-full md:h-screen sm:justify-around overflow-auto"> <div class="font-headerf w-full md:w-44 lg:w-60 text-lg"> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="flex flex-col min-h-fit min-w-[120px] pt-3"> <a href="/"> <div class="flex flex-col trans justify-center self-center text-center font-semibold items-center"> <img src="/_astro/avatar.dtpPEdAL_1xA6Ez.webp" alt="logo" loading="eager" decoding="async" fetchpriority="auto" width="112" height="112" class="justify-self-center p-2 w-28 shadow-md bg-black/10 rounded-full"> <div class="text-3xl font-bold">
+Ann
+</div> </div> </a> <hr class="h-[2px] my-2 bg-gray-200 border-0 "> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/">
+Home
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/blog">
+Blog
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/projects">
+Projects
+</a> <!-- <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/about">
+                About
+            </a> --> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/friends">
+Friends
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/ramblings">
+Ramblings
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/now">
+Now
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="https://github.com/AnnsAnns">
+Github
+</a> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ min-h-64" data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        "> 🏝️ Contents </div> <div> <div class="overflow-auto"><ul class="list-inside text-lg"><a href="#the-beginning"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰The Beginning</li></a><a href="#wsl-madness"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰WSL Madness</li></a><a href="#rocket-hyper-warp-or-actix"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Rocket, Hyper, Warp or ActiX</li></a><a href="#creating-the-backend"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Creating the backend</li></a><a href="#using-godot-as-the-frontend"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Using Godot as the frontend</li></a><a href="#removed-video-due-to-privacy-concerns"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">🐸Removed video due to privacy concerns</li></a><a href="#conclusion"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Conclusion</li></a></ul></div> </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> <div class=""> <script type="module" src="/_astro/Themes.astro_astro_type_script_index_0_lang.w8ZucabI.js"></script> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="content-center p-3 text-center"> <button id="themeSwitcherClick" class="
+            font-headerf
+            text-lg
+            md:text-xl
+            lg:text-2xl
+            bg-base-text-color/25
+            rounded-lg
+            p-3
+        ">
+Change Theme
+</button> <div class="theme-name font-light text-base-text-color/40 mb-[-12px]">
+LOADING ...
+</div> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> </div>  <div class="md:col-span-3 justify-center lg:col-span-2 h-full sm:h-screen w-full sm:max-h-screen sm:max-w-full" data-astro-transition-scope="astro-64dgry3h-3">  <div class="h-full w-full flex flex-col items-center"> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ w-full md:w-fit" data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        "> Using Rust for Game Servers (+ Godot) </div> <div>  <article> <div class="flex flex-row justify-between"> <div class="description text-base-text-color/80 font-medium text-lg"> <p>Is Rust a worthwhile companion for game devs? To test this, we create our own server for a game in Godot</p> </div> <div class="date text-base-text-color/60"> <time datetime="2021-04-17T00:00:00.000Z"> Apr 17, 2021 </time>  </div> </div> <div class="hero-image">  </div> <br> <hr> <br> <div class="legacy-warning"> <h1 class="text-slate-500 text-xl font-bold">
+This is a legacy blog post from a long time ago.
+<br>
+It might contain outdated or incorrect information.
+</h1> <br> </div> <div class="prose"> <div class="prose-zinc
+                prose-lg
+                prose-a:text-base-text-color
+                prose-headings:text-base-text-color
+                prose-headings:font-headerf
+                font-medium
+                text-base-text-color
+                font-bodyf
+                leading-snug
+                prose-img:max-h-96
+                prose-img:w-auto
+                prose-img:text-center
+                prose-blockquote:bg-base-text-color/10
+                prose-a:text-base-text-color/90
+				prose-strong:text-base-text-color
+                prose-a:underline
+				prose-code:bg-base-text-color/10
+				prose-code:text-base-text-color">  <img src="/_astro/terminal-rocket.Ct_jE0h0_ZLpdI1.webp" alt="The power of Rust web libraries 🦀🦀🦀" loading="lazy" decoding="async" fetchpriority="auto" width="759" height="472">
+<p>I really enjoy creating games but when it comes to games, there is always one daunting task that game devs are scared off, online multiplayer. As soon as anything touches the web, it suddenly becomes a technical challenge to implement properly, esp. lobbies are among the worst contenders given that you somehow gotta exchange data between all clients.</p>
+<p>The enormous upside however, is that multiplayer games are the games I tend to come back to much oftener than singleplayer games. One of my most favorite party games is probably Jackbox Party Pack, a game where each client connects to a centralized server.</p>
+<h3 id="the-beginning">The Beginning</h3>
+<p>One night I had a quite random thought, what if I created my own jackbox. I spend the entire last year learning Golang as I usually try to at least create some sort of proof of concept application for nearly all fields a language specializes in order to fully understand all it’s mechanics. This year I decided to undergo this process with Rust, a language I have grown to love really quickly as you can see by my blog post about cross compiling or embedded programming, as such, it only made sense to try to create my reimplementation in Rust.</p>
+<p>However, as much as I love Rust, I gotta admit something, in terms of GUIs, it is still quite <em>extremely</em> lacking behind other programming languages. Like, there are many great libraries for it already but given that this should be a proof of concept server for an actual game, I decided to use Godot, a contender for the spot of Unreal and Unity in the game engine world, as the frontend.</p>
+<img src="/_astro/galaxybrain.DtNQn5ye_ZxXPDu.webp" alt="Funny meme about thinking" loading="lazy" decoding="async" fetchpriority="auto" width="700" height="700">
+<p><em>Me using my entire brain power to decide what to use in my simple proof of concept game</em></p>
+<p>Given the fact that this project would have had to have 2 different codebases for front- and backend I did not mind either way and this provided me with a great opportunity to work with Godot once again.</p>
+<p>Another thing I decided was that the server should be nearly stateless. This gave me a great excuse to improve my knowledge about database integrations and also meant that the server would be much more performant, since y’know, it didn’t have to store anything in memory for longer than a few seconds.</p>
+<p>I honestly had a hard time picking the right DB. I knew that most of the stored data would be temporary either way and I did not want my database to slow anything down. I also like the key &amp; value system hashmaps or python dictionaries offer. As such, Redis was a natural contender.</p>
+<h3 id="wsl-madness">WSL Madness</h3>
+<p>This section is probably not that interesting for people that are smart enough to simply use normal linux. But those who are monkey brain such as me, did you know that you can easily start systemd services in WSL through some <em>m a g i c</em>. The magic in question is <a href="https://github.com/arkane-systems/genie">Genie</a>. Even though I use WSL for nearly all my projects, this was honestly the first time I required something to be run as a service, that being my DB -&gt; Redis, as such, this was the first time I was required to actually use systemd.</p>
+<img src="/_astro/genie.BqeB8vYm_ZIz0oB.webp" alt="Genie" loading="lazy" decoding="async" fetchpriority="auto" width="640" height="414">
+<p>Thanks to the techniques Genie uses, you can simply execute “genie -s” in any WSL terminal and create a proper environment to start redis in and sure enough, even though it took some while for me to figure it out, it works quite flawlessly.</p>
+<h3 id="rocket-hyper-warp-or-actix">Rocket, Hyper, Warp or ActiX</h3>
+<p>Rust has a lot of different web frameworks and to be honest, it was kinda overwhelming and while I later regretted my choice, I chose Rocket as my web framework for this project. Rocket is easy to use, like, <em>really easy to use</em>. The syntax is so unimaginably easy to understand and boilerplate-free that it is honestly a blessing to work with it and the community support for it seemed good enough too.</p>
+<p>Most of the boilerplate is hidden behind really easy to use macros, which is probably one of Rust’s strongest features. Even though I would love to tell you about their amazing features in more detail, I am way too underqualified for that. If you actually want to read blog posts from somebody that understands them in great detail, I’d recommend the blog posts by the macro king <a href="https://jam1.re/">jam1garner</a>.</p>
+<p>To get started with Rocket, all you need to write is literally just this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="rust"><code><span class="line"><span style="color:#E1E4E8">#![feature(proc_macro_hygiene, decl_macro)]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">#[macro_use] </span><span style="color:#F97583">extern</span><span style="color:#F97583"> crate</span><span style="color:#E1E4E8"> rocket;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">#[get(</span><span style="color:#9ECBFF">&quot;/&lt;name&gt;/&lt;age&gt;&quot;</span><span style="color:#E1E4E8">)]</span></span>
+<span class="line"><span style="color:#F97583">fn</span><span style="color:#B392F0"> hello</span><span style="color:#E1E4E8">(name</span><span style="color:#F97583">:</span><span style="color:#B392F0"> String</span><span style="color:#E1E4E8">, age</span><span style="color:#F97583">:</span><span style="color:#B392F0"> u8</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0"> String</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    format!</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Hello, {} year old named {}!&quot;</span><span style="color:#E1E4E8">, age, name)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">fn</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">    rocket</span><span style="color:#F97583">::</span><span style="color:#B392F0">ignite</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">.</span><span style="color:#B392F0">mount</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;/hello&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">routes!</span><span style="color:#E1E4E8">[hello])</span><span style="color:#F97583">.</span><span style="color:#B392F0">launch</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="creating-the-backend">Creating the backend</h3>
+<p>This blog post is already big enough as it is, if I were to explain each API point I created, it’d probably be another 1000 words of me rambling. As such I’ve decided to simply explain the structure of each endpoint. For more informations about all the endpoints, please read the README which I honestly spend too much time on.</p>
+<p>Basically, each end point (except heartbeats) is a POST request to the server. The server knows nothing about the client and as such, the client has to authenticate itself with certain values inside the body. (Again, read the README for a much more detailed explanation).</p>
+<p>The server then responds with a JSON that returns all the relevant information about the request. For example, if you create an invite code, the server needs to know the uuid of the game and the uuid of your user that you previously received. It then compares those values to data stored inside the Redis DB and returns the newly generated invite code back to you. The server never trusts the client with any data, as such it always requires a completely unique uuid token that only the correct client has in order to change data.</p>
+<p>Game related data is stored inside a hashmap on Redis and always kept under a time limit in order to ensure that no unused data clogs the DB up. In order to ensure that game and user sessions are still valid and active, the server requires periodic heartbeats from each client which boil down to a simple “Is the player really who they claim they are?” on the server. Once again, Rocket makes handling this really easy:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="rust"><code><span class="line"><span style="color:#F97583">use</span><span style="color:#B392F0"> redis</span><span style="color:#F97583">::</span><span style="color:#B392F0">Commands</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">use</span><span style="color:#B392F0"> rocket</span><span style="color:#F97583">::</span><span style="color:#B392F0">http</span><span style="color:#F97583">::</span><span style="color:#B392F0">Status</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">use</span><span style="color:#B392F0"> serde</span><span style="color:#F97583">::</span><span style="color:#B392F0">Deserialize</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">use</span><span style="color:#B392F0"> rocket_contrib</span><span style="color:#F97583">::</span><span style="color:#B392F0">json</span><span style="color:#F97583">::</span><span style="color:#B392F0">Json</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">use</span><span style="color:#F97583"> crate::</span><span style="color:#E1E4E8">db;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">#[derive(</span><span style="color:#B392F0">Deserialize</span><span style="color:#E1E4E8">)]</span><span style="color:#6A737D">// Through this macro, rocket knows what data to expect and how to apply it to the following struct</span></span>
+<span class="line"><span style="color:#F97583">pub</span><span style="color:#F97583"> struct</span><span style="color:#B392F0"> Heartbeat</span><span style="color:#E1E4E8"> { </span><span style="color:#6A737D">// These are the information the server needs from the user in order to ensure the user is who they are</span></span>
+<span class="line"><span style="color:#E1E4E8">    uuid_game</span><span style="color:#F97583">:</span><span style="color:#B392F0"> String</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    user_id</span><span style="color:#F97583">:</span><span style="color:#B392F0"> String</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    username</span><span style="color:#F97583">:</span><span style="color:#B392F0"> String</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">#[post(</span><span style="color:#9ECBFF">&quot;/heartbeat&quot;</span><span style="color:#E1E4E8">, format </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> &quot;json&quot;</span><span style="color:#E1E4E8">, data </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> &quot;&lt;data&gt;&quot;</span><span style="color:#E1E4E8">)] </span></span>
+<span class="line"><span style="color:#6A737D">// This macro simply tells Rocket that we want to listen to post requests for </span></span>
+<span class="line"><span style="color:#6A737D">// this function at &lt;mount_point&gt;/heartbeat and that the data we receive should</span></span>
+<span class="line"><span style="color:#6A737D">//  be a JSON and that the JSON should be parsed into the the data parameter of the function</span></span>
+<span class="line"><span style="color:#F97583">pub</span><span style="color:#F97583"> fn</span><span style="color:#B392F0"> heartbeat</span><span style="color:#E1E4E8">(data</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Json</span><span style="color:#E1E4E8">&lt;</span><span style="color:#B392F0">Heartbeat</span><span style="color:#E1E4E8">&gt;) </span><span style="color:#F97583">-&gt;</span><span style="color:#B392F0"> Status</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#F97583"> mut</span><span style="color:#E1E4E8"> con </span><span style="color:#F97583">=</span><span style="color:#F97583"> match</span><span style="color:#B392F0"> db</span><span style="color:#F97583">::</span><span style="color:#B392F0">init_con</span><span style="color:#E1E4E8">() { </span><span style="color:#6A737D">// Connect to the Redis DB</span></span>
+<span class="line"><span style="color:#B392F0">        Ok</span><span style="color:#E1E4E8">(con) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> con,</span></span>
+<span class="line"><span style="color:#B392F0">        Err</span><span style="color:#E1E4E8">(_err) </span><span style="color:#F97583">=&gt;</span><span style="color:#F97583"> return</span><span style="color:#B392F0"> Status</span><span style="color:#F97583">::</span><span style="color:#B392F0">InternalServerError</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> uuid_user</span><span style="color:#F97583">:</span><span style="color:#B392F0"> String</span><span style="color:#F97583"> =</span><span style="color:#F97583"> match</span><span style="color:#E1E4E8"> con</span><span style="color:#F97583">.</span><span style="color:#B392F0">hget</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">format!</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;{}:players&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">&amp;</span><span style="color:#E1E4E8">data</span><span style="color:#F97583">.</span><span style="color:#E1E4E8">uuid_game), </span><span style="color:#F97583">&amp;</span><span style="color:#E1E4E8">data</span><span style="color:#F97583">.</span><span style="color:#E1E4E8">username) {</span></span>
+<span class="line"><span style="color:#B392F0">        Ok</span><span style="color:#E1E4E8">(u) </span><span style="color:#F97583">=&gt;</span><span style="color:#E1E4E8"> u,</span></span>
+<span class="line"><span style="color:#B392F0">        Err</span><span style="color:#E1E4E8">(_err) </span><span style="color:#F97583">=&gt;</span><span style="color:#F97583"> return</span><span style="color:#B392F0"> Status</span><span style="color:#F97583">::</span><span style="color:#B392F0">InternalServerError</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> uuid_user </span><span style="color:#F97583">!=</span><span style="color:#E1E4E8"> data</span><span style="color:#F97583">.</span><span style="color:#E1E4E8">user_id { </span><span style="color:#6A737D">// If the user isn&#39;t who they proclaim they are, we return without renewing the data</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#B392F0"> Status</span><span style="color:#F97583">::</span><span style="color:#B392F0">Forbidden</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> _</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> con</span><span style="color:#F97583">.</span><span style="color:#B392F0">expire</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">format!</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;{}:players:{}&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">&amp;</span><span style="color:#E1E4E8">data</span><span style="color:#F97583">.</span><span style="color:#E1E4E8">uuid_game, </span><span style="color:#F97583">&amp;</span><span style="color:#E1E4E8">data</span><span style="color:#F97583">.</span><span style="color:#E1E4E8">username), </span><span style="color:#79B8FF">3</span><span style="color:#F97583"> *</span><span style="color:#79B8FF"> 60</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">.</span><span style="color:#B392F0">unwrap</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// Renew session for another 3 minutes</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    Status</span><span style="color:#F97583">::</span><span style="color:#B392F0">Ok</span><span style="color:#6A737D"> // If everything worked, we let the user know through the 200 &quot;OK&quot; status code</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Now we only need to mount the function in our main.rs which is literally just a single line of code:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="rust"><code><span class="line"><span style="color:#F97583">fn</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">    rocket</span><span style="color:#F97583">::</span><span style="color:#B392F0">ignite</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#F97583">        .</span><span style="color:#B392F0">mount</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#9ECBFF">            &quot;/games/lobby/&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">            routes!</span><span style="color:#E1E4E8">[</span></span>
+<span class="line"><span style="color:#6A737D">                // Other functions [...] </span></span>
+<span class="line"><span style="color:#B392F0">                games</span><span style="color:#F97583">::</span><span style="color:#B392F0">lobby</span><span style="color:#F97583">::</span><span style="color:#B392F0">heartbeat</span><span style="color:#F97583">::</span><span style="color:#E1E4E8">heartbeat</span></span>
+<span class="line"><span style="color:#E1E4E8">            ],</span></span>
+<span class="line"><span style="color:#E1E4E8">        )</span></span>
+<span class="line"><span style="color:#F97583">        .</span><span style="color:#B392F0">launch</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="using-godot-as-the-frontend">Using Godot as the frontend</h3>
+<p>Godot uses a scene system in which everything you see and interact with in either code or the UI is its own object and has to be loaded into the current scene tree. At first this is honestly a really confusing concept but the more you use Godot, the easier it gets to use, and it comes with many great upsides.</p>
+<p>Let us look at our scene tree for the main menu:</p>
+<img src="/_astro/godot_ui.CiWWIDLn_ZNcztU.webp" alt="Scene Tree" loading="lazy" decoding="async" fetchpriority="auto" width="1380" height="601">
+<p>Each UI element (The stuff with green icons) connects to some function in the code through a signal, such as when it is pressed or text is changed. For example, the JoinGameButton button executes this when pressed:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="gdscript"><code><span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> _on_JoinGameButton_pressed</span><span style="color:#E1E4E8">():</span></span>
+<span class="line"><span style="color:#F97583">	$</span><span style="color:#79B8FF">JoinGame</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">JoinGame</span><span style="color:#E1E4E8">()</span></span></code></pre>
+<p>$JoinGame refers to the “JoinGame” object in our scene tree, which is its own scene with 2 objects, a neutral node object (basically a dummy object) and one HTTPRequest object. Yes, even HTTPRequests are completely independent objects that need to be spawned into the scene and connected to some signal.</p>
+<p>In this case, we ask the HTTPRequest object called JoinGameRequest to please make a POST request:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="gdscript"><code><span class="line"><span style="color:#F97583">$</span><span style="color:#79B8FF">JoinGameRequest</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">request</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">	 global.server_url </span><span style="color:#F97583">+</span><span style="color:#9ECBFF"> &quot;games/lobby/join_game&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">	 global.user_agent </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> global.content_type,</span></span>
+<span class="line"><span style="color:#E1E4E8">	 global.use_ssl,</span></span>
+<span class="line"><span style="color:#B392F0">	 HTTPClient</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">METHOD_POST</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">	 JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">print</span><span style="color:#E1E4E8">(request) </span><span style="color:#6A737D"># Jsonify the request dictionary (identical to Python dictionaries) and then send it as the body</span></span></code></pre>
+<p>After it is done requesting the content, it will then respond to the function connected to it’s <code>request_completed</code> signal and which point we parse the server response and emit our own signal to the main menu which tells the main menu that we’re done joining the game and it is now able to switch the scene to the lobby screen.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="gdscript"><code><span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> _on_JoinGame_joined_game</span><span style="color:#E1E4E8">(worked):</span></span>
+<span class="line"><span style="color:#F97583">	if</span><span style="color:#F97583"> !</span><span style="color:#E1E4E8">worked:</span></span>
+<span class="line"><span style="color:#B392F0">		print</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Couldn&#39;t join game!&quot;</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">		return</span></span>
+<span class="line"><span style="color:#E1E4E8">		</span></span>
+<span class="line"><span style="color:#E1E4E8">	global.</span><span style="color:#B392F0">goto_scene</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;res://Scenes/UI/Lobby.tscn&quot;</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D"># A user-created function is called that switches our scene to the lobby screen</span></span></code></pre>
+<p>If everything works, it ends up looking like this:</p>
+<hr/>
+<h2 id="removed-video-due-to-privacy-concerns">Removed video due to privacy concerns</h2>
+<p>Nearly 1700 words and we only explained 1 backend and frontend implementation out of more than 6 API functions needed to get to this point :)</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Game servers are amazing to work with, it feels really interesting to work on two different code bases that are so tightly dependent on each other and yet again so extremely different. I really enjoyed my journey with this project and it once again taught me a lot about Rust.</p>
+<p>I have never focussed on a single project in a dev-blog kind of style in any of my blog posts so I hope that I still managed to make it enjoyable to read this post.</p>
+<p>If you have any questions (or want to follow me on social media), feel free to visit my <a href="DEADLINK">Twitter</a>.</p>
+<p>Lastly, I want to thank all the new readers. Even though I don’t track traffic through Google analytics or similar tracking software, the twitter impressions alone showcased a viewership that I never could have imagined receiving. I humbly thank all of you.</p>  </div> </div> </article>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div>  </div>  <div class="w-full h-full md:h-screen overflow-auto"> <div class="flex items-center flex-col-reverse mt-2 md:mt-0 gap-y-3 sm:gap-y-5 md:gap-y-8 self-center h-full"> <div class="shrink"></div> <div class="flex flex-col-reverse items-center justify-evenly gap-y-2 md:gap-y-4 justify-items-center h-full basis-full md:basis-1/3"> <div class="w-fit overflow-x-auto"> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="flex flex-col justify-center items-center pt-6"> <audio controls loop data-astro-transition-persist="astro-gqvfa26k-5"> <source src="/CheckMiiOut.mp3" type="audio/mpeg"> </audio> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1"> <a href="https://www.youtube.com/watch?v=1U9ls3vAt5I"> <img src="/_astro/jerma.Dvz9-M6x_kMobv.webp" alt="Jerma Blinky" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://www.youtube.com/watch?v=PLaanhBuiVU"> <img src="/_astro/da%20blinkie.D8zGGJVl_Z1DS40J.webp" alt="Da Blinki?!?" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://archlinux.org/"> <img src="/_astro/trans.C404quiq_ojhhI.webp" alt="Trans Rights" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://www.youtube.com/watch?v=iBF_mDFgtH4"> <img src="/_astro/mikujerma.DtdjFOHq_ZiqQQl.webp" alt="Miku Jerma" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://www.youtube.com/watch?v=0Qs_jRerdSg"> <img src="/_astro/jermamiku.BHalGsbT_2iuYzf.webp" alt="Jerma Miku" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <div class="w-full columns-2"> <a href="https://www.youtube.com/watch?v=yD2FSwTy2lw"> <img src="/_astro/bob.DeuMGCJO_ZELr6z.webp" alt="Bob from Animal Crossing spinning" loading="lazy" decoding="async" fetchpriority="auto" width="88" height="31"> </a> <a href="https://www.mozilla.org/en-US/firefox/windows/"> <img src="/_astro/fftake.juBJ8bzE_Z1EhRY0.webp" alt="Download Firefox" loading="lazy" decoding="async" fetchpriority="auto" width="88" height="31"> </a> </div> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1"> <img src="/annsann.gif" alt="blinky" loading="lazy" decoding="async" fetchpriority="auto" width="88" height="31"> <label for="blinky" class="text-slate-500 text-xs pt-2">Copy this code to use the blinky</label> <textarea id="blinky" readonly class="p-1 border rounded text-slate-500 text-xs" rows="1">&lt;a href=&#39;https://annsann.eu&#39; target=&#39;_blank&#39;&gt;&lt;img src=&#39;https://annsann.eu//annsann.gif&#39; alt=&#39;AnnsAnn🐸&#39;&gt;&lt;/a&gt;</textarea> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> </div> </div> </div> <div class="md:absolute md:bottom-0 md:left-0 w-full text-left text-xs text-base-text-color/70">
+© 2025 Ann -
+<a href="/privacy_policy" class="">
+Privacy Policy
+</a> </div> </div></body></html>

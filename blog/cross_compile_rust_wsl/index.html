@@ -1,0 +1,897 @@
+<!DOCTYPE html><script type="module" src="/_astro/BaseLayout.astro_astro_type_script_index_0_lang.C2A0M2Up.js"></script> <html lang="en" class="standard" data-astro-transition-persist="astro-djjcnqsn-1"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Astro v5.16.5"><!-- Font preloads --><link rel="preload" href="/fonts/NationalPark-Regular.otf" as="font" type="font/otf" crossorigin><link rel="preload" href="/fonts/Reglisse_Fill.otf" as="font" type="font/otf" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://annsann.eu/blog/cross_compile_rust_wsl/"><!-- Primary Meta Tags --><title>AnnsAnn 🐸   - How to cross-compile Rust from WSL Linux to Windows</title><meta name="title" content="AnnsAnn 🐸   - How to cross-compile Rust from WSL Linux to Windows"><meta name="description" content="First Steps: The Sipeed Longan Nano Risc-V microcontroller and Rust"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://annsann.eu/blog/cross_compile_rust_wsl/"><meta property="og:title" content="AnnsAnn 🐸   - How to cross-compile Rust from WSL Linux to Windows"><meta property="og:description" content="First Steps: The Sipeed Longan Nano Risc-V microcontroller and Rust"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://annsann.eu/blog/cross_compile_rust_wsl/"><meta property="twitter:title" content="AnnsAnn 🐸   - How to cross-compile Rust from WSL Linux to Windows"><meta property="twitter:description" content="First Steps: The Sipeed Longan Nano Risc-V microcontroller and Rust"><!-- ActivityPub Creds --><link rel="me" href="https://norden.social/@AnnsAnn"><meta name="fediverse:creator" content="@AnnsAnn@norden.social"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.DmLMM95P.js"></script><link rel="stylesheet" href="/_astro/_slug_.6x8uV1DA.css"><script type="module" src="/_astro/page.D6sK1WDe.js"></script><style>[data-astro-transition-scope="astro-64dgry3h-3"] { view-transition-name: astro-64dgry3h-3; }@layer astro { ::view-transition-old(astro-64dgry3h-3) { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }::view-transition-new(astro-64dgry3h-3) { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back]::view-transition-old(astro-64dgry3h-3) { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back]::view-transition-new(astro-64dgry3h-3) { 
+	animation-name: astroFadeIn, astroSlideFromLeft; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-name: astroFadeIn, astroSlideFromLeft; }</style></head> <body> <div class="h-full my-1 sm:my-2 sm:h-screen w-full  bg-base-bd-background-color md:overflow-clip"> <div class="md:grid md:grid-cols-4 lg:grid-cols-4 md:gap-8 p-4 justify-around xl:justify-center h-full w-full sm:h-screen">  <div class="flex justify-self-end gap-y-6 py-4 flex-col w-full md:w-min h-full md:h-screen sm:justify-around overflow-auto"> <div class="font-headerf w-full md:w-44 lg:w-60 text-lg"> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="flex flex-col min-h-fit min-w-[120px] pt-3"> <a href="/"> <div class="flex flex-col trans justify-center self-center text-center font-semibold items-center"> <img src="/_astro/avatar.dtpPEdAL_1xA6Ez.webp" alt="logo" loading="eager" decoding="async" fetchpriority="auto" width="112" height="112" class="justify-self-center p-2 w-28 shadow-md bg-black/10 rounded-full"> <div class="text-3xl font-bold">
+Ann
+</div> </div> </a> <hr class="h-[2px] my-2 bg-gray-200 border-0 "> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/">
+Home
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/blog">
+Blog
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/projects">
+Projects
+</a> <!-- <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/about">
+                About
+            </a> --> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/friends">
+Friends
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/ramblings">
+Ramblings
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/now">
+Now
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="https://github.com/AnnsAnns">
+Github
+</a> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ min-h-64" data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        "> 🏝️ Contents </div> <div> <div class="overflow-auto"><ul class="list-inside text-lg"><a href="#wsl"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰WSL</li></a><a href="#lvl-5-crook-just-compile-on-windows"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Lvl. 5, Crook: Just compile on Windows</li></a><a href="#lvl-50-boss-use-mingw64-to-compile-from-linux-to-windows"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Lvl. 50, Boss: Use Mingw64 to compile from Linux to Windows</li></a><a href="#lvl-100-hackerman-use-cross"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Lvl. 100, Hackerman: Use Cross</li></a><a href="#conclusion"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">→🪰Conclusion</li></a></ul></div> </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> <div class=""> <script type="module" src="/_astro/Themes.astro_astro_type_script_index_0_lang.w8ZucabI.js"></script> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="content-center p-3 text-center"> <button id="themeSwitcherClick" class="
+            font-headerf
+            text-lg
+            md:text-xl
+            lg:text-2xl
+            bg-base-text-color/25
+            rounded-lg
+            p-3
+        ">
+Change Theme
+</button> <div class="theme-name font-light text-base-text-color/40 mb-[-12px]">
+LOADING ...
+</div> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> </div>  <div class="md:col-span-3 justify-center lg:col-span-2 h-full sm:h-screen w-full sm:max-h-screen sm:max-w-full" data-astro-transition-scope="astro-64dgry3h-3">  <div class="h-full w-full flex flex-col items-center"> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ w-full md:w-fit" data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        "> How to cross-compile Rust from WSL Linux to Windows </div> <div>  <article> <div class="flex flex-row justify-between"> <div class="description text-base-text-color/80 font-medium text-lg"> <p>First Steps: The Sipeed Longan Nano Risc-V microcontroller and Rust</p> </div> <div class="date text-base-text-color/60"> <time datetime="2021-02-25T00:00:00.000Z"> Feb 25, 2021 </time>  </div> </div> <div class="hero-image">  </div> <br> <hr> <br> <div class="legacy-warning"> <h1 class="text-slate-500 text-xl font-bold">
+This is a legacy blog post from a long time ago.
+<br>
+It might contain outdated or incorrect information.
+</h1> <br> </div> <div class="prose"> <div class="prose-zinc
+                prose-lg
+                prose-a:text-base-text-color
+                prose-headings:text-base-text-color
+                prose-headings:font-headerf
+                font-medium
+                text-base-text-color
+                font-bodyf
+                leading-snug
+                prose-img:max-h-96
+                prose-img:w-auto
+                prose-img:text-center
+                prose-blockquote:bg-base-text-color/10
+                prose-a:text-base-text-color/90
+				prose-strong:text-base-text-color
+                prose-a:underline
+				prose-code:bg-base-text-color/10
+				prose-code:text-base-text-color">  <img src="/_astro/rustlogo.DhCAFpWh_vee9Q.webp" alt="🦀🦀🦀 Rust logo" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="800">
+<p>Okay, look, I have fallen down the rabbit hole when it comes to Rust. At first I didn’t expect to use the language to a great extend but the more I use it, the more I like it. Besides the great compiler and all the other benefits Rust comes with, the tooling is also amazing. There are so many useful community and first-party tools for many boilerplate problems that keep you from working efficiently, from easy wasm support to embedded software.</p>
+<p>In this (hopefully) short blogpost in the “Heck, I wish I knew this earlier” series, I want to showcase some really easy ways to cross-compile Rust projects to different architectures.</p>
+<h3 id="wsl">WSL</h3>
+<p>WSL is extremely useful and Microsoft is doing one great job when it comes to their <a href="https://en.wikipedia.org/wiki/Embrace,_extend,_and_extinguish">“Embrace, extend, and extinguish”</a> tactic. I love the fact that I can do all my work on the far greater platform for developers (Linux) while still running the buggy mess that is Windows 10 for all the software that doesn’t really work well on Linux.</p>
+<img src="/_astro/neofetch.C6tPbzT-_dD7k9.webp" alt="Neofetch showing that I run Arch" loading="lazy" decoding="async" fetchpriority="auto" width="745" height="428">
+<p>And as some readers might already know, “btw I use Arch”. Which means that even my WSL distribution is Arch, thanks to <a href="https://github.com/yuk7/ArchWSL">the awesome community of Arch</a>.</p>
+<p>While WSL 1 was quite mediocre, WSL 2 offers the full Linux experience, allowing me to do everything from desktop environments through server hosting. Sadly, WSL2 still only support software rendering, which is a major bottleneck for all applications that do more than a simple GUI, and even then, some GUIs don’t even support software rendering.</p>
+<p>Microsoft is even working on a solution to this, but it honestly looks quite questionable and is still not live so we couldn’t even use it if we wanted to. There is a solution to this however, just cross-compile whatever you need to Windows and run it on Windows and there is a myriad of ways to do that. In this blog post I’ll just quickly talk about 3 solutions that I went through with the most important one being <a href="https://github.com/rust-embedded/cross">“Cross”</a> for rust.</p>
+<h3 id="lvl-5-crook-just-compile-on-windows">Lvl. 5, Crook: Just compile <em>on Windows</em></h3>
+<p>I also like to call this the <em>“You want to suffer”</em> method. Even though this method has the most documentation, it kinda defeats the point. Why would you need a WSL instance when using the inferior Windows toolchain.</p>
+<p>Anyways, the setup is basically just three <em>“simple”</em> steps.</p>
+<ol>
+<li>Install half a terrabyte of Microsoft toolchains + Microsoft Visual Studio from here: <a href="https://visualstudio.microsoft.com/visual-cpp-build-tools/">https://visualstudio.microsoft.com/visual-cpp-build-tools/</a>
+<ul>
+<li>To be more exact, you only need the “Visual Studio C++ Build tools” but naturally, you can’t simply type “pacman -S” like on Arch.</li>
+</ul>
+</li>
+<li>Install <a href="https://www.rust-lang.org/tools/install">Rustup</a>
+<ul>
+<li>As to be expected, Rust makes everything really really easy for you :)</li>
+</ul>
+</li>
+<li>Regret your life choices because you decided to use Windows as your programming environment</li>
+</ol>
+<h3 id="lvl-50-boss-use-mingw64-to-compile-from-linux-to-windows">Lvl. 50, Boss: Use Mingw64 to compile from Linux to Windows</h3>
+<p>Honestly, people have made way better tutorials for Mingw64 Linux and I don’t feel like investing the time into explaining something I don’t even recommend.</p>
+<p>If you actually want to use Mingw64 instead of using Cross, follow the Arch Wiki: <a href="https://wiki.archlinux.org/index.php/Rust#Windows">https://wiki.archlinux.org/index.php/Rust#Windows</a></p>
+<h3 id="lvl-100-hackerman-use-cross">Lvl. 100, Hackerman: Use <a href="https://github.com/rust-embedded/cross">Cross</a></h3>
+<p>My god, I wish I knew this existed earlier. <a href="https://github.com/rust-embedded/cross">Cross</a> is a project by the <a href="https://github.com/rust-embedded/wg#the-tools-team">Rust Embedded Tooling Team</a> which makes cross-compiling of Rust absolutely painless. I have never had an easier time cross-compiling anything, it’s literally a single line of work and absolutely astonishing work by the Rust Embedded Tooling Team.</p>
+<h5 id="setup-on-linux">Setup on Linux:</h5>
+<ol>
+<li>Have a working version of Rustup
+<ul>
+<li><code>pacman -S rustup</code></li>
+</ul>
+</li>
+<li>Install either Docker or Podman
+<ul>
+<li><code>pacman -S podman</code></li>
+</ul>
+</li>
+<li>Lastly, install cross
+<ul>
+<li><code>cargo install cross</code></li>
+</ul>
+</li>
+</ol>
+<h5 id="setup-on-wsl">Setup on WSL:</h5>
+<ol>
+<li>Have a working version of Rustup
+<ul>
+<li><code>pacman -S rustup</code></li>
+</ul>
+</li>
+<li>Ensure that you installed <a href="https://www.docker.com/get-started">Docker <strong>on Windows</strong></a>
+<ul>
+<li>Docker on Windows utilizes WSL2 and hijacks all docker calls, so you can’t simple install Docker from within Arch afaik</li>
+</ul>
+</li>
+<li>Ensure that Docker for Windows lists your WSL2 instance in Settings&gt;Resources&gt;WSL Integration</li>
+<li>Lastly, install cross
+<ul>
+<li><code>cargo install cross</code></li>
+</ul>
+</li>
+</ol>
+<p>After this, you can simple use Cross to compile to your specified target. In our case we want to compile to x86_64 Windows, which means simple typing <code>cross build --target x86_64-pc-windows-gnu</code>. After that, you should have <code>&lt;project_name&gt;.exe</code> in <code>target\x86_64-pc-windows-gnu\debug</code>.</p>
+<p>WSL even allows you to simple call the exe from your Subsystem’s shell, in which case it will execute it natively from Windows. Success, you just cross-compiled to Windows from a Linux WSL instance in a single command.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Rust is awesome, praise Rust.</p>
+<p>In all seriousness though, such excellent tooling is beyond expectable for a language that is still so young and new. I hope I managed to keep this blog post relatively short and thank you for taking the time out of your day just to read it.</p>
+<p>If you have any questions (or want to follow me on social media), feel free to visit my <a href="DEADLINK">Twitter</a>.</p>
+<p>I also made some major changes to my blog, majorly increasing speed, SEO, accessibility and more. If you noticed anything breaking, I’d be happy to fix it.</p>  </div> </div> </article>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div>  </div>  <div class="w-full h-full md:h-screen overflow-auto"> <div class="flex items-center flex-col-reverse mt-2 md:mt-0 gap-y-3 sm:gap-y-5 md:gap-y-8 self-center h-full"> <div class="shrink"></div> <div class="flex flex-col-reverse items-center justify-evenly gap-y-2 md:gap-y-4 justify-items-center h-full basis-full md:basis-1/3"> <div class="w-fit overflow-x-auto"> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="flex flex-col justify-center items-center pt-6"> <audio controls loop data-astro-transition-persist="astro-gqvfa26k-5"> <source src="/CheckMiiOut.mp3" type="audio/mpeg"> </audio> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1"> <a href="https://www.youtube.com/watch?v=1U9ls3vAt5I"> <img src="/_astro/jerma.Dvz9-M6x_kMobv.webp" alt="Jerma Blinky" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://www.youtube.com/watch?v=PLaanhBuiVU"> <img src="/_astro/da%20blinkie.D8zGGJVl_Z1DS40J.webp" alt="Da Blinki?!?" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://archlinux.org/"> <img src="/_astro/trans.C404quiq_ojhhI.webp" alt="Trans Rights" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://www.youtube.com/watch?v=iBF_mDFgtH4"> <img src="/_astro/mikujerma.DtdjFOHq_ZiqQQl.webp" alt="Miku Jerma" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://www.youtube.com/watch?v=0Qs_jRerdSg"> <img src="/_astro/jermamiku.BHalGsbT_2iuYzf.webp" alt="Jerma Miku" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <div class="w-full columns-2"> <a href="https://www.youtube.com/watch?v=yD2FSwTy2lw"> <img src="/_astro/bob.DeuMGCJO_ZELr6z.webp" alt="Bob from Animal Crossing spinning" loading="lazy" decoding="async" fetchpriority="auto" width="88" height="31"> </a> <a href="https://www.mozilla.org/en-US/firefox/windows/"> <img src="/_astro/fftake.juBJ8bzE_Z1EhRY0.webp" alt="Download Firefox" loading="lazy" decoding="async" fetchpriority="auto" width="88" height="31"> </a> </div> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1"> <img src="/annsann.gif" alt="blinky" loading="lazy" decoding="async" fetchpriority="auto" width="88" height="31"> <label for="blinky" class="text-slate-500 text-xs pt-2">Copy this code to use the blinky</label> <textarea id="blinky" readonly class="p-1 border rounded text-slate-500 text-xs" rows="1">&lt;a href=&#39;https://annsann.eu&#39; target=&#39;_blank&#39;&gt;&lt;img src=&#39;https://annsann.eu//annsann.gif&#39; alt=&#39;AnnsAnn🐸&#39;&gt;&lt;/a&gt;</textarea> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> </div> </div> </div> <div class="md:absolute md:bottom-0 md:left-0 w-full text-left text-xs text-base-text-color/70">
+© 2025 Ann -
+<a href="/privacy_policy" class="">
+Privacy Policy
+</a> </div> </div></body></html>

@@ -1,0 +1,871 @@
+<!DOCTYPE html><script type="module" src="/_astro/BaseLayout.astro_astro_type_script_index_0_lang.C2A0M2Up.js"></script> <html lang="en" class="standard" data-astro-transition-persist="astro-djjcnqsn-1"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Astro v5.16.5"><!-- Font preloads --><link rel="preload" href="/fonts/NationalPark-Regular.otf" as="font" type="font/otf" crossorigin><link rel="preload" href="/fonts/Reglisse_Fill.otf" as="font" type="font/otf" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://annsann.eu/blog/minecraft_use_custom_domains/"><!-- Primary Meta Tags --><title>AnnsAnn 🐸   - Bonus: Minecraft SRV Record Magic</title><meta name="title" content="AnnsAnn 🐸   - Bonus: Minecraft SRV Record Magic"><meta name="description" content="How to always get a custom domain for your Minecraft server"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://annsann.eu/blog/minecraft_use_custom_domains/"><meta property="og:title" content="AnnsAnn 🐸   - Bonus: Minecraft SRV Record Magic"><meta property="og:description" content="How to always get a custom domain for your Minecraft server"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://annsann.eu/blog/minecraft_use_custom_domains/"><meta property="twitter:title" content="AnnsAnn 🐸   - Bonus: Minecraft SRV Record Magic"><meta property="twitter:description" content="How to always get a custom domain for your Minecraft server"><!-- ActivityPub Creds --><link rel="me" href="https://norden.social/@AnnsAnn"><meta name="fediverse:creator" content="@AnnsAnn@norden.social"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.DmLMM95P.js"></script><link rel="stylesheet" href="/_astro/_slug_.6x8uV1DA.css"><script type="module" src="/_astro/page.D6sK1WDe.js"></script><style>[data-astro-transition-scope="astro-64dgry3h-3"] { view-transition-name: astro-64dgry3h-3; }@layer astro { ::view-transition-old(astro-64dgry3h-3) { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }::view-transition-new(astro-64dgry3h-3) { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back]::view-transition-old(astro-64dgry3h-3) { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back]::view-transition-new(astro-64dgry3h-3) { 
+	animation-name: astroFadeIn, astroSlideFromLeft; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-duration: 90ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both, both;
+	animation-name: astroFadeOut, astroSlideToLeft; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-duration: 210ms, 220ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1), cubic-bezier(0.76, 0, 0.24, 1);
+	animation-delay: 30ms;
+	animation-fill-mode: both, both;
+	animation-name: astroFadeIn, astroSlideFromRight; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-name: astroFadeOut, astroSlideToRight; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-64dgry3h-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-64dgry3h-3"] { 
+	animation-name: astroFadeIn, astroSlideFromLeft; }</style></head> <body> <div class="h-full my-1 sm:my-2 sm:h-screen w-full  bg-base-bd-background-color md:overflow-clip"> <div class="md:grid md:grid-cols-4 lg:grid-cols-4 md:gap-8 p-4 justify-around xl:justify-center h-full w-full sm:h-screen">  <div class="flex justify-self-end gap-y-6 py-4 flex-col w-full md:w-min h-full md:h-screen sm:justify-around overflow-auto"> <div class="font-headerf w-full md:w-44 lg:w-60 text-lg"> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="flex flex-col min-h-fit min-w-[120px] pt-3"> <a href="/"> <div class="flex flex-col trans justify-center self-center text-center font-semibold items-center"> <img src="/_astro/avatar.dtpPEdAL_1xA6Ez.webp" alt="logo" loading="eager" decoding="async" fetchpriority="auto" width="112" height="112" class="justify-self-center p-2 w-28 shadow-md bg-black/10 rounded-full"> <div class="text-3xl font-bold">
+Ann
+</div> </div> </a> <hr class="h-[2px] my-2 bg-gray-200 border-0 "> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/">
+Home
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/blog">
+Blog
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/projects">
+Projects
+</a> <!-- <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/about">
+                About
+            </a> --> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/friends">
+Friends
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/ramblings">
+Ramblings
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/now">
+Now
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="https://github.com/AnnsAnns">
+Github
+</a> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ min-h-64" data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        "> 🏝️ Contents </div> <div> <div class="overflow-auto"><ul class="list-inside text-lg"><a href="#what-is-an-srv-record"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">🐸What is an SRV record?</li></a><a href="#how-to-set-up-an-srv-record"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">🐸How to set up an SRV record</li></a><a href="#conclusion"><li class="ml-4 text-wrap hover:bg-base-text-color/40 active:bg-base-text-color/60">🐸Conclusion</li></a></ul></div> </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> <div class=""> <script type="module" src="/_astro/Themes.astro_astro_type_script_index_0_lang.w8ZucabI.js"></script> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="content-center p-3 text-center"> <button id="themeSwitcherClick" class="
+            font-headerf
+            text-lg
+            md:text-xl
+            lg:text-2xl
+            bg-base-text-color/25
+            rounded-lg
+            p-3
+        ">
+Change Theme
+</button> <div class="theme-name font-light text-base-text-color/40 mb-[-12px]">
+LOADING ...
+</div> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> </div>  <div class="md:col-span-3 justify-center lg:col-span-2 h-full sm:h-screen w-full sm:max-h-screen sm:max-w-full" data-astro-transition-scope="astro-64dgry3h-3">  <div class="h-full w-full flex flex-col items-center"> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ w-full md:w-fit" data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        "> Bonus: Minecraft SRV Record Magic </div> <div>  <article> <div class="flex flex-row justify-between"> <div class="description text-base-text-color/80 font-medium text-lg"> <p>How to always get a custom domain for your Minecraft server</p> </div> <div class="date text-base-text-color/60"> <time datetime="2024-04-07T00:00:00.000Z"> Apr 7, 2024 </time>  </div> </div> <div class="hero-image">  </div> <br> <hr> <br> <div class="legacy-warning"> <h1 class="text-slate-500 text-xl font-bold">
+This is a legacy blog post from a long time ago.
+<br>
+It might contain outdated or incorrect information.
+</h1> <br> </div> <div class="prose"> <div class="prose-zinc
+                prose-lg
+                prose-a:text-base-text-color
+                prose-headings:text-base-text-color
+                prose-headings:font-headerf
+                font-medium
+                text-base-text-color
+                font-bodyf
+                leading-snug
+                prose-img:max-h-96
+                prose-img:w-auto
+                prose-img:text-center
+                prose-blockquote:bg-base-text-color/10
+                prose-a:text-base-text-color/90
+				prose-strong:text-base-text-color
+                prose-a:underline
+				prose-code:bg-base-text-color/10
+				prose-code:text-base-text-color">  <p>:::note
+The content of this blog post is still correct, however, Playit seems to have, unintentionally, made this experience feel a bit buggy.
+In an effort to combat the extremely common practice of port scanning for Minecraft servers without a whitelist, the SRV
+redirects started breaking within Minecraft, still allowing users to connect, but not properly showing the status of the server.
+:::</p>
+<p>This is a bonus post related to the <a href="../sustainable_minecraft/">previous post (How to host a Minecraft server, sustainably, locally, and securely)</a>, which was a sequel to <a href="../ipv6_germany_tunnels/">IPv6, Germany and Tunnels</a>.</p>
+<p>A big shoutout to <a href="https://github.com/noahc3">Noah</a> for telling me about this!</p>
+<p><img src="/_astro/orb.GQ4Oo2Gj_ZgCq7R.webp" alt="Orb" title="Noah pondering the orb" loading="lazy" decoding="async" fetchpriority="auto" width="1244" height="750"></p>
+<p>In the previous post I talked about playit and the fact that you couldn’t set a custom domain for your server unless you pay for it. But there is a way to get a custom domain for free,
+on nearly every single server hoster, and it’s called SRV records, which still feels like black magic to me.</p>
+<h2 id="what-is-an-srv-record">What is an SRV record?</h2>
+<p>An SRV record is a DNS record that specifies the hostname and port number of servers for specified services. It is defined in <a href="https://datatracker.ietf.org/doc/html/rfc2782">RFC 2782</a> if somebody is nerdy enough to read through that.</p>
+<p>This allows you to have Minecraft running on any port and ip address you want, and still connect to it using a custom domain without having to specify the port in the server address.</p>
+<p>Even though this sounds amazing, esp. for websites, the huge downside is that not every client supports SRV records, including web browsers.</p>
+<p>Looking this up I expected that being due to some security reasons, but it seems like it’s just because <a href="https://stackoverflow.com/questions/9063378/why-do-browsers-not-use-srv-records">barely anybody at the IETF cared about SRV</a>.</p>
+<p>However, Minecraft does support SRV records, and that’s what we are going to use it for.</p>
+<h2 id="how-to-set-up-an-srv-record">How to set up an SRV record</h2>
+<p>Here is how to do it based on PlayIt, but it should be similar for other tunnel services or any other server hoster that doesn’t allow you to set a custom domain for free (or at all).</p>
+<ol>
+<li>Get the IP and port of the Minecraft server. In the case of PlayIt they mention it on their page.</li>
+</ol>
+<p><img src="/_astro/ip.KWDSj4_y_ZCQBIx.webp" alt="IP" title="The IP on the website" loading="lazy" decoding="async" fetchpriority="auto" width="1511" height="618"></p>
+<ol start="2">
+<li>Create a proxy A record that points to the IP of the server. This is necessary because you can’t create an SRV record pointing to another SRV record.</li>
+</ol>
+<p><img src="/_astro/proxy.CtdF4HcX_ZVXYOS.webp" alt="Proxy A record" title="The IP of the server as the A record target" loading="lazy" decoding="async" fetchpriority="auto" width="1742" height="267"></p>
+<ol start="3">
+<li>Point the SRV record to the proxy A record.</li>
+</ol>
+<ul>
+<li>The format of the SRV record is <code>_minecraft._tcp.NAME</code> as the name, where NAME is whatever name you’d like to connect to
+<ul>
+<li>For example, <code>_minecraft._tcp.peter</code> would allow me to connect to the server using <code>peter.yourdomain.com</code></li>
+</ul>
+</li>
+<li>the priority and weight can be set randomly (I set them to 0, 5)</li>
+<li>the port is the port of the server (e.g. 18778) <em>not</em> the standard Minecraft port (25565)</li>
+</ul>
+<p><img src="/_astro/srv.D80cuLxf_Zw4oLW.webp" alt="SRV record" title="The SRV record pointing to the proxy A record" loading="lazy" decoding="async" fetchpriority="auto" width="1845" height="347"></p>
+<ol start="4">
+<li>Congratulations! You can now connect to your server using the custom domain.</li>
+</ol>
+<p><img src="/_astro/minecraft.IgR0J3j-_QhyM8.webp" alt="Minecraft menu" title="Minecraft menu showing you can connect" loading="lazy" decoding="async" fetchpriority="auto" width="3072" height="1779"></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>SRV is black magic.</p>
+<p>That’s it.</p>
+<p>Again, big shoutout to <a href="https://github.com/noahc3">Noah</a> for telling me about this!</p>
+<p>Okay, goodbye. I’ve reached my quota for this year, see you next year when I write another blog post.</p>  </div> </div> </article>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div>  </div>  <div class="w-full h-full md:h-screen overflow-auto"> <div class="flex items-center flex-col-reverse mt-2 md:mt-0 gap-y-3 sm:gap-y-5 md:gap-y-8 self-center h-full"> <div class="shrink"></div> <div class="flex flex-col-reverse items-center justify-evenly gap-y-2 md:gap-y-4 justify-items-center h-full basis-full md:basis-1/3"> <div class="w-fit overflow-x-auto"> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="flex flex-col justify-center items-center pt-6"> <audio controls loop data-astro-transition-persist="astro-gqvfa26k-5"> <source src="/CheckMiiOut.mp3" type="audio/mpeg"> </audio> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1"> <a href="https://www.youtube.com/watch?v=1U9ls3vAt5I"> <img src="/_astro/jerma.Dvz9-M6x_kMobv.webp" alt="Jerma Blinky" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://www.youtube.com/watch?v=PLaanhBuiVU"> <img src="/_astro/da%20blinkie.D8zGGJVl_Z1DS40J.webp" alt="Da Blinki?!?" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://archlinux.org/"> <img src="/_astro/trans.C404quiq_ojhhI.webp" alt="Trans Rights" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://www.youtube.com/watch?v=iBF_mDFgtH4"> <img src="/_astro/mikujerma.DtdjFOHq_ZiqQQl.webp" alt="Miku Jerma" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <a href="https://www.youtube.com/watch?v=0Qs_jRerdSg"> <img src="/_astro/jermamiku.BHalGsbT_2iuYzf.webp" alt="Jerma Miku" loading="lazy" decoding="async" fetchpriority="auto" width="150" height="20"> </a> <div class="w-full columns-2"> <a href="https://www.youtube.com/watch?v=yD2FSwTy2lw"> <img src="/_astro/bob.DeuMGCJO_ZELr6z.webp" alt="Bob from Animal Crossing spinning" loading="lazy" decoding="async" fetchpriority="auto" width="88" height="31"> </a> <a href="https://www.mozilla.org/en-US/firefox/windows/"> <img src="/_astro/fftake.juBJ8bzE_Z1EhRY0.webp" alt="Download Firefox" loading="lazy" decoding="async" fetchpriority="auto" width="88" height="31"> </a> </div> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ " data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        ">  </div> <div>  <div class="content-center items-center justify-center justify-items-center grid h-full pt-4 gap-1"> <img src="/annsann.gif" alt="blinky" loading="lazy" decoding="async" fetchpriority="auto" width="88" height="31"> <label for="blinky" class="text-slate-500 text-xs pt-2">Copy this code to use the blinky</label> <textarea id="blinky" readonly class="p-1 border rounded text-slate-500 text-xs" rows="1">&lt;a href=&#39;https://annsann.eu&#39; target=&#39;_blank&#39;&gt;&lt;img src=&#39;https://annsann.eu//annsann.gif&#39; alt=&#39;AnnsAnn🐸&#39;&gt;&lt;/a&gt;</textarea> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </div> </div> </div> </div> <div class="md:absolute md:bottom-0 md:left-0 w-full text-left text-xs text-base-text-color/70">
+© 2025 Ann -
+<a href="/privacy_policy" class="">
+Privacy Policy
+</a> </div> </div></body></html>
