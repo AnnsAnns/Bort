@@ -2,7 +2,7 @@
 title: 'Hosting a Minecraft server sustainably'
 description: 'IPv6, Germany and Tunnels 2: Electric Bogaloo'
 pubDate: "2024-04-06"
-updatedDate: "2024-04-07"
+updatedDate: "2026-02-04"
 tags: [
     "minecraft",
     "server",
@@ -79,6 +79,8 @@ After less than a minute of setup, I had my server running and publicly accessib
 [^0]: [Netzentgelte](https://www.ndr.de/nachrichten/info/Netzentgelte-sorgen-im-Norden-fuer-hoehere-Stromrechnungen,strompreis200.html)
 
 ### 3. Empty Server Stopper 
+
+**EDIT: Since 1.21 you don't actually need something like this anymore (unless you want to free up reserved RAM). Minecraft now actually properly handles idle states (no players) and drastically reduces cpu consumption by default.**
 
 The last part isn't as crazy as the other two, but it provides the essential functionality to stop the server when no one is online. 
 There are many plugins that do this for nearly every modding framework, plugin system and Minecraft version. For my server I used [Empty Server Stopper (Fabric)](https://github.com/GHYAKIMA/emptyserverstopper-mod).
