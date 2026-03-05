@@ -87,8 +87,8 @@ Friends
 Ramblings
 </a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="/now">
 Now
-</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="https://github.com/AnnsAnns">
-Github
+</a> <a class="navitem hover:bg-base-text-color/30 active:bg-base-text-color/60" href="https://codeberg.org/AnnsAnn">
+Codeberg
 </a> </div>  </div> </div> </div> <!-- <script>
     const initDraggable = () => {
         // Only enable dragging on xl screens and above (1280px+)
@@ -420,7 +420,7 @@ LOADING ...
             md:text-3xl
             lg:text-4xl
         "> Hosting a Minecraft server sustainably </div> <div>  <article> <div class="flex flex-row justify-between"> <div class="description text-base-text-color/80 font-medium text-lg"> <p>IPv6, Germany and Tunnels 2: Electric Bogaloo</p> </div> <div class="date text-base-text-color/60"> <time datetime="2024-04-06T00:00:00.000Z"> Apr 6, 2024 </time> <div class="last-updated-on">
-Last updated on <time datetime="2024-04-07T00:00:00.000Z"> Apr 7, 2024 </time> </div> </div> </div> <div class="hero-image">  </div> <br> <hr> <br>  <div class="prose"> <div class="prose-zinc
+Last updated on <time datetime="2026-02-04T00:00:00.000Z"> Feb 4, 2026 </time> </div> </div> </div> <div class="hero-image">  </div> <br> <hr> <br>  <div class="prose"> <div class="prose-zinc
                 prose-lg
                 prose-a:text-base-text-color
                 prose-headings:text-base-text-color
@@ -469,6 +469,7 @@ This little node server wraps around the Minecraft server and waits for a connec
 <p>After less than a minute of setup, I had my server running and publicly accessible.</p>
 <p><img src="/_astro/playitstats.CjreVhE5_ZMGWKc.webp" alt="PlayIt" title="PlayIt Stats of the server" loading="lazy" decoding="async" fetchpriority="auto" width="1531" height="1054"></p>
 <h3 id="3-empty-server-stopper">3. Empty Server Stopper</h3>
+<p><strong>EDIT: Since 1.21 you don’t actually need something like this anymore (unless you want to free up reserved RAM). Minecraft now actually properly handles idle states (no players) and drastically reduces cpu consumption by default.</strong></p>
 <p>The last part isn’t as crazy as the other two, but it provides the essential functionality to stop the server when no one is online.
 There are many plugins that do this for nearly every modding framework, plugin system and Minecraft version. For my server I used <a href="https://github.com/GHYAKIMA/emptyserverstopper-mod">Empty Server Stopper (Fabric)</a>.</p>
 <p>After 15 minutes of no one being online, the server will stop itself and giving the port back to MC Sleeping Server Starter.</p>
