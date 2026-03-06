@@ -277,7 +277,119 @@ LOADING ...
         sm:overflow-y-auto
         scrollbar-thin s
         crollbar-track-base-background-color
-        scrollbar-thumb-box-color-standard"> <a id="linux_has_become_good_enough" class="grow py-3 px-2 max-w-full min-w-[80%] flex flex-col items-center"></a><a href="/ramblings/linux_has_become_good_enough/"> <div class="
+        scrollbar-thumb-box-color-standard"> <a id="is_ai_supposed_to_replace_me" class="grow py-3 px-2 max-w-full min-w-[80%] flex flex-col items-center"></a><a href="/ramblings/is_ai_supposed_to_replace_me/"> <div class="
+    bg-base-background-color
+    ring-box-color-standard
+    ring-4
+    break-words
+    overflow-hidden
+    shadow-square
+    shadow-box-color-standard/50
+    min-h-[120px]
+    min-w-[120px]
+    flex flex-col
+    rotate-0
+    m-1
+    px-3
+    pb-3
+    sm:max-h-notfullscreen
+    text-base-text-color
+    rounded-sm
+    relative
+ text-center h-full w-fit max-w-4xl" data-draggable-box> <div class="
+        bg-box-color-standard
+        mx-[-12px]
+        min-w-max
+        min-h-min
+        items-end
+        text-left
+        text-end
+        flex
+        justify-end
+        align-middle
+        p-1
+        pb-2
+        gap-1
+        text-base-background-color
+        cursor-move
+    " data-drag-handle> 
+➖ ⏹️ ❌
+</div> <div class="
+        sm:overflow-y-auto
+        scrollbar-thin
+        scrollbar-track-base-background-color
+        scrollbar-thumb-box-color-standard
+    "> <div class="
+            font-headerf
+            text-2xl
+            md:text-3xl
+            lg:text-4xl
+        "> Is AI supposed to replace me? </div> <div>  <div class="flex flex-col gap-x-2 mt-2 items-center h-full w-full content-center justify-around"> <div class="flex flex-col items-center"> <div class="pt-2 text-center text-ellipsis min-w-[80vw] md:min-w-80 xl:min-w-96 flex flex-col items-center justify-center"> import Youtube from &#39;../../components/Youtube.astro&#39;;
+
+import problem_vid from &quot;./images/is_ai_supposed_to_replace_me/problem.mp4&quot;
+
+__Rambling ahead__: This is a __rambling__ post, this means that I _ [...] </div> <div class="text-sm text-base-text-color/60"> [Click to see full post] </div> <div class="text-left self-end text-sm text-base-text-color/60"> <div> 
+Click to expand post
+ - 3/4/2026 </div> </div> </div> </div>  </div> </div> </div> <!-- <script>
+    const initDraggable = () => {
+        // Only enable dragging on xl screens and above (1280px+)
+        if (window.innerWidth < 1280) return;
+
+        document.querySelectorAll('[data-draggable-box]').forEach((box: HTMLElement) => {
+            const handle = box.querySelector('[data-drag-handle]');
+            let isDragging = false;
+            let currentX = 0;
+            let currentY = 0;
+            let initialX = 0;
+            let initialY = 0;
+            let placeholder: HTMLElement | null = null;
+
+            handle?.addEventListener('mousedown', (e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                isDragging = true;
+                const rect = box.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                currentX = rect.left;
+                currentY = rect.top;
+                
+                // Create placeholder
+                if (box.style.position !== "fixed") {
+                    placeholder = document.createElement('div');
+                    placeholder.style.width = `${rect.width}px`;
+                    placeholder.style.height = `${rect.height}px`;
+                    placeholder.style.visibility = 'hidden';
+                    box.parentNode?.insertBefore(placeholder, box);
+                }
+
+                box.style.position = 'fixed';
+                box.style.left = `${currentX}px`;
+                box.style.top = `${currentY}px`;
+                box.style.margin = '0';
+                box.style.width = `${rect.width}px`;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                (box as HTMLElement).style.left = `${currentX}px`;
+                (box as HTMLElement).style.top = `${currentY}px`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+        });
+    };
+
+    // Initialize on load
+    initDraggable();
+
+    // Re-initialize on resize if crossing the xl breakpoint
+    window.addEventListener('resize', initDraggable);
+</script> --> </a><a id="linux_has_become_good_enough" class="grow py-3 px-2 max-w-full min-w-[80%] flex flex-col items-center"></a><a href="/ramblings/linux_has_become_good_enough/"> <div class="
     bg-base-background-color
     ring-box-color-standard
     ring-4
@@ -1706,7 +1818,7 @@ Click to expand post
     // Re-initialize on resize if crossing the xl breakpoint
     window.addEventListener('resize', initDraggable);
 </script> --> </div> </div> </div> </div> <div class="md:absolute md:bottom-0 md:left-0 w-full text-left text-xs text-base-text-color/70">
-© 2025 Ann -
+© 2026 Ann -
 <a href="/privacy_policy" class="">
 Privacy Policy
 </a> </div> </div></body></html>
