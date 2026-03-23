@@ -1,0 +1,44 @@
+---
+import Image from "astro/components/Image.astro";
+
+import bob from "./resources/blinkies/bob.gif";
+import jerma from "./resources/blinkies/jerma.gif";
+import fftake from "./resources/blinkies/fftake.gif";
+import dablinkie from "./resources/blinkies/da blinkie.gif";
+import trans from "./resources/blinkies/trans.gif";
+import jermamiku from "./resources/blinkies/jermamiku.gif";
+import mikujerma from "./resources/blinkies/mikujerma.gif";
+import Aly from "./resources/blinkies/aly.svg";
+
+const { isSidebar } = Astro.props;
+---
+
+<a href="https://www.youtube.com/watch?v=1U9ls3vAt5I">
+  <Image src={jerma} alt="Jerma Blinky" />
+</a>
+<a href="https://www.youtube.com/watch?v=PLaanhBuiVU">
+  <Image src={dablinkie} alt="Da Blinki?!?" />
+</a>
+<a href="https://archlinux.org/">
+  <Image src={trans} alt="Trans Rights" />
+</a>
+<a href="https://www.youtube.com/watch?v=iBF_mDFgtH4">
+  <Image src={mikujerma} alt="Miku Jerma" />
+</a>
+<a href="https://www.youtube.com/watch?v=0Qs_jRerdSg">
+  <Image src={jermamiku} alt="Jerma Miku" />
+</a>
+<div class="grid grid-cols-2 gap-1">
+<a href="https://www.youtube.com/watch?v=yD2FSwTy2lw">
+  <Image src={bob} alt="Bob from Animal Crossing spinning" />
+</a>
+<a href="https://www.mozilla.org/en-US/firefox/windows/">
+  <Image src={fftake} alt="Download Firefox" />
+</a>
+<a href="https://aly.fish/">
+  <Aly
+    width="88"
+    height="31"
+  />
+</a>
+</div>
