@@ -58,3 +58,10 @@ const { title, description, image } = Astro.props;
 <!-- ActivityPub Creds -->
 <link rel="me" href="https://norden.social/@AnnsAnn" />
 <meta name="fediverse:creator" content="@AnnsAnn@norden.social" />
+
+<link
+    rel="alternate"
+    type="application/rss+xml"
+    title="AnnsAnn's Blog"
+    href={new URL("rss.xml", Astro.site)}
+/>
