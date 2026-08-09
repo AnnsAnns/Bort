@@ -1,0 +1,1 @@
+import{l as a,a as c,T as n,c as o}from"./themes.DyLwVaKf.js";function t(){let m=a();c();const e=document.querySelector(".theme-name");e&&(e.textContent=n[m]),document.getElementById("themeSwitcherClick")?.addEventListener("click",o)}document.addEventListener("astro:after-swap",t);t();
