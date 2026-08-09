@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "2026-08-09-to-save-c-we-must-save-abi",
+    "url": "https://thephd.dev/to-save-c-we-must-save-abi-fixing-c-function-abi",
+    "title": "To Save C, We Must Save ABI",
+    "site": "The Pasture",
+    "description": "After that first Firebrand of an article on Application Binary Interface (ABI) Stability, I’m not sure anyone expected this to be the title of the next one, huh? It seems especially bad,",
+    "comment": "cool info about things we barely think about",
+    "tags": [
+      "c",
+      "abi"
+    ],
+    "pubDate": "2022-03-13",
+    "addedDate": "2026-08-09T10:05:40Z"
+  }
+]
