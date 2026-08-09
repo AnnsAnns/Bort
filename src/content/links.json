@@ -1,5 +1,13 @@
 [
   {
+    "id": "2026-08-09-don-t-use-the-likely-or-unlikely-attributes-ruminations",
+    "url": "https://blog.aaronballman.com/2020/08/dont-use-the-likely-or-unlikely-attributes/",
+    "title": "Don’t use the [[likely]] or [[unlikely]] attributes | Ruminations",
+    "site": "blog.aaronballman.com",
+    "pubDate": "2020-08-27",
+    "addedDate": "2026-08-09T11:38:52Z"
+  },
+  {
     "id": "2026-08-09-mobilbye-attacking-adas-with-camera-spoofing",
     "url": "https://arxiv.org/abs/1906.09765",
     "title": "MobilBye: Attacking ADAS with Camera Spoofing",
