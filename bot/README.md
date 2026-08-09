@@ -58,9 +58,9 @@ After=network-online.target
 [Service]
 Type=simple
 User=bort
-WorkingDirectory=/opt/bort-linkbot
-EnvironmentFile=/opt/bort-linkbot/.env
-ExecStart=/opt/bort-linkbot/bort-linkbot
+WorkingDirectory=/Bort/bot
+EnvironmentFile=/Bort/bot/.env
+ExecStart=/Bort/bot/target/release/bort-linkbot
 Restart=on-failure
 RestartSec=10
 
