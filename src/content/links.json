@@ -1,5 +1,14 @@
 [
   {
+    "id": "2026-08-09-mobilbye-attacking-adas-with-camera-spoofing",
+    "url": "https://arxiv.org/abs/1906.09765",
+    "title": "MobilBye: Attacking ADAS with Camera Spoofing",
+    "site": "arXiv.org",
+    "description": "Advanced driver assistance systems (ADASs) were developed to reduce the number of car accidents by issuing driver alert or controlling the vehicle. In this paper, we tested the robustness of Mobileye, a popular external ADAS. We injected spoofed traffic signs into Mobileye to assess the influence of environmental changes (e.g., changes in color, shape, projection speed, diameter and ambient light) on the outcome of an attack. To conduct this experiment in a realistic scenario, we used a drone t…",
+    "pubDate": "2019-06-24",
+    "addedDate": "2026-08-09T11:38:23Z"
+  },
+  {
     "id": "2026-08-09-rules-for-writing-software-tutorials",
     "url": "https://refactoringenglish.com/excerpts/rules-for-software-tutorials/",
     "title": "Rules for Writing Software Tutorials",
