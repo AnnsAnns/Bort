@@ -19,6 +19,9 @@ use crate::{
 /// two `/link` invocations at once would otherwise race on the same worktree.
 pub struct Repo {
     config: Arc<Config>,
+    /// Absolute. `config.workdir` may be relative.
+    workdir: PathBuf,
+    /// Absolute, always `workdir/repo`.
     clone_dir: PathBuf,
     askpass: PathBuf,
     lock: Mutex<()>,
@@ -41,9 +44,18 @@ impl Repo {
             .await
             .with_context(|| format!("could not create {}", config.workdir.display()))?;
 
+        // Resolved up front, because every git call below either runs *in* one
+        // of these directories or passes one as an argument. A relative
+        // `WORKDIR` would otherwise be interpreted against the git process's
+        // own working directory and nest the clone inside itself.
+        let workdir = tokio::fs::canonicalize(&config.workdir)
+            .await
+            .with_context(|| format!("could not resolve {}", config.workdir.display()))?;
+
         let repo = Self {
-            clone_dir: config.workdir.join("repo"),
-            askpass: write_askpass(&config.workdir).await?,
+            clone_dir: workdir.join("repo"),
+            askpass: write_askpass(&workdir).await?,
+            workdir,
             config,
             lock: Mutex::new(()),
         };
@@ -151,7 +163,7 @@ impl Repo {
         // Shallow: we only ever add a commit on top of the tip, so the history
         // is dead weight (and this repo carries a lot of images).
         self.git_in(
-            &self.config.workdir,
+            &self.workdir,
             &[
                 "clone",
                 "--quiet",
@@ -304,7 +316,7 @@ mod tests {
     /// Drives the real git binary against a local bare repository, so the
     /// clone / sync / commit / push path is exercised for real rather than
     /// mocked.
-    fn test_setup(dir: &Path) -> Arc<Config> {
+    fn test_setup(dir: &Path) -> Config {
         let origin = dir.join("origin.git");
         let seed = dir.join("seed");
 
@@ -345,7 +357,7 @@ mod tests {
         );
         git(&seed, &["push", "--quiet", "origin", "main"]);
 
-        Arc::new(Config {
+        Config {
             discord_token: "unused".to_owned(),
             allowed_users: vec![1],
             guild_id: None,
@@ -360,7 +372,7 @@ mod tests {
             user_agent: "test".to_owned(),
             fetch_timeout: std::time::Duration::from_secs(5),
             max_page_bytes: 1024,
-        })
+        }
     }
 
     fn git(dir: &Path, args: &[&str]) {
@@ -394,8 +406,7 @@ mod tests {
     #[tokio::test]
     async fn publishing_commits_and_pushes_to_the_remote() {
         let dir = tempfile::tempdir().unwrap();
-        let config = test_setup(dir.path());
-        let repo = Repo::open(Arc::clone(&config)).await.unwrap();
+        let repo = Repo::open(Arc::new(test_setup(dir.path()))).await.unwrap();
 
         assert!(repo.read_links().await.unwrap().is_empty());
 
@@ -437,7 +448,7 @@ mod tests {
     #[tokio::test]
     async fn the_same_link_is_not_added_twice() {
         let dir = tempfile::tempdir().unwrap();
-        let repo = Repo::open(test_setup(dir.path())).await.unwrap();
+        let repo = Repo::open(Arc::new(test_setup(dir.path()))).await.unwrap();
 
         repo.publish(draft("https://example.com/post", "A Cool Post"))
             .await
@@ -456,7 +467,7 @@ mod tests {
     #[tokio::test]
     async fn a_second_link_keeps_the_first_one() {
         let dir = tempfile::tempdir().unwrap();
-        let repo = Repo::open(test_setup(dir.path())).await.unwrap();
+        let repo = Repo::open(Arc::new(test_setup(dir.path()))).await.unwrap();
 
         repo.publish(draft("https://example.com/one", "First"))
             .await
@@ -476,8 +487,7 @@ mod tests {
     #[tokio::test]
     async fn a_concurrent_push_is_retried_on_top() {
         let dir = tempfile::tempdir().unwrap();
-        let config = test_setup(dir.path());
-        let repo = Repo::open(Arc::clone(&config)).await.unwrap();
+        let repo = Repo::open(Arc::new(test_setup(dir.path()))).await.unwrap();
 
         repo.publish(draft("https://example.com/one", "First"))
             .await
