@@ -1,5 +1,14 @@
 [
   {
+    "id": "2026-08-09-rules-for-writing-software-tutorials",
+    "url": "https://refactoringenglish.com/excerpts/rules-for-software-tutorials/",
+    "title": "Rules for Writing Software Tutorials",
+    "site": "refactoringenglish.com",
+    "description": "It's easier than you think to write an exceptional software tutorial. You can stand out in a sea of mediocre guides by following a few simple rules.",
+    "pubDate": "2025-01-02",
+    "addedDate": "2026-08-09T11:37:54Z"
+  },
+  {
     "id": "2026-08-09-go-s-march-to-low-latency-gc",
     "url": "https://blog.twitch.tv/en/2016/07/05/gos-march-to-low-latency-gc-a6fa96f06eb7/",
     "title": "Go’s march to low-latency GC",
