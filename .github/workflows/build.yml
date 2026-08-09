@@ -4,6 +4,9 @@ on:
     # We only run this GitHub action upon new commits to `main`
     branches:
       - main
+    # The link bot lives in this repo but has nothing to do with the site
+    paths-ignore:
+      - 'bot/**'
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest

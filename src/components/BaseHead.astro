@@ -65,3 +65,10 @@ const { title, description, image } = Astro.props;
     title="AnnsAnn's Blog"
     href={new URL("rss.xml", Astro.site)}
 />
+
+<link
+    rel="alternate"
+    type="application/rss+xml"
+    title="AnnsAnn's Cool Links"
+    href={new URL("links/rss.xml", Astro.site)}
+/>

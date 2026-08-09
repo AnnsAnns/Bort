@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-import { glob } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/[^_]*.mdx", base: "./src/content/blog" }),
@@ -51,4 +51,27 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { blog, ramblings, projects, now };
+// Cool links / articles found elsewhere on the web.
+// Written by the Discord bot in `bot/`, so keep this schema in sync with
+// `bot/src/entry.rs` if you change it.
+const links = defineCollection({
+  loader: file("./src/content/links.json"),
+  schema: z.object({
+    url: z.string().url(),
+    title: z.string(),
+    // Where it was published, e.g. "example.com" or "Some Blog"
+    site: z.string(),
+    author: z.string().optional(),
+    // The description the linked page advertises itself with
+    description: z.string().optional(),
+    // My own note on why it's worth reading
+    comment: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    // When the linked article was published (if the page bothered to say)
+    pubDate: z.coerce.date().optional(),
+    // When it was added to this list
+    addedDate: z.coerce.date(),
+  }),
+});
+
+export const collections = { blog, ramblings, projects, now, links };

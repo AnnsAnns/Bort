@@ -1,0 +1,28 @@
+---
+import Box from "../components/Box.astro";
+import { getSortedLinks } from "../utils/links";
+
+const newestLink = (await getSortedLinks())[0];
+
+const maxPreviewLength = 120;
+
+const preview = newestLink?.data.comment ?? newestLink?.data.description ?? "";
+const trimmedPreview =
+  preview.length > maxPreviewLength
+    ? `${preview.slice(0, maxPreviewLength)} [...]`
+    : preview;
+---
+
+{
+  newestLink && (
+    <a href={newestLink.data.url} rel="noopener">
+      <Box title="🔗 Latest Link" createRandomness>
+        <div class="font-headerf text-lg">{newestLink.data.title}</div>
+        <div class="text-base-text-color/60 text-sm">{trimmedPreview}</div>
+        <div class="text-base-text-color/60 text-sm pt-1">
+          [Click to visit {newestLink.data.site}]
+        </div>
+      </Box>
+    </a>
+  )
+}
