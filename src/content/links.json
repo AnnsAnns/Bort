@@ -1,5 +1,15 @@
 [
   {
+    "id": "2026-08-09-contributor-poker-and-zig-s-ai-ban",
+    "url": "https://kristoff.it/blog/contributor-poker-and-ai/",
+    "title": "Contributor Poker and Zig's AI Ban",
+    "site": "kristoff.it",
+    "description": "You should always change doors when playing Monty Hall",
+    "comment": "Article from Zig about LLM Contributions",
+    "pubDate": "2026-04-29",
+    "addedDate": "2026-08-09T10:26:05Z"
+  },
+  {
     "id": "2026-08-09-to-save-c-we-must-save-abi",
     "url": "https://thephd.dev/to-save-c-we-must-save-abi-fixing-c-function-abi",
     "title": "To Save C, We Must Save ABI",
