@@ -1,5 +1,15 @@
 [
   {
+    "id": "2026-08-09-usb-for-software-developers-an-introduction-to-writing",
+    "url": "https://werwolv.net/posts/usb_for_sw_devs/",
+    "title": "USB for Software Developers: An introduction to writing userspace USB drivers | WerWolv",
+    "site": "WerWolv",
+    "author": "WerWolv",
+    "description": "A basic introduction to USB for people that don't need to know what happens on the wire",
+    "pubDate": "2026-04-07",
+    "addedDate": "2026-08-09T10:31:08Z"
+  },
+  {
     "id": "2026-08-09-contributor-poker-and-zig-s-ai-ban",
     "url": "https://kristoff.it/blog/contributor-poker-and-ai/",
     "title": "Contributor Poker and Zig's AI Ban",
