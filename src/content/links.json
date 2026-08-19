@@ -1,5 +1,14 @@
 [
   {
+    "id": "2026-08-19-packing-malware-in-rosetta-2",
+    "url": "https://kernelkennel.com/blog/summercon2026-rosetta/",
+    "title": "Packing malware in Rosetta 2",
+    "site": "/etc/kernelkennel",
+    "description": "How to use DYLD and Rosetta 2's characteristics to pack whatever ya want!",
+    "pubDate": "2026-08-19",
+    "addedDate": "2026-08-19T13:12:23Z"
+  },
+  {
     "id": "2026-08-17-here-s-how-an-openai-model-went-rogue-and-hacked-hugging",
     "url": "https://www.hacktron.ai/blog/here-is-how-openai-model-hacked-huggingface",
     "title": "Here’s How an OpenAI Model Went Rogue and Hacked Hugging Face",
