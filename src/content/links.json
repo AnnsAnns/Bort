@@ -1,5 +1,14 @@
 [
   {
+    "id": "2026-08-20-a-look-at-cargo-vet-in-2026",
+    "url": "https://lightsquares.dev/blog/cargo-vet-in-2026",
+    "title": "A look at cargo-vet in 2026",
+    "site": "Light Squares",
+    "description": "Cargo-vet requires audits of third-party Rust dependencies before they ship. We analyzed 408 open-source projects to measure adoption, audit workload, exemptions, and audit lag.",
+    "pubDate": "2026-08-12",
+    "addedDate": "2026-08-20T20:20:58Z"
+  },
+  {
     "id": "2026-08-19-packing-malware-in-rosetta-2",
     "url": "https://kernelkennel.com/blog/summercon2026-rosetta/",
     "title": "Packing malware in Rosetta 2",
