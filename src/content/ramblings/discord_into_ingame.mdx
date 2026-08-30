@@ -1,0 +1,118 @@
+---
+title: Discord and Microphone Audio into Game Capture Device (PipeWire)
+pubDate: 2026-08-30
+---
+
+Alias, how to make discord/multiplayer work with Choicer Voicer on Linux.
+
+# Discord audio -> game capture device (PipeWire)
+
+Recently I played [Choicer Voicer](https://yeahmaybe.itch.io/the-choicer-voicer) with friends and since we were all on Discord,
+I wanted to route the Discord audio into the game so we could dub clips together.
+The game only allows one input for the dub mode so I also had to add my own microphone to the mix.
+If you play the normal mode you can separate your mic and Discord audio but you still would
+need everything else to be routed into the game capture device, so this guide works for that too.
+
+Technically there is also a Multiplayer mod but it's Windows only and also requires complicated
+port forwarding and everyone having the same mods and the game installed,
+so this is a hackier but easier solution (esp. on Linux).
+
+Also remember that you will have to play with a fairly heavy delay with this setup,
+since the game stream on discord meant around 2-3 seconds of delay.
+Easy to fix by simply coordinating the timing with your friends though.
+
+Final signal chain:
+
+```
+Discord ──> DiscordCapture (null sink) ──> monitor ──┬──> loopback ──> BT headphones
+                                                     └──> ┐
+                                                          ├──> DiscordCapture (virtual source) ──> game
+USB mic (alsa_input.usb-0c76...) ──────────────────────> ┘
+```
+
+The mic joins at the virtual source,
+NOT the sink, routing it through the sink would send your own voice back into your headphones.
+
+Also this is a "Works for me" guide, I have no idea whether this is the best way to do it.
+
+### 1. Create the null sink that Discord plays into
+
+```bash
+pactl load-module module-null-sink \
+  sink_name=DiscordCapture \
+  sink_properties=device.description=DiscordCapture
+```
+
+### 2. Loop that sink back to your headphones, so you still hear the call
+
+```bash
+pactl load-module module-loopback \
+  source=DiscordCapture.monitor \
+  sink=bluez_output.E8_EE_CC_30_51_4D.1 \
+  latency_msec=20
+```
+
+### 3. Move Discord's playback stream onto that sink
+
+Find the current ID first, it changes every time Discord reconnects:
+
+```bash
+pactl list sink-inputs | grep -E "Sink Input #|application.name"
+pactl move-sink-input <ID-of-WEBRTC-VoiceEngine> DiscordCapture
+```
+
+### 4. Create the virtual source the game reads
+
+```bash
+pactl load-module module-null-sink \
+  media.class=Audio/Source/Virtual \
+  sink_name=DiscordCapture \
+  channel_map=front-left,front-right
+```
+
+### 5. Feed the sink's monitor into the virtual source
+
+This is the step whose absence caused the original silence when trying.
+Get fresh port IDs, they change on every PipeWire restart:
+
+```bash
+pw-link -o -I | grep -i discord    # outputs: find monitor_FL / monitor_FR
+pw-link -i -I | grep -i discord    # inputs:  find input_FL / input_FR
+
+pw-link <monitor_FL> <input_FL>
+pw-link <monitor_FR> <input_FR>
+```
+
+### 6. Mix the microphone into the virtual source
+
+Mono mic, so its single port feeds both channels:
+
+```bash
+pw-link -o -I | grep 0c76          # find capture_AUX0
+
+pw-link <mic_port> <input_FL>
+pw-link <mic_port> <input_FR>
+```
+
+### 7. Point the game at the virtual source
+
+```bash
+pactl list source-outputs | grep -E "Source Output #|application.name"
+pactl move-source-output <game-ID> <virtual-source-ID>
+```
+
+## When it breaks
+
+**Game restarted and lost the audio.** Most common by far. The game gets a
+new stream ID and reverts to the raw mic. Redo step 7.
+
+**Permanent fix:** set the input device to `DiscordCapture` inside the
+game's own audio settings. Then it survives restarts and step 7 is
+never needed again.
+
+**After a reboot / `systemctl --user restart pipewire`.** Everything is
+gone: modules, links, all of it. Redo steps 1-7 from scratch. All port
+and stream IDs will be different, so look them up rather than reusing
+the numbers above.
+
+**Discord reconnected and you hear nothing.** Redo step 3.
