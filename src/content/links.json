@@ -1,5 +1,13 @@
 [
   {
+    "id": "2026-09-20-the-scourge-of-x86-emulation",
+    "url": "https://fex-emu.com/Scourge-of-emulation/",
+    "title": "The scourge of x86 emulation",
+    "site": "fex-emu.com",
+    "author": "FEX-Emu",
+    "addedDate": "2026-09-20T21:01:10Z"
+  },
+  {
     "id": "2026-09-10-gdpatch-a-versatile-godot-mod-loader",
     "url": "https://notnite.com/blog/gdpatch",
     "title": "GDPatch: a versatile Godot mod loader",
