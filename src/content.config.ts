@@ -1,4 +1,5 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { file, glob } from "astro/loaders";
 
 const blog = defineCollection({
@@ -57,7 +58,7 @@ const projects = defineCollection({
 const links = defineCollection({
   loader: file("./src/content/links.json"),
   schema: z.object({
-    url: z.string().url(),
+    url: z.url(),
     title: z.string(),
     // Where it was published, e.g. "example.com" or "Some Blog"
     site: z.string(),

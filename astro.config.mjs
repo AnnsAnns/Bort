@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, svgoOptimizer } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 
@@ -11,13 +11,15 @@ const base_url = process.env.PREVIEW_PATH ? process.env.PREVIEW_PATH : "/";
 export default defineConfig({
   site: "https://annsann.eu",
   output: "static",
+  // Keep the pre-v7 HTML whitespace behavior (v7 defaults to JSX-like compression).
+  compressHTML: true,
   integrations: [mdx(), sitemap()],
   base: base_url,
   prefetch: {
     prefetchAll: true,
   },
   experimental: {
-    svgo: true,
+    svgOptimizer: svgoOptimizer(),
   },
   image: {
     responsiveStyles: true,
