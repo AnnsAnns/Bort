@@ -15,6 +15,7 @@ const {
   updatedDate,
   heroImage,
   tableOfContents,
+  hidden,
 } = Astro.props;
 
 ---
@@ -23,6 +24,7 @@ const {
   title={title}
   desc={"Rambling"}
   tableOfContents={tableOfContents}
+  noindex={hidden}
 >
   <div class="h-full w-full flex flex-col items-center">
     <Box title={title || ""} className="w-full md:w-fit">
@@ -48,7 +50,7 @@ const {
           {
             heroImage && (
               <img
-                class="max-h-[350px] w-auto text-center"
+                class="max-h-[350px] w-auto mx-auto"
                 src={heroImage}
                 alt=""
               />
@@ -71,9 +73,18 @@ const {
                 text-base-text-color
                 font-bodyf
                 leading-snug
+                text-center
                 prose-img:max-h-96
                 prose-img:w-auto
-                prose-img:text-center
+                prose-img:mx-auto
+                prose-pre:text-left
+                prose-table:text-left
+                prose-ul:w-fit
+                prose-ul:mx-auto
+                prose-ul:text-left
+                prose-ol:w-fit
+                prose-ol:mx-auto
+                prose-ol:text-left
                 prose-blockquote:bg-base-text-color/10
                 prose-a:text-base-text-color/90
 				prose-strong:text-base-text-color

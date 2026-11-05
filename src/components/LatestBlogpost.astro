@@ -1,10 +1,10 @@
 ---
-import { getCollection } from "astro:content";
 import ClickToSeeMore from '../components/ClickToSeeMore.astro';
+import { getVisibleBlogPosts } from "../utils/posts";
 
 import Box from '../components/Box.astro';
 
-const posts = (await getCollection("blog")).sort(
+const posts = (await getVisibleBlogPosts()).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 

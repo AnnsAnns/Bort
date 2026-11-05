@@ -1,9 +1,10 @@
 ---
-import { getCollection, render } from "astro:content";
+import { render } from "astro:content";
+import { getVisibleRamblings } from "../utils/posts";
 
 import Box from '../components/Box.astro';
 
-const posts = (await getCollection("ramblings")).sort((a, b) => {
+const posts = (await getVisibleRamblings()).sort((a, b) => {
   if (a.data.pubDate && b.data.pubDate) {
     return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
   } else {

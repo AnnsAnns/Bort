@@ -16,6 +16,8 @@ const blog = defineCollection({
     legacy: z.boolean().optional(),
     sideVideo: z.string().optional(),
     audioSource: z.string().optional(),
+    // Hidden posts are not listed, built, or included in feeds.
+    hidden: z.boolean().optional(),
   }),
 });
 
@@ -28,6 +30,8 @@ const ramblings = defineCollection({
     updatedDate: z.coerce.date().optional(),
     tags: z.array(z.string()).optional(),
     heroImage: z.string().optional(),
+    // Hidden posts are not listed, built, or included in feeds.
+    hidden: z.boolean().optional(),
   }),
 });
 

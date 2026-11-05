@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection, render } from "astro:content";
 import RamblingsPost from "../../layouts/RamblingsPost.astro";
 
 export async function getStaticPaths() {
+  // Hidden posts still get a page so they can be reached by direct link.
   const posts = await getCollection("ramblings");
   return posts.map((post) => ({
     params: { slug: post.id },

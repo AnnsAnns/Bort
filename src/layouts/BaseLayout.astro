@@ -14,9 +14,10 @@ interface Props {
   title?: string;
   desc?: string;
   tableOfContents?: MarkdownHeading[];
+  noindex?: boolean;
 }
 
-const { audioSource, title, desc, tableOfContents } = Astro.props;
+const { audioSource, title, desc, tableOfContents, noindex } = Astro.props;
 
 const meta_title = `${SITE_TITLE}  ${title ? ` - ${title}` : ""}`;
 const meta_desc = desc || SITE_DESCRIPTION;
@@ -32,7 +33,7 @@ const meta_desc = desc || SITE_DESCRIPTION;
 
 <html lang="en" transition:persist class="standard">
   <head>
-    <BaseHead title={meta_title} description={meta_desc} />
+    <BaseHead title={meta_title} description={meta_desc} noindex={noindex} />
     <ClientRouter />
   </head>
   <body>

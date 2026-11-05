@@ -1,8 +1,8 @@
 ---
-import { getCollection } from "astro:content";
+import { getVisibleBlogPosts } from "../../utils/posts";
 import PostsLayout from "../../layouts/PostsLayout.astro";
 
-const posts = await getCollection("blog");
+const posts = await getVisibleBlogPosts();
 const title = "A list of all my blog posts 📚🪱";
 
 ---
