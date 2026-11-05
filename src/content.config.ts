@@ -25,6 +25,7 @@ const ramblings = defineCollection({
   loader: glob({ pattern: "**/[^_]*.mdx", base: "./src/content/ramblings" }),
   schema: z.object({
     title: z.string().optional(),
+    description: z.string().optional(),
     // Transform string to Date object
     pubDate: z.coerce.date().optional(),
     updatedDate: z.coerce.date().optional(),
