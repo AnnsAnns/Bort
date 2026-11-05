@@ -1,0 +1,1 @@
+import{r as e}from"./themes.BRGPX1UC.js";e(),document.addEventListener(`astro:after-swap`,e);
