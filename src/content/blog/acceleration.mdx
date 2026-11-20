@@ -63,18 +63,37 @@ Another example for that is the Steam Next Fest, a showcase of upcoming games, w
 
 ## Security is Dead
 
-### PHP
+I think it's no secret that LLMs are extremely good at doing very mindless and at times random needle in the haystack finding. If you watched any news coverage in the recent weeks the speed at which critical security flaws are found in essential computer libraries and software is completely unfathomable.
 
 ### Linux Kernel CVE Amount
 
-### Project Security Reports
+### Curl & Project Security Reports
+
+While linux has met this increase in security reports with simply throwing CVEs at everything no matter what, curl has decided to go with a different approach that feels more realistic for most modern FOSS projects, every security report that they receive that rates as a low or medium severity is asked to simply reopen as a public github issue.
+
+What would have felt insane a few months ago has become the reality of dealing with this infinite security advisory wave, realistically if you want to find exploits in most FOSS projects, you will.
+Whereas this was something you would have to do with enough skill and time in the before times, it has now become something that with enough tokens, anyone can realistically do.
+Both OpenAI and Anthropic provide fairly generous token and model access to security researchers which, if you read the details about incidents such as PHP or Java, is usually the way these bugs are found.
+
+However, esp. in smaller FOSS projects or for less critical exploits, a simple normal subscription to their subsidized subscription plans suffices. In the project I help maintain we have seen an unprecedented wave of low to medium severity security reports which we are simply not able to meet.
+While it aged a bit due to the aforementioned *acceleration*, [my rambling post about reviewing AI code](/ramblings/reviewing_ai_sucks/) explained this few maintainer for infinite contributors struggle pretty well.
+The TLDR is that FOSS projects live on the backs of a minor group of people that are willing to spend their, usually hobby freetime, on keeping the project alive, expecting the massive amount of work into getting new contributors accustomed to a project, to span into future maintainers.
+
+Since LLMs are enabling beginners to create massive PRs that would have taken a few months to create in minutes, it is making the process of reviewing and adopting new contributors into a project even harder while it is also becoming easier to create very specialized custom solutions intended for nobody but yourself. 
+Thus FOSS maintainers experience both a massive increase in reviewing work, a decrease in community engagement and a massive increase in security reports, stretching already thinly spread maintainers to their limits.
+
+This is a problem that is not going away and will only get worse with time, especially as LLMs become more and more capable. In my eyes this fundamentally breaks the already fragile FOSS ecosystem.
 
 ## Switch 2 Exploit
+
+
 
 ### Recompilation / Emulation
 
 
 ## Where do we go from here
+
+One of the biggest struggles writing this blog has been that what I want to write about feels outdated on the next day, esp. around the Security section there is basically an endless onslaught of major security incidents every single day, from Java, Nginx, PHP, everything is starting to report critical security flaws at such a *accelerated* speed that it has become impossible to even process one thing before the next thing happens.
 
 The worker becomes an ever cheaper commodity the more commodities he creates.
 Labour produces not only commodities,
