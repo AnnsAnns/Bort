@@ -86,7 +86,26 @@ This is a problem that is not going away and will only get worse with time, espe
 
 ## Switch 2 Exploit
 
+While I decided to discard all writing about other exploits in the wild due to the aforementioned constant news cycle that makes it impossible to keep and stay relevant, I do want to quickly at least mention one of the exploits that I personally thought was fairly significant even if something like the PHP exploit outcompetes it on a greater societal level.
 
+As a small backstory, the Switch 1 was hacked due to a massive oversight by Nvidia, allowing unsigned payloads to be launched in the recovery mode of the console, something that could not be fixed through a simple firmware update but requires a complete console revision. 
+This allowed for a massive homebrew scene to develop on the Switch 1, from emulators to full linux distros running on the console.
+
+Nintendo has been known for fairly foolish security issues in their consoles but aside from this major issue the Nintendo Switch was actually made with a fairly competent security architecture. Over the lifespan of the console we also saw Nintendo drastically improving their mistakes both on the hardware and software level, early firmware updates already patched some of the last major holes left in their architecture.
+
+Since the Switch 2 builds upon these years of learned lessons it arrived on a fairly hardened software stack and this time Nvidia also didn't make foolish mistakes.
+The console was generally perceived to be "unhackable", as in, there was no expectation of a proper homebrew scene to develop for quite some while.
+
+And .... that still kinda holds true.
+
+On the 21.10.2026 Sammy Hajhamid together with OpenAI LLMs that they gave a Switch 1, Switch 2, controllers and the ability to turn the console on and off, found the first public Switch 2 exploit so far[^8].
+Initially the public understanding about this was that this was a fairly vibed exploit, though he later clarified that the exploit itself did actually take 2 weeks of fairly involved reverse engineering.
+
+The exploit, compared to exploits on the Switch 1, didn't get access into the deeper functionality of the system, however, it did manage to get access to the `fs` sysmodule, a fairly impressive feat.
+
+At the time of writing the exploit has been fixed by Nintendo and the capabilities it did bring are slowly bringing a tiny homebrew ecosystem to the console even if nowhere as capable as it was on the Switch 1.
+
+The biggest and yet probably most contentious point this exploit allowed is the dumping of Switch 2 games which has caused one of the most frightening showcases of this new LLM powered world through rapid development of recompilations and emulations projects for these games.
 
 ### Recompilation / Emulation
 
@@ -109,3 +128,4 @@ This will probably be a long list of footnotes following 🫠
 [^5]: https://bsky.app/profile/itch.io/post/3mz7vswlnbs23 (Accessed 02.11.2026)
 [^6]: https://gamerant.com/steam-next-fest-october-2026-generative-ai-games/ (Accessed 10.11.2026)
 [^7]: Pixar, The Incredibles, Image from https://www.buzzfeed.com/marycolussi/most-memorable-villain-quotes-reddit (Accessed 10.11.2026)
+[^8]: https://pepsipu.com/blog/2026-10-switch2-jailbreak-ns2jb/ (Accessed 20.11.2026)
