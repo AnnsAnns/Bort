@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
 import Box from "../components/Box.astro";
+import HiddenWarning from "../components/HiddenWarning.astro";
 import type { MarkdownHeading } from "astro";
 
 type Props = CollectionEntry<"ramblings">["data"] & {
@@ -29,6 +30,8 @@ const {
   <div class="h-full w-full flex flex-col items-center">
     <Box title={title || ""} className="w-full md:w-fit">
       <article>
+        <HiddenWarning hidden={hidden} />
+
         <div class="flex flex-row justify-between">
           {
             pubDate && (

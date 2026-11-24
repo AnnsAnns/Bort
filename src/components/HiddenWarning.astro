@@ -1,0 +1,22 @@
+---
+interface Props {
+  hidden?: boolean;
+}
+
+const { hidden } = Astro.props;
+---
+
+{
+  hidden && (
+    <div
+      class="hidden-warning mb-4 border-4 border-red-500 bg-red-500/15 p-3 rounded-sm"
+      role="note"
+    >
+      <p class="text-lg font-bold">⚠️ This article is hidden</p>
+      <p>
+        It is either incorrect, still a work in progress, or not meant to be
+        shared yet.
+      </p>
+    </div>
+  )
+}
